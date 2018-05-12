@@ -1,0 +1,2955 @@
+= ISO 690 XML serialisation
+:title-main-en: ISO 690 XML Serialisation
+:language: en
+:script: Latn
+:draft
+:technical-committee-number: 46
+
+[[foreword]]
+.Foreword 
+ISO (the International Organization for Standardization)
+is a worldwide federation of national standards bodies (ISO member bodies). The 
+work of preparing International Standards is normally carried out through ISO 
+technical committees. Each member body interested in a subject for which a 
+technical committee has been established has the right to be represented on that 
+committee. International organizations, governmental and non-governmental, in 
+liaison with ISO, also take part in the work. ISO collaborates closely with the 
+International Electrotechnical Commission (IEC) on all matters of 
+electrotechnical standardization.
+
+The procedures used to develop this document and those intended for its further 
+maintenance are described in the ISO/IEC Directives, Part 1. In particular the 
+different approval criteria needed for the different types of ISO documents 
+should be noted. This document was drafted in accordance with the editorial 
+rules of the ISO/IEC Directives, Part 2 (see www.iso.org/directives).
+
+Attention is drawn to the possibility that some of the elements of this document 
+may be the subject of patent rights. ISO shall not be held responsible for 
+identifying any or all such patent rights. Details of any patent rights 
+identified during the development of the document will be in the Introduction 
+and/or on the ISO list of patent declarations received (see 
+www.iso.org/patents).
+
+Any trade name used in this document is information given for the convenience of 
+users and does not constitute an endorsement.
+
+For an explanation on the voluntary nature of standards, the meaning of ISO 
+specific terms and expressions related to conformity assessment, as well as 
+information about ISO's adherence to the World Trade Organization (WTO) 
+principles in the Technical Barriers to Trade (TBT) see the following URL: 
+www.iso.org/iso/foreword.html.
+
+== Introduction
+
+// https://github.com/riboseinc/bib-models/issues/1
+
+<<iso690>> has been in place for over 30 years as of this writing, as the ISO 
+model of bibliographical referencing and citation (being one of several such 
+standards). During the same time, a multitude of electronic
+referencing tools and conventions has evolved, and any of them can be used
+to encode at least a subset of the bibliographic information captured in 
+<<iso690>>. However, there is no authoritative reference model
+on how to represent the guidelines of <<iso690>> electronically. As a result,
+existing electronic referencing tools cannot be surveyed rigorously, to 
+determine the extent to which they comply with the requirements of <<iso690>>,
+either with regard to content coverage or with the base rendering requirements
+of the specification. Nor is there a fallback model of <<iso690>> in
+place, to draw on where existing electronic referencing tools do not fully
+cover the requirements of the specification.
+
+In addition, a rigorous logical model of <<iso690>> would help identify
+any gaps, inconsistencies, or areas open for interpretation in the conceptual
+model proposed in the specification, and in the rendering model described there.
+(The latter is more liable to need ambiguities fixed than the former, since
+these will become apparent in any attempts to render references in a way 
+compliant with <<iso690>>.)
+
+This document proposes a reference model and serialisation for <<iso690>>. The 
+serialisation can be used to represent references compliant to <<iso690>>; but 
+being formalised and complete,
+it can also be used to evaluate existing bibliographic tools for coverage of the 
+standard, and to identify any issues they may have. 
+
+The BibTeX tool <<bibtex>> has been 
+used as a representative bibliographic tool, because of its popularity and 
+relative completeness.
+
+A separate document proposes an example rendering stylesheet for the 
+serialisation of this model, 
+which aligns with the examples used in <<iso690>>. <<iso690>> prescribes some 
+aspects of rendering
+(e.g. sequence, use of "in:" and "at:"), and leaves others to implementation 
+(e.g. use of italics, use of punctuation). The stylesheet allows the container 
+model and the rendering
+model of <<iso690>> to be differentiated, and the rendering items prescribed by 
+<<iso690>> to be identified clearly.
+
+== Scope 
+This document provides a reference model and serialisation for <<iso690>>.
+
+[bibliography]
+== Normative References 
+
+The following documents are referred to in the text in such a way that some or 
+all of their content constitutes requirements of this document. For dated 
+references, only the edition cited applies. For undated references, the latest 
+edition of the referenced document (including any amendments) applies.
+
+* [[[iso690,ISO 690]]], _Information and documentation -- Guidelines for bibliographic references and citations to information resources_
+* [[[iso8601]], _Representations of dates and times_
+
+[source="iso690"]
+== Terms and Definitions 
+
+=== bibliographer
+
+The person responsible for creating a reference
+
+[[refmodel]]
+== Reference Model
+The following is a UML model intended to capture the structures represented in 
+<<iso690>>, and is intended as a reference model for <<iso690>>. The various 
+elements of the model  are discussed below, with illustrations using the sample 
+serialisation (<<serialisation>>).
+
+The reference model for citations is provided in <<citationmodel>>.
+
+[[uml]]
+.Reference Model, ISO 690
+====
+.Bibliographic Item
+image::iso690xml/images/BibliographicItem.png[]
+
+.Contributor
+image::iso690xml/images/Contributor.png[]
+
+.Data Types
+image::iso690xml/images/DataTypes.png[]
+====
+
+[[serialisation]]
+== Sample Serialisation
+The following is a sample serialisation of <<refmodel>> in XML. This is not 
+intended to be the only
+possible serialisation of <<refmodel>>, whether in XML or in another format. 
+In fact, existing reference tools such as BibTeX <<bibtex>> are
+expected to be used as serialisations. The sample serialisation is intended to 
+provide illustrations
+of the model, and to discuss the model succinctly by referencing its elements. 
+(Of course, the serialisation can be used in practice as a basis for data 
+exchange of references.)
+
+The serialisation is provided in <<relaxngcompact>>; refer to 
+<<relaxngcompact_tutorial>> for an introduction to the format.
+
+[[serialisation_rnc]]
+[source]
+.RELAXNG Compact Serialisation, Reference Model, ISO 690
+--
+grammar {
+
+status =
+  element status { LocalizedString }
+
+language = element language { text }
+## ISO-639
+
+script = element script { text }
+## ISO-15924: Latn
+
+edition = element edition { text }
+
+LocalizedString =
+  attribute language { text }?,
+  attribute script { text }?,
+  text 
+
+FormattedString =
+  attribute format { ( "text/plain" | "text/html" | "application/docbook+xml" | 
+    "application/tei+xml" | "text/x-asciidoc" | "text/markdown" | "application/x-isodoc+xml" | text ) }?,
+  LocalizedStringOrXsAny
+
+LocalizedStringOrXsAny =
+  attribute language { text }?,
+  attribute script { text }?,
+  ( text | AnyElement )+
+
+
+contributor = 
+  element contributor {
+    role*,
+    ContributorInfo
+}
+
+role =
+  element role {
+    attribute type { ( "author" | "performer" | "publisher" | "editor" | "adapter" | "translator" | "distributor" ) }?,
+    roledescription*
+}
+
+ContributorInfo =
+  ( person | organization )
+
+roledescription = 
+  element description { FormattedString }
+
+person = 
+  element person {
+    fullname?, affiliation*, person-identifier*, contact*, uri?
+}
+
+fullname =
+  element name {
+    (( prefix*, forename*, initial*, surname, addition* ) | completeName | 
+       prefix*, forename*, initial*, surname, addition*, completeName)),
+    bnote*
+}
+
+prefix = element prefix { LocalizedString }
+initial = element initial { LocalizedString }
+addition = element addition { LocalizedString }
+surname = element surname { LocalizedString }
+forename = element forename { LocalizedString }
+completename = element completename { LocalizedString }
+
+affiliation =
+  element affiliation { 
+    affiliationname?, affiliationdescription*, organization
+}
+
+affiliationname = element name { LocalizedString }
+
+affiliationdescription = element description { FormattedString }
+
+organization = 
+  element organization {
+    orgname, subdivision?, abbreviation?, uri?, org-identifier*, contact*
+}
+
+orgname = element name { LocalizedString }
+subdivision = element subdivision { LocalizedString }
+
+abbreviation =
+  element abbreviation { LocalizedString }
+
+uri =
+  element uri { xsd:anyURI }
+
+# TODO may change
+contact =
+  ( address | phone | email | uri )
+
+phone = element phone { text }
+email = element email { text }
+
+address =
+  element address {
+    # iso191606 TODO
+    street+, city, state?, country, postcode?
+}
+
+street = element street { text }
+city = element city { text }
+state = element state { text }
+country = element country { text }
+postcode = element postcode { text }
+
+person-identifier =
+  element identifier {
+    attribute type { ("isni" | "uri") },
+    text
+  }
+
+org-identifier =
+  element identifier {
+    attribute type { ("orcid" | "uri") },
+    text
+  }
+
+citation =
+  element citation { CitationType }
+
+CitationType = 
+    attribute bibitemid { xsd:IDREF },
+    locality*, date?
+
+date = element date { ( xsd:gYear | xsd:date )  }
+
+locality =
+  element locality {
+    # attribute type { ( "section" | "clause" | "part" | "paragraph" | "chapter" | "page" | "whole" | "table" | "annex" | "figure" | "note" | "example" | | "volume" | "issue" | ("locality:", text) ) },
+    attribute type { LocalityType },
+    referenceFrom, referenceTo?
+}
+
+LocalityType = xsd:string { pattern = "section|clause|part|paragraph|chapter|page|whole|table|annex|figure|note|example|locality:[a-zA-Z0-9_]+" } 
+
+referenceFrom = element referenceFrom { text }
+referenceTo = element referenceTo { text }
+
+bibitem =
+  element bibitem { 
+     attribute id { xsd:ID },
+     BibliographicItem 
+}
+
+bibitem_no_id =
+  element bibitem { 
+     BibliographicItem 
+}
+
+BibItemType |=
+    (  "article" | "book" | "booklet" | "conference" | "manual" | "journal"
+       "proceedings" | "presentation" | "thesis" | "techreport" |
+       "standard" | "unpublished" | "map" | "electronic resource" | 
+       "audiovisual" | "map" | "film" | "video" | "broadcast" |
+       "graphic work" | "music" | "patent" )
+ 
+
+BibliographicItem =
+    attribute type { BibItemType }?,
+    (btitle+ | formattedref), bsource*, docidentifier*, bdate*, contributor*, 
+    edition?, biblionote*, language*, script*, 
+    abstract?, status?, copyright?, docrelation*, series*, medium?, bplace*,
+    extent*, accesslocation*, bclassification, size?, scale?
+
+btitle = element title { TypedTitleString }
+bsource = element link { TypedUri }
+formattedref = element formattedref { FormattedString }
+link = element link { TypedUri }
+
+TypedTitleString = 
+  attribute type { TitleType }?,
+  FormattedString  
+
+TitleType = ( "alternative" | "original" | "unofficial" | "subtitle" | "main" )
+
+TypedUri =
+  attribute type { text }?,
+  xsd:anyURI 
+
+DateType =
+  attribute text { text }?,
+  ( xsd:gYear | xsd:date )?
+
+bdate = element date {
+  attribute type { ( "published" | "accessed" | "created" | "implemented" | "obsoleted" | "confirmed" | "updated" | "issued" | "transmitted" | "copied" ) },
+  ( bfrom, bto? ) | bon?
+}
+
+bfrom = element from { DateType }
+bto = element to { DateType }
+bon = element on { DateType }
+
+docidentifier = element docidentifier { 
+  attribute type { text }?,
+  text 
+}
+bclassification = element classification { 
+  attribute type { text }?,
+  text 
+}
+
+bplace = element place { text }
+medium = element medium { 
+  form?, size?, scale?
+}
+form = element form { text }
+size = element size { text }
+scale = element scale { text }
+accesslocation = element accesslocation { text }
+
+extent = element extent { BibItemLocality }
+
+series = element series {
+  attribute type { "main" | "alt" }?,
+  ( btitle | formattedref ),
+  bplace, seriesorganization,
+  abbreviation?,
+  seriesfrom?, seriesto?,
+  seriesnumber?, seriespartnumber?
+}
+
+seriesorganization = element organization { text }
+seriesfrom = element from { xsd:dateTime | xsd:gYear }
+seriesto = element to { xsd:dateTime | xsd:gYear }
+seriesnumber = element number { text }
+seriespartnumber = element partnumber { text }
+
+biblionote = element note { FormattedString }
+abstract = element abstract { FormattedString }
+
+copyright =
+  element copyright {
+    from, to?, owner
+}
+
+from = element from { xsd:gYear }
+to = element to { xsd:gYear }
+
+owner =
+  element owner { ContributorInfo }
+
+docrelation =
+  element relation {
+    attribute type {
+      ( "obsoletes" | "updates" | "updatedBy" | "complements" | "derivedFrom" | "translatedFrom" |
+        "adoptedFrom" | "equivalent" | "identical" | "nonequivalent" | "includedIn" | "includes" ) },
+       element bibitem { BibliographicItem },
+       locality*
+}
+
+AnyElement = element * { ( text | AnyElement) }
+
+}
+--
+
+== Overarching guidelines
+
+[[provenance]]
+=== Provenance
+
+Information in a reference typically comes from the publisher of a resource, and 
+is included in the resource itself, as described in <<iso690,clause 4.1.2>>. 
+<<iso690,clause 4.1.2>> permits information to be supplied by other parties, and 
+differentiated by including it in brackets. This can include both missing 
+information (e.g. "[Untitled]"), and corrections (e.g. "1959 [i.e. 1995]").
+
+The party supplying emendations to reference information is identified in 
+<<iso690,clause 4.1.2>>
+as the citer of the reference. However, the citer should be differentiated from 
+the bibliographer,  in the case of bibliographies as consumable resources (e.g. 
+as bibliographic databases):
+
+* The publisher provides the primary source information about the resource, 
+typically in the  resource itself, but also as a feed of information to a 
+bibliographer.
+* The bibliographer compiles a bibliography as a list of references, and uses 
+their judgement to supply information and to impose uniform representation and 
+rendering of the list.
+* The citer uses a bibliography within a resource, to identify cited resources, 
+and may further adjust the bibliography they provide within the resource (e.g. 
+for disambiguation, or to disaggregate references included in other references.
+
+The bibliographer and the publisher in the contemporary bibliography universe 
+are more active parties than in the traditional model, which relies exclusively 
+on citer discretion. Bibliographers
+and publishers are invested in asserting that they are sources of truth about 
+bibliographic
+resources; and the bibliographies covered by any model of electronic exchange 
+include references
+provided by bibliographers and publishers, in bibliographic databases—as well as 
+the references consumed and adjusted by citers from bibliographic databases.
+
+So the original reference as obtained from a bibliographic database may need to 
+be differentiated
+from any adjustments made to the reference by a citer; and the citer adjustments 
+in some contexts may need to be overridden. 
+
+This means indicating the provenance of bibliographic information, and allowing 
+multiple versions
+of the same information, with differing provenance. At the simplest level there 
+will simply be
+two or more different versions of the reference serialisation, some representing 
+the publisher or
+bibliographer's source of truth, and some representing the citer's adjustments 
+(in brackets). 
+Adjustments made by the bibliographer would also be represented in brackets; 
+this is long-standing routine practice in library catalogues.
+
+A more granular approach would be to permit multiple instances of any element in 
+the reference
+model, differentiated by provenance: this could be done with a child element 
+(e.g. an XML attribute),
+or with a nested container. If no provenance is indicated, the information is 
+assumed to be
+unchanged from the source of truth. A renderer can then choose which alternative 
+to render depending on local requirements:
+
+.Differential Provenance
+====
+[source,xml]
+--
+<bibitem>
+  <date><on>1959</on></date>
+</bibitem>
+
+<bibitem source="citer">
+  <date><on>1959 [i.e. 1995]</on></date>
+</bibitem>
+
+<bibitem>
+  <date><on>1959</on></date>
+  <date source="citer"><on>1959 [i.e. 1995]</on></date>
+</bibitem>
+--
+====
+
+Breaking out completions and emendations into separate elements in the model 
+(e.g. `<date><on><orig>1959</orig><corr>1995</corr></on></date>`) 
+is not desirable,
+given how open-ended emendations can be (e.g. appearing anywhere in a string): 
+they would complicate
+any serialisation of the model, to little real benefit. 
+
+
+=== Discussion of model
+
+In the following, the model is discussed with reference to <<iso690>>, with the 
+rendered
+bibliographic references of each clause in <<iso690>> serialised according to 
+<<serialisation>>.
+
+Each aspect of the model is given with a cross-reference to <<iso690>>; a 
+listing of the
+relevant model components; and a listing of the corresponding components of 
+<<bibtex>>.
+
+[[bibtype]]
+== Categories of information resource
+
+* Source: <<iso690,clause 15>>
+* Serialisation: `bibitem@type`, `BibItemType`
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem@type`|
+|===
+
+
+While <<iso690>> does not prescribe a list of possible bibliographic types, 
+there are categories specific to particular information resource categories 
+(<<iso690,clause 15>>),
+as well as rendering rules specific to information resource categories (e.g. 
+<<iso690,clause 15.6.4>>: series title appears before item title for 
+broadcasts). For that reason, bibliographic items should indicate what 
+bibliographic type they belong to.
+
+The list of bibliographic types proposed is a union of the BibTeX types and the 
+types listed in ISO 690. Master's Thesis and PhD Thesis from BibTeX are subsumed 
+under "thesis". The list maintains the BibTeX distinction between:
+
+"inbook":: A typically untitled part of a book. May be a chapter (or section, etc.) and/or a range of pages.
+"incollection":: A part of a book having its own title.
+"inproceedings":: An article in a conference proceedings.
+"article":: An article from a journal or magazine.
+
+[[creator]]
+== Creator
+
+=== General
+
+* Source: <<iso690,clause 5>>
+* Serialisation: `bibitem/contributor`, `Person, Organization, Affiliation`
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/contributor`|
+|`bibitem/contributor@role`|
+|`bibitem/contributor/description`|
+|`bibitem/contributor/person`|
+|`bibitem/contributor/person/name`|
+|`bibitem/contributor/person/name/completeName`|
+|`bibitem/contributor/person/name/forename`|
+|`bibitem/contributor/person/name/initials`|
+|`bibitem/contributor/person/name/surname`|
+|`bibitem/contributor/person/name/addition`|
+|`bibitem/contributor/person/name/prefix`|
+|`bibitem/contributor/person/name/note`|
+|`bibitem/contributor/person/uri`|
+|`bibitem/contributor/person/affiliation`|
+|`bibitem/contributor/person/affiliation/name`|
+|`bibitem/contributor/person/affiliation/description`|
+|`bibitem/contributor/person/affiliation/organization`|
+|`bibitem/contributor/person/identifier`|
+|`bibitem/contributor/person/identifier@type`|
+|`bibitem/contributor/person/contact`|
+|`bibitem/contributor/organization`|
+|`bibitem/contributor/organization/name`|
+|`bibitem/contributor/organization/subdivision`|
+|`bibitem/contributor/organization/uri`|
+|`bibitem/contributor/organization/identifier`|
+|`bibitem/contributor/organization/identifier@type`|
+|`bibitem/contributor/organization/contact`|
+|`bibitem/contributor/organization/abbreviation`|
+|===
+
+[[creator-selection]]
+=== Selection
+
+<<iso690,clause 5.1>> classifies the various possible roles a creator can have 
+with regard to a resource into six broad categories in order of priority, 
+with more refined classifications typically named for the creator. These 
+classifications
+are retained in the model: `bibitem/contributor/role@type` provides the broad 
+category of role (author, performer, compiler, adaptor, publisher, distributor, 
+corresponding to <<iso690,clause 5.1.a>> through <<iso690,clause 5.1.f>>), while 
+`bibitem/contributor/role/description`
+contains one or more specific descriptions of the role of the contributor.
+
+Whether subsidiary creators should be included in a bibliographic item, and 
+which creators should be included, is at the discretion of the bibliographer; 
+see <<iso690,clause 5.4.5>>; <<iso690,clause 5.4.6>>.
+
+Exceptionally, "translator" is differentiated from the other "adaptor" roles of 
+<<iso690,clause 5.1.d>>, because it is so different to other adaptor roles such 
+as engraver or photographer. 
+
+NOTE: Although both composer and librettist are included as authors under 
+<<iso690,clause 5.1.a>>, but
+the two roles are clearly differentiated in <<iso690,clause 15.8.1>>, with the 
+composer given priority over the librettist.
+
+NOTE: Inventor is atypical of the "performer" roles included in 
+<<iso690,clause 5.1.b>>,
+and could arguably be regarded as an author role instead, alongside patentee.
+
+====
+Ramsey, J. K., & McGrew, W. C. (2005). Object play in great apes: Studies in nature and captivity. 
+In A. D. Pellegrini & P. K. Smith (Eds.), _The nature of play: Great apes and humans_ 
+(pp. 89-112). New York, NY: Guilford Press.
+
+[source,xml]
+--
+<bibitem type="incollection">
+  <title>Object play in great apes: Studies in nature and captivity</title>
+  <date type="published"><on>2005</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Ramsey</surname>
+        <initials>J. K.</initials>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>McGrew</surname>
+        <initials>W. C.</initials>
+      </name>
+    </person>
+  </contributor>
+  <relation type="includedIn">
+    <bibitem>
+      <title>The nature of play: Great apes and humans</title>
+      <contributor>
+        <role type="editor"/>
+        <person>
+          <name>
+            <surname>Pellegrini</surname>
+            <initials>A. D.</initials>
+          </name>
+        </person>
+      </contributor>
+      <contributor>
+        <role type="editor"/>
+        <person>
+          <name>
+            <surname>Smith</surname>
+            <initials>P. K.</initials>
+          </name>
+        </person>
+      </contributor>
+      <contributor>
+        <role type="publisher"/>
+        <organization>
+          <name>Guilford Press</name>
+        </organization>
+      </contributor>
+      <place>New York, NY</place>
+    </bibitem>
+  </relation>
+  <extent type="page">
+    <referenceFrom>89</referenceFrom>
+    <referenceTo>112</referenceTo>
+  </extent>
+</bibitem>
+--
+====
+
+====
+Demosthenes. _Speeches 50-59_. Translated from the Greek by
+Victor BERS. Austin: University of Texas Press, 2003.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title>Speeches 50-59</title>
+  <date type="published"><on>2003</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <completeName>Demosthenes</completeName>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="translator"/>
+    <person>
+      <name>
+        <surname>Bers</surname>
+        <initials>Victor</initials>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>University of Texas Press</name>
+    </organization>
+  </contributor>
+  <language>en</language>
+  <relation type="translatedFrom">
+    <bibitem>
+      <title>Speeches 50-59</title>
+      <language>grc</language>
+    </bibitem>
+  </relation>
+  <place>Austin</place>
+</bibitem>
+--
+====
+
+====
+ROGET, Peter Mark. _Roget's Thesaurus_. Revised by
+Susan M. LLOYD. Burnt Mill, Harlow, Essex: Longman Group Limited, 1982 [1852].
+
+[source,xml]
+--
+<bibitem type="book">
+  <title>Roget's Thesaurus</title>
+  <date type="created"><on>1852</on></date>
+  <date type="updated"><on>1982</on></date>
+  <date type="published"><on>1982</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Roget</surname>
+        <forename>Peter</forename>
+        <forename>Mark</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="editor">revised</role>
+    <person>
+      <name>
+        <surname>Lloyd</surname>
+        <forename>Susan</forename>
+        <forename>M.</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Longman Group Limited</name>
+    </organization>
+  </contributor>
+  <place>Burnt Mill, Harlow, Essex</place>
+</bibitem>
+--
+====
+
+====
+WINSBACHER KNABENCHOR. All' Lust und Freud'. Frankfurt: Bellaphon, 1983.
+
+[source,xml]
+--
+<bibitem type="audiovisual">
+  <title>All' Lust und Freud'</title>
+  <date type="published"><on>1983</on></date>
+  <contributor>
+    <role type="performer"/>
+    <organization>
+      <name>Winsbacher Knabenchor</name>
+    </organization>
+  </contributor>
+  <contributor>
+    <role type="author">composer</role>
+    <person><name><completeName>Gastoldi, Giovanni Giacomo</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="author">composer</role>
+    <person><name><completeName>Isaak, Heinrich</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="author">composer</role>
+    <person><name><completeName>Othmayr, Caspar</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="author">composer</role>
+    <person><name><completeName>Demantius, Christoph</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Bellaphon</name>
+    </person>
+  </organization>
+  <place>Frankfurt</place>
+</bibitem>
+--
+====
+
+=== Personal names
+
+Names may be modelled either broken up into their constituent components 
+(prefix, forename, initials, surname, addition), or as a complete name string. 
+The latter is useful if
+(unlike the recommendation of <<iso690,clause 5.2.1>>)
+language-specific conventions for ordering of name components are to be 
+observed; e.g. "James CLARK, John COWAN, MURATA Makoto". 
+
+The `initials` component is used if all forenames are replaced by initials.
+If only the middle name is replaced by an initial, it is still treated as a
+forename.
+
+====
+BACH, J.S.
+
+[source,xml]
+--
+<person>
+  <name>
+    <surname>Bach</surname>
+    <initials>J. S.</initials>
+  </name>
+</person>
+--
+====
+
+====
+PICASSO, Pablo
+
+[source,xml]
+--
+<person>
+  <name>
+    <surname>Picasso</surname>
+    <forename>Pablo</forename>
+  </name>
+</person>
+--
+====
+
+====
+KING, Martin Luther, Jr., Rev.
+
+[source,xml]
+--
+<person>
+  <name>
+    <prefix>Dr.</prefix>
+    <surname>King</surname>
+    <forename>Martin</forename>
+    <forename>Luther</forename>
+    <addition>Jr.</addition>
+    <addition>Rev.</addition>
+  </name>
+</person>
+--
+====
+
+====
+KING, Martin Luther, Jr.
+
+[source,xml]
+--
+<person>
+  <name>
+    <completeName>KING, Martin Luther, Jr.</completeName>
+  </name>
+</person>
+--
+====
+
+====
+STEWART, John H.
+
+[source,xml]
+--
+<person>
+  <name>
+    <surname>Stewart</surname>
+    <forename>John</forename>
+    <forename>H.</forename>
+  </name>
+</person>
+--
+====
+
+[[organisation]]
+=== Organisations
+
+The model caters for both full names and abbreviations of organisations 
+(<<iso690,clause 5.3.1>>). 
+Subordinate body names are modelled separately from the parent body name; the 
+choice of whether
+to model parent + subordinate or a single name depends on the degree of 
+independence of the subordinate body, as outlined in <<iso690,clause 5.3.3>>.
+
+====
+St. Thomas University [Florida].
+
+[source,xml]
+--
+<organization>
+  <name>St. Thomas University [Florida]</name>
+</organization>
+--
+====
+
+====
+St. Thomas University [New Brunswick].
+
+[source,xml]
+--
+<organization>
+  <name>St. Thomas University [New Brunswick]</name>
+</organization>
+--
+====
+
+====
+ACADEMY OF ATHENS. Research Centre for Modern Greek Dialects.
+
+[source,xml]
+--
+<organization>
+  <name>Academy of Athens</name>
+  <subdivision>Research Centre for Modern Greek Dialects</subdivision>
+</organization>
+--
+====
+
+=== Pseudonyms
+
+If both the assumed and the real name of the creator are known, the 
+supplementary real name (<<iso690,clause 5.5>>) should be modelled as a note:
+
+====
+TWAIN, Mark [pseud. of Samuel Langhorne CLEMENS]
+
+[source,xml]
+--
+<person>
+  <surname>Twain</surname>
+  <forename>Mark</forename>
+  <note>pseud. of Samuel Langhorne CLEMENS</note>
+</person>
+--
+====
+
+TODO: Or should we model as a relation between two names? Notes don't have an internal structure, 
+so can't identify the surname.
+
+=== Anonymous and Varii
+
+Descriptors of authors, such as "Anon" (<<iso690,clause 5.6>>) or 
+"Various Authors", should be given as completeName
+elements. As with pseudonyms, the real name of the creator if known can be 
+modelled as a note.
+
+====
+Anon. _Sir Gawain and the Green Knight_. Edited by R. A. WALDRON. Evanston: 
+Northwestern University Press, 1970.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title>Sir Gawain and the Green Knight</title>
+  <date type="published"><on>1970</on></date>
+  <contributor>
+    <role type="author"/>
+    <person><name><completeName>Anon</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="editor"/>
+    <person><name><completeName>R. A. WALDRON</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Northwestern University Press</name>
+    </person>
+  </organization>
+  <place>Evanston</place>
+</bibitem>
+--
+====
+
+====
+Anon [Thomas Robert MALTHUS]. _An Essay on the Principle of Population_. 1st edition.
+London: J. Johnson, 1798.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title>An Essay on the Principle of Population</title>
+  <date type="published"><on>1798</on></date>
+  <contributor>
+    <role type="author"/>
+    <person><name><completeName>Anon</completeName></name></person>
+    <note>Thomas Robert MALTHUS</note>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <person><name><completeName>J. Johnson</completeName></name></person>
+  </contributor>
+  <edition>1st edition</edition>
+  <place>London</place>
+</bibitem>
+--
+====
+
+== Title
+
+=== General
+
+* Source: <<iso690,clause 6.1,clasue 6.2>>
+* Serialisation: `bibitem/title`
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/title`|
+|`bibitem/title@type`|
+|`bibitem/title@format`|
+|`bibitem/title@language`|
+|`bibitem/title@script`|
+|===
+
+[[alt-title]]
+=== Alternative titles
+
+A resource can have multiple titles (<<iso690,clause 6.1.2>>), including 
+alternative titles
+(<<iso690,clause 6.1.3>>) and subtitles (<<iso690,clause 6.1.4>>). Titles are 
+classified through `title@type`; the model allows for "alternative", "subtitle", 
+"unofficial" (i.e.
+a title that has become prevalent but has never been the official/intended title 
+of the resource),
+"original" (including the source language title of a translated resource) 
+(<<iso690,clause 6.2>>), 
+and "main" (for the proper title or titles of the resource). If a title type is
+not given, it is assumed to be a main title.
+
+"Untitled" can be treated as a main title (<<iso690,clause 6.1.7>>).
+
+====
+Lemuel Gulliver [pseud. of Jonathan Swift].
+_Travels into Several Remote Nations of the World. In Four Parts_ 
+[Gulliver's Travels]. London: Ben. Motte, 1798.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title type="original">Travels into Several Remote Nations of the World. In Four Parts</title>
+  <title type="unofficial">Gulliver's Travels</title>
+  <date type="published"><from>1726</from><to>1727</to></date>
+  <contributor>
+    <role type="author"/>
+    <person><name><completeName>Lemuel Gulliver</completeName></name></person>
+    <note>pseud. of Jonathan Swift</note>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <person><name><completeName>Benj. Motte</completeName></name></person>
+  </contributor>
+  <place>London</place>
+</bibitem>
+--
+====
+
+====
+Sun Tzu.
+_The Art of War_ [孫子兵法]. Translated by Samuel B. Griffith.
+Oxford: Oxford University Press, 1963.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title type="original" lang="zh" script="Hant">孫子兵法</title>
+  <title type="main">The Art of War</title>
+  <date type="published"><on>1963</on></date>
+  <contributor>
+    <role type="author"/>
+    <person><name><completeName>Sun Tzu</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="translator"/>
+    <person><name><completeName>Samuel B. Griffith</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization><name>Oxford University Press</name></organization>
+  </contributor>
+  <place>Oxford</place>
+</bibitem>
+--
+====
+
+====
+Sigur Rós.
+Untitled [Vaka]. In: _( )_ [compact disc]. Track 1.
+Mosfellsbær: Sundlaugin, 2002.
+
+[source,xml]
+--
+<bibitem type="audiovisual">
+  <title>Untitled</title>
+  <title type="unofficial">Vaka</title>
+  <date type="published"><on>2002</on></date>
+  <contributor>
+    <role type="author">composer</role>
+    <organization><name>Sigur Rós</name></organization>
+  </contributor>
+  <medium>
+    <form>compact disc</form>
+  </medium>
+  <relation type="includedIn">
+    <bibitem>
+      <title>( )</title>
+      <contributor>
+        <role type="author">composer</role>
+        <organization><name>Sigur Rós</name></organization>
+      </contributor>
+      <contributor>
+        <role type="publisher"/>
+        <organization><name>Sundlaugin</name></organization>
+      </contributor>
+      <place>Mosfellsbær, Iceland</place>
+    </bibitem>
+    <locality type="track">
+      <referenceFrom>1</referenceFrom>
+    </locality>
+  </relation>
+</bibitem>
+--
+====
+
+== Document relations
+
+=== General
+
+* Source: <<iso690,clause 6.2>>, <<iso690,clause 6.4>>
+* Serialisation: `bibitem/relation`
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/relation`|
+|`bibitem/relation@type`|
+|`bibitem/relation/bibitem`|
+|`bibitem/relation/bibLocality`|
+|`bibitem/extent`|
+|===
+
+The model allows for various relations between bibliographic items, with one
+related item embedded within the other.
+
+[[host-item]]
+=== Host Item
+
+Of the bibliographic types identified in <<bibtype>>, incollection, 
+inproceedings, and inbook are all inherently related to a host item. Other types 
+also potentially involve
+relations with host items; for example, the relation between a record track and 
+a record, or a broadcast segment and a broadcast show. The relation between host 
+item and contained item is modelled through "includedIn". 
+
+The relation between any two items includes a locality element, which indicates
+which part of the first item is related to the second. (For example, which part
+of the first item is superseded by the second.) The locality in the
+relation element can be used with "includedIn" relations, to indicate the extent 
+of the 
+contained item within the host item; but for consistency, it is preferable to
+use the extent element in the contained item, which has the same meaning.
+
+The expected relations between host and contained items are as follows:
+
+|===
+|Host |Contained
+
+|book, booklet, manual, techreport|incollection (if has its own title—autonomous item), inbook (if it does not have its 
+own title—e.g. numbered chapter, page span)
+|journal |article
+|proceedings, conference |inproceedings
+|thesis, standard, patent |inbook
+|map |map
+|electronic resource |electronic resource
+|broadcast |broadcast
+|music |music
+|graphic work|graphic work
+|film |film
+|video |video
+|===
+
+In general: text-based resources have components that can be considered a different kind of
+resource; components of non-textual resources are considered to be of the same 
+type as their host.
+
+====
+Ramsey, J. K., & McGrew, W. C. (2005). Object play in great apes: Studies in nature and captivity. 
+In A. D. Pellegrini & P. K. Smith (Eds.), _The nature of play: Great apes and humans_ 
+(pp. 89-112). New York, NY: Guilford Press.
+
+Dispreferred extent encoding:
+[source,xml]
+--
+<bibitem type="incollection">
+  <title>Object play in great apes: Studies in nature and captivity</title>
+  <date type="published"><on>2005</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Ramsey</surname>
+        <initials>J. K.</initials>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>McGrew</surname>
+        <initials>W. C.</initials>
+      </name>
+    </person>
+  </contributor>
+  <relation type="includedIn">
+    <bibitem>
+      <title>The nature of play: Great apes and humans</title>
+      <contributor>
+        <role type="editor"/>
+        <person>
+          <name>
+            <surname>Pellegrini</surname>
+            <initials>A. D.</initials>
+          </name>
+        </person>
+      </contributor>
+      <contributor>
+        <role type="editor"/>
+        <person>
+          <name>
+            <surname>Smith</surname>
+            <initials>P. K.</initials>
+          </name>
+        </person>
+      </contributor>
+      <contributor>
+        <role type="publisher"/>
+        <organization>
+          <name>Guilford Press</name>
+        </organization>
+      </contributor>
+      <place>New York, NY</place>
+    </bibitem>
+    <locality type="page">
+      <referenceFrom>89</referenceFrom>
+      <referenceTo>112</referenceTo>
+    </locality>
+  </relation>
+</bibitem>
+--
+
+Preferred extent encoding:
+[source,xml]
+--
+<bibitem type="incollection">
+  <title>Object play in great apes: Studies in nature and captivity</title>
+  <date type="published"><on>2005</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Ramsey</surname>
+        <initials>J. K.</initials>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>McGrew</surname>
+        <initials>W. C.</initials>
+      </name>
+    </person>
+  </contributor>
+  <relation type="includedIn">
+    <bibitem>
+      <title>The nature of play: Great apes and humans</title>
+      <contributor>
+        <role type="editor"/>
+        <person>
+          <name>
+            <surname>Pellegrini</surname>
+            <initials>A. D.</initials>
+          </name>
+        </person>
+      </contributor>
+      <contributor>
+        <role type="editor"/>
+        <person>
+          <name>
+            <surname>Smith</surname>
+            <initials>P. K.</initials>
+          </name>
+        </person>
+      </contributor>
+      <contributor>
+        <role type="publisher"/>
+        <organization>
+          <name>Guilford Press</name>
+        </organization>
+      </contributor>
+      <place>New York, NY</place>
+    </bibitem>
+  </relation>
+  <extent type="page">
+    <referenceFrom>89</referenceFrom>
+    <referenceTo>112</referenceTo>
+  </extent>
+</bibitem>
+--
+====
+
+====
+Sigur Rós.
+Untitled [Vaka]. In: _( )_ [compact disc]. Track 1.
+Mosfellsbær: Sundlaugin, 2002.
+
+[source,xml]
+--
+<bibitem type="audiovisual">
+  <title>Untitled</title>
+  <title type="unofficial">Vaka</title>
+  <date type="published"><on>2002</on></date>
+  <contributor>
+    <role type="author">composer</role>
+    <organization><name>Sigur Rós</name></organization>
+  </contributor>
+  <medium>
+    <form>compact disc</form>
+  </medium>
+  <relation type="includedIn">
+    <bibitem>
+      <title>( )</title>
+      <contributor>
+        <role type="author">composer</role>
+        <organization><name>Sigur Rós</name></organization>
+      </contributor>
+      <contributor>
+        <role type="publisher"/>
+        <organization><name>Sundlaugin</name></organization>
+      </contributor>
+      <place>Mosfellsbær, Iceland</place>
+    </bibitem>
+    <locality type="track">
+      <referenceFrom>1</referenceFrom>
+    </locality>
+  </relation>
+</bibitem>
+--
+====
+
+=== Translation
+
+Translations are items derived from an item in a different language. Typically 
+in bibliographies, the details of the source item are not provided for a 
+translation, outside of the original author, and possibly the date of 
+publication and the source language title of the original title. If the 
+information about the source item is limited to these, no relation need be 
+invoked in the title: the source title can be modelled as an original title 
+variant (<<alt-title>>); the author differentiated from the translator as 
+creators (<<creator-selection>>); and the date of authorshop differentiated
+from the date of translation (<<date>>: `date[@type = "created"]` vs 
+`date[@type = "published"]`).
+
+TODO: use updated date for translation? Or distinct adapted or translated verb?
+
+However, if any further details of the source item need to be provided (e.g. 
+source language: <<iso690,clause 14.5>>), they should be modelled through an 
+overt relationship between the source item and the translation.
+
+====
+PRUS, Bolesław. 1912 [1895–1896]. _La Faraono_ [Faraon]. Translated 
+by Kabe (pseud. of Kazimierz BEIN). 2nd revised edition.
+Paris: Hachette.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title lang="eo">La Faraono</title>
+  <title type="original" lang="pl">Faraon</title>
+  <date type="created"><from>1895</from><to>1896</to></date>
+  <date type="published"><on>1912</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Prus</surname>
+        <forename>Bolesław</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="translator"/>
+    <person>
+      <name>
+        <completeName>Kabe</completeName>
+        <note>pseud. of Kazimierz Bein</note>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Hachette</name>
+    </organization>
+  </contributor>
+  <edition>2nd revised edition</edition>
+  <language>eo</language>
+  </relation>
+  <place>Paris</place>
+</bibitem>
+--
+====
+
+====
+Demosthenes. _Speeches 50-59_. Translated from the Greek by
+Victor BERS. Austin: University of Texas Press, 2003.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title>Speeches 50-59</title>
+  <date type="published"><on>2003</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <completeName>Demosthenes</completeName>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="translator"/>
+    <person>
+      <name>
+        <surname>Bers</surname>
+        <initials>Victor</initials>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>University of Texas Press</name>
+    </organization>
+  </contributor>
+  <language>en</language>
+  <relation type="translatedFrom">
+    <bibitem>
+      <title>Speeches 50-59</title>
+      <language>grc</language>
+    </bibitem>
+  </relation>
+  <place>Austin</place>
+</bibitem>
+--
+====
+
+TODO: other categories
+
+
+== Medium
+
+* Source: <<iso690,clause 7>>, <<iso690,clause 14.3>>, <<iso690,clause 15.2.2>>, <<iso690,clause 15.5.5>>, <<iso690,clause 15.5.6>>
+* Serialisation: `bibitem/medium`
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/medium/form`|
+|`bibitem/medium/size`|
+|`bibitem/medium/scale`|
+|===
+
+<<iso690>> differentiates between the medium of the item (<<iso690,clause 7>>,
+<<iso690,clause 15.2.2>>), 
+the size of the item (<<iso690,clause 14.3>>, <<iso690,clause 15.5.6>>), and
+for maps, the scale of the item (<<iso690,clause 15.5.5>>). These are all 
+modelled as elements of the item medium; the medium itself is modelled as 
+`medium/form`.
+
+There is no fixed vocabulary modelled for `medium/form`. The size and scale
+of the item usually contains numerical information, but is modelled as a string,
+given the complications of how size and scale can be described, particularly for
+cartographic material.
+
+====
+Sigur Rós.
+Untitled [Vaka]. In: _( )_ [compact disc]. Track 1.
+Mosfellsbær: Sundlaugin, 2002.
+
+[source,xml]
+--
+<bibitem type="audiovisual">
+  <title>Untitled</title>
+  <title type="unofficial">Vaka</title>
+  <date type="published"><on>2002</on></date>
+  <contributor>
+    <role type="author">composer</role>
+    <organization><name>Sigur Rós</name></organization>
+  </contributor>
+  <medium>
+    <form>compact disc</form>
+  </medium>
+  <relation type="includedIn">
+    <bibitem>
+      <title>( )</title>
+      <contributor>
+        <role type="author">composer</role>
+        <organization><name>Sigur Rós</name></organization>
+      </contributor>
+      <contributor>
+        <role type="publisher"/>
+        <organization><name>Sundlaugin</name></organization>
+      </contributor>
+      <place>Mosfellsbær, Iceland</place>
+    </bibitem>
+    <locality type="track">
+      <referenceFrom>1</referenceFrom>
+    </locality>
+  </relation>
+</bibitem>
+--
+====
+
+====
+Easterbrook, Don J. _Geologic Map of Western Whatcom County, Washington_. Map. 1:62,500. col. 68 x 69 cm. fold. in envelope 30 x 24 cm. Miscellaneous Investigations Series, map 1-854-B. Reston, VA: U.S. Geological Survey, 1976. 
+
+[source,xml]
+--
+<bibitem type="map">
+  <title>Geologic Map of Western Whatcom County, Washington</title>
+  <date type="published"><on>1976</on></date>
+  <contributor>
+    <role type="author">
+    <person><name><completeName>Easterbrook, Don J.</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization><name>U.S. Geological Survey</name></organization>
+  </contributor>
+  <medium>
+    <form>map</form>
+    <size>col. 68 x 69 cm. fold. in envelope 30 x 24 cm.</size>
+    <scale>1:62500</scale>
+  </medium>
+  <series>
+    <title>Miscellaneous Investigations Series</title>
+    <number>map 1-854-B</number>
+  </series>
+  <place>Reston, VA</place>
+</bibitem>
+--
+
+====
+
+== Edition
+
+* Source: <<iso690,clause 8>>
+* Serialisation: `bibitem/edition, bibitem/date`
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/edition`|
+|`bibitem/date`|
+|`bibitem/date@type`|
+|===
+
+Editions are modelled as free text, given the variety of ways they can be represented
+(<<iso690,clause 8.1>>).
+For that reason, the full word "edition" needs to appear after any ordinal.
+
+Dates when a resource was last accessed are modelled as `date[@type = "accessed"]`;
+dates when a resource was last updated are modelled as `date[@type = "updated"]`
+(<<iso690,clause 8.2>>).
+
+====
+Anon [Thomas Robert MALTHUS]. _An Essay on the Principle of Population_. 1st edition.
+London: J. Johnson, 1798.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title>An Essay on the Principle of Population</title>
+  <date type="published"><on>1798</on></date>
+  <contributor>
+    <role type="author"/>
+    <person><name><completeName>Anon</completeName></name></person>
+    <note>Thomas Robert MALTHUS</note>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <person><name><completeName>J. Johnson</completeName></name></person>
+  </contributor>
+  <edition>1st edition</edition>
+  <place>London</place>
+</bibitem>
+--
+====
+
+====
+SKOUSEN, Mark. _The Structure of Production_. New revised edition.
+New York: New York University Press, 2015.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title>The Structure of Production</title>
+  <date type="published"><on>2015</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Skousen</surname>
+        <forename>Mark</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization><name>New York University Press</name></organization>
+  </contributor>
+  <edition>New revised edition</edition>
+  <place>New York</place>
+</bibitem>
+--
+====
+
+====
+When did the sounds of 'w' and 'v' change in High German?
+_Stack Exchange: Linguistics Beta_.
+Updated 10 May 2017 [viewed 8 May 2018].
+Available from: https://linguistics.stackexchange.com/questions/22872/when-did-the-sounds-of-w-and-v-change-in-high-german
+
+[source,xml]
+--
+<bibitem type="electronic resource">
+  <title>When did the sounds of 'w' and 'v' change in High German?</title>
+  <link>https://linguistics.stackexchange.com/questions/22872/when-did-the-sounds-of-w-and-v-change-in-high-german</link>
+  <date type="updated"><on>2017-05-10</on></date>
+  <date type="accessed"><on>2018-05-08</on></date>
+  <relation type="includedIn">
+    <bibitem>
+      <title>Stack Exchange: Linguistics Beta</title>
+    </bibitem>
+  </relation>
+</bibitem>
+--
+====
+
+== Production
+
+=== General
+
+* Source: <<iso690,clause 9>>
+* Serialisation: `bibitem/place, bibitem/contributor[role@type = "publisher"], bibitem/date`
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/place`|
+|`bibitem/contributor[role@type = "publisher"]`|
+|`bibitem/date`|
+|`bibitem/date`|
+|`bibitem/date/from`|
+|`bibitem/date/from@text`|
+|`bibitem/date/to`|
+|`bibitem/date/to@text`|
+|`bibitem/date/on`|
+|`bibitem/date/on@text`|
+|`bibitem/copyright/date`|
+|===
+
+=== Place
+
+Strictly speaking the place of production (<<iso690,clause 9.1>>) 
+is an attribute of the publisher. It is
+modelled as a top-level attribute of the bibliographic item in case only one of the
+places of the publisher is associated with the production of the item, and to allow
+the place to be extracted by consumers of the serialisation more readily.
+
+TODO: But I could be talked out of this. I don't want the place to be fished out of
+contact addresses of the publisher, but we can still just associate a place with a
+contributor.
+
+====
+SANGSTER, R. B. _Roman Jakobson and beyond_. Berlin, New York & The Hague: Mouton, 1984.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title>Roman Jakobson and beyond</title>
+  <date type="published"><on>1984</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Sangster</surname>
+        <initial>R. B.</initial>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Mouton</name>
+    </organization>
+  </contributor>
+  <place>Berlin</place>
+  <place>New York</place>
+  <place>The Hague</place>
+</bibitem>
+--
+====
+
+=== Publisher
+
+The publisher is a subclass of creator (<<creator>>). <<iso690,5.1>> 
+differentiates  between 
+"publisher, online information provider, production company" and 
+"distributor, online host" (<<iso690,clause 5.1.e>>, <<iso690,clause 5.1.f>>). 
+Of the classes of creator that can be used as the publisher 
+(<<iso690,clause 9.2.1>>), "publisher or production company"
+and "printer or manufacturer" have 
+`bibitem/contributor/role@type = "publisher"`;
+"distributor or issuing body" and "sponsoring body" have 
+`bibitem/contributor/role@type = "distributor"`
+(and <<iso690,clause 9.2.3>> allows that those creators can be named in addition 
+to publishers.)
+
+[[date]]
+=== Date
+
+Dates are associated with specific phases of the production of a bibliographic 
+item, and those phases  are named through `date@type` (<<iso690,clause 9.3.1>>). 
+The default type used in bibliography
+is the date of publication (`date[@type = "published"]`), but the date of 
+creation and
+updating are often given where they differ from the date of publication.
+The date of transmission is used instead for a broadcast. Dates of copying of
+a resource may be given separately to the date of creation. The date of 
+reprinting is treated as the latest date of publication.
+
+For a point date, only `date/on` is populated. For a date range, `date/from`
+and `date/to` are populated (<<iso690,clause 9.3.6>>). If the range is ongoing,
+the `date/to` element is left out.
+
+The date for `date/on`, `date/from` and `date/to` is by default given as a 
+Gregorian date/time, following the conventions
+of <<iso8601>>; in an XML serialisation, they would be expected to follow
+the XML Schema xs:datetime representation (<<xmlschema>>). However bibliographic
+dates often contain information that cannot be restricted to an ISO 8601 date
+(<<iso690,clause 9.3.2>>: dates in other calendars, date corrections; 
+<<iso690,clause 9.3.3>>: other subdivisions of the year;
+<<iso690,clause 9.3.4>>: approximate date or no date.) For that reason, the 
+model allows dates to be expressed in text instead of as an ISO 8601 date
+(`date/on@text`, `date/from@text`, `date/to@text`), or as well as an ISO 8601 
+date if a  Gregorian date is still 
+applicable. Date corrections may also involve indications of provenance 
+(<<provenance>>). If the textual value of a date is a date range, and ISO 8601
+dates are still to be provided for the start and end of the date range, then
+the textual value is repeated for `date/from@text` and `date/to@text`.
+
+The date of copyright is associated expressly with the copyright holder, in 
+`bibitem/copyright/date/from`. Unlike other bibliographic dates, the copyright 
+date cannot be textual.
+
+TODO: I can be talked out of this
+
+====
+ROGET, Peter Mark. _Roget's Thesaurus_. Revised by
+Susan M. LLOYD. Burnt Mill, Harlow, Essex: Longman Group Limited, 1982 [1852].
+
+[source,xml]
+--
+<bibitem type="book">
+  <title>Roget's Thesaurus</title>
+  <date type="created"><on>1852</on></date>
+  <date type="updated"><on>1982</on></date>
+  <date type="published"><on>1982</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Roget</surname>
+        <forename>Peter</forename>
+        <forename>Mark</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="editor">revised</role>
+    <person>
+      <name>
+        <surname>Lloyd</surname>
+        <forename>Susan</forename>
+        <forename>M.</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Longman Group Limited</name>
+    </organization>
+  </contributor>
+  <place>Burnt Mill, Harlow, Essex</place>
+</bibitem>
+--
+====
+
+====
+2018-05-09, 21:33:28
+
+<date type="created">
+  <on>2018-05-09T21:33:28</on>
+</date>
+====
+
+====
+Islamic calendar 1439 [2017–2018]
+
+<date type="created">
+  <from text="Islamic calendar 1439">2017</from>
+  <to text="Islamic calendar 1439">2018</to>
+</date>
+====
+
+====
+1959 [i.e. 1995]
+
+<date type="created">
+  <on>1959</on>
+</date>
+<date type="created" source="supplied">
+  <on text="1959 [i.e. 1995]">1995</on>
+</date>
+====
+
+====
+Michaelmas term (Oxford), 2002
+
+<date type="created">
+  <from text="Michaelmas term (Oxford), 2002">2002-10-91</from>
+  <to text="Michaelmas term (Oxford), 2002">2002-12-17</to>
+</date>
+====
+
+====
+1650?
+
+<date type="created" text="1650?">
+  <on>1650</on>
+</date>
+====
+
+====
+[no date]
+
+<date type="created" text="[no date]"/>
+====
+
+====
+1951 copied 1957
+
+<date type="created">
+  <on>1951</on>
+</date>
+<date type="copied">
+  <on>1957</on>
+</date>
+====
+
+====
+1951-
+
+<date type="published">
+  <from>1951</from>
+</date>
+====
+
+====
+© ISO, 2018
+
+<copyright>
+  <from>1951</from>
+  <owner><organization><name>ISO</name></organization></owner>
+</date>
+====
+
+[[numeration]]
+== Numeration and pagination
+
+* Source: <<iso690,clause 10>>
+* Serialisation: `bibitem/extent`
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/extent`|
+|`bibitem/extent@type`|
+|`bibitem/extent/referenceFrom`|
+|`bibitem/extent/referenceTo`|
+|===
+
+TODO: we have them as referenceFrom and referenceTo, but from and to would be enough
+
+Components of an item are modelled under the `bibitem/extent` element as
+one or more "localities"; these consist of a locality type 
+(`bibitem/extent@type`), a locality value (`bibitem/extent/referenceFrom`),
+and optionally a locality range endpoint (`bibitem/extent/referenceTo`).
+The `extent` gives the part of the host item being cited, if this is a 
+contained item (<<host-item>>), such as a journal article or book chapter
+(e.g. "pp. 25-45").
+If the item is not a component of another item, then the extent gives the 
+locality value for the entire work (e.g. page count: "[7 pp.]"), and a single
+value should be interpreted as a range ("[7 pp.]" = pp. 1-7). 
+
+TODO: should that [7 pp.] still be encoded as referenceFrom? It means in fact
+pp. 1-7, but that would be even more confusing to encode.
+
+If a locality is labelled conventionally with a range, but is in fact a single
+item (as often occurs with volumes and issues; e.g. issue 18–19 is in fact a
+single issue), the label should be associated with 
+`bibitem/extent/referenceFrom` rather than being treated as a true range.
+However the rendering of the item is unlikely to be any different.
+
+A part of a contained item may be cited, and this has posed difficulty for
+some citation schemes (e.g. citing a page within a journal article, which itself
+covers a page range: "Dedes, D. 1993. Ποίηματα του Μαυλανά Ρουμή [Poems by Mevlana Rumi]. _Ta Istorika_ 10.18-19: 3-22. pp. 7-19".) However, the model
+copes with this by separating the extent of a citation <<citationmodel>>
+from the extent of a bibliograhic item, and the extent of a contained item
+from the extent of a host item. In this instance, "pp. 7-19" would be treated
+normally as part of the citation, not part of the bibliographic item.
+
+Where localities are hierarchically related, they should be given in 
+hierarchical order (<<iso690,clause 10.1>>). However localities in an extent
+may be complimentary instead (e.g. "xiii+179 pp" for prefatory and main 
+pagination; "114pp + 3 plates" for plates outside the main page numeration).
+
+Extent includes the volume and issues of a journal (<<iso690,clause 10.3>>).
+
+====
+Dedes, D. 1993. Ποίηματα του Μαυλανά Ρουμή [Poems by Mevlana Rumi]. _Ta Istorika_ 10.18-19: 3-22. 
+
+[source,xml]
+--
+<bibitem type="article">
+  <title lang="en">Poems by Mevlana Rumi</title>
+  <title type="original" lang="ell">Ποίηματα του Μαυλανά Ρουμή</title>
+  <date type="published"><on>1993</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Dedes</surname>
+        <forename>Dimitrios</forename>
+      </name>
+    </person>
+  </contributor>
+  <series>
+    <title>Ta Istorika</title>
+  </series>
+  <extent type="volume">
+    <referenceFrom>10</referenceFrom>
+  </extent>
+  <extent type="issue">
+    <referenceFrom>18–19</referenceFrom>
+  </extent>
+  <extent type="page">
+    <referenceFrom>3</referenceFrom>
+    <referenceTo>22</referenceTo>
+  </extent>
+</bibitem>
+--
+====
+
+====
+Ramsey, J. K., & McGrew, W. C. (2005). Object play in great apes: Studies in nature and captivity. 
+In A. D. Pellegrini & P. K. Smith (Eds.), _The nature of play: Great apes and humans_ 
+(pp. 89-112). [308pp]. New York, NY: Guilford Press.
+
+[source,xml]
+--
+<bibitem type="incollection">
+  <title>Object play in great apes: Studies in nature and captivity</title>
+  <date type="published"><on>2005</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Ramsey</surname>
+        <initials>J. K.</initials>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>McGrew</surname>
+        <initials>W. C.</initials>
+      </name>
+    </person>
+  </contributor>
+  <relation type="includedIn">
+    <bibitem>
+      <title>The nature of play: Great apes and humans</title>
+      <contributor>
+        <role type="editor"/>
+        <person>
+          <name>
+            <surname>Pellegrini</surname>
+            <initials>A. D.</initials>
+          </name>
+        </person>
+      </contributor>
+      <contributor>
+        <role type="editor"/>
+        <person>
+          <name>
+            <surname>Smith</surname>
+            <initials>P. K.</initials>
+          </name>
+        </person>
+      </contributor>
+      <contributor>
+        <role type="publisher"/>
+        <organization>
+          <name>Guilford Press</name>
+        </organization>
+      </contributor>
+      <place>New York, NY</place>
+      <extent type="page">
+        <referenceFrom>308</referenceFrom>
+      </extent>
+    </bibitem>
+  </relation>
+  <extent type="page">
+    <referenceFrom>89</referenceFrom>
+    <referenceTo>112</referenceTo>
+  </extent>
+</bibitem>
+--
+====
+
+====
+_Pluralism in the Soviet Union: Essays in Honour of H. Gordon Skilling_. Edited by Susan Gross Solomon. New York: St. Martin's Press, 1983. xiii, 179 pp. $27.50.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title>Pluralism in the Soviet Union: Essays in Honour of H. Gordon Skilling</title>
+  <date type="published"><on>1983</on></date>
+  <contributor>
+    <role type="editor"/>
+    <person>
+      <name>
+        <surname>Solonom</surname>
+        <forename>Susan</forename>
+        <forename>Gross</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>St Martin's Press</name>
+    </organization>
+  </contributor>
+  <note>$27.50</note>
+  <place>New York</place>
+  <series>
+    <title>Nevada Bureau of Mines and Geology Bulletin</title>
+    <number>88</number>
+  </series>
+  <extent type="page">
+    <referenceFrom>xiii</referenceFrom>
+  </extent>
+  <extent type="page">
+    <referenceFrom>179</referenceFrom>
+  </extent>
+</bibitem>
+--
+====
+
+
+====
+John H. Stewart, Edwin H. McKee, and Harold K. Stager. 
+_Geology and mineral deposits of Lander County, Nevada_.
+Nevada Bureau of Mines and Geology Bulletin 88. 1977. 
+Reno: University of Nevada. [114 pp, 3 plates]
+
+[source,xml]
+--
+<bibitem type="book">
+  <title>Geology and mineral deposits of Lander County, Nevada</title>
+  <date type="published"><on>1977</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Stewart</surname>
+        <forename>John</forename>
+        <forename>H.</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>McKee</surname>
+        <forename>Edwin</forename>
+        <forename>H.</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Stager</surname>
+        <forename>Harold</forename>
+        <forename>K.</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>University of Nevada</name>
+    </organization>
+  </contributor>
+  <place>Reno</place>
+  <series>
+    <title>Nevada Bureau of Mines and Geology Bulletin</title>
+    <number>88</number>
+  </series>
+  <extent type="page">
+    <referenceFrom>114</referenceFrom>
+  </extent>
+  <extent type="plate">
+    <referenceFrom>3</referenceFrom>
+  </extent>
+</bibitem>
+--
+====
+
+[[series]]
+== Series title and number
+
+=== General
+
+* Source: <<iso690,clause 6.3>>, <<iso690,clause 11>>
+* Serialisation: `bibitem/series`
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/series`|
+|`bibitem/series@type`|
+|`bibitem/series/title`|
+|`bibitem/series/place`|
+|`bibitem/series/organization`|
+|`bibitem/series/formattedTitle`|
+|`bibitem/series/abbrev`|
+|`bibitem/series/dateFrom`|
+|`bibitem/series/dateTo`|
+|`bibitem/series/number`|
+|`bibitem/series/partnumber`|
+|===
+
+=== Journals
+
+Articles have their journal title modelled as the series title of the article 
+item.
+However, the journal volume and issue should be modelled as part of the article 
+item extent <<numeration>>, rather than as part of the series.
+
+TODO: It can be in fact modelled as either, and I've changed my mind about this
+
+=== Standards
+
+Standards body identifiers for standards (<<iso690,clause 15.10>>) are modelled as series numbers.
+
+====
+ISO 690, _Information and documentation -- Guidelines for bibliographic references and citations to information resources_.
+
+[source,xml]
+--
+<bibitem type="standard">
+  <title>Information and documentation -- Guidelines for bibliographic references and citations to information resources</title>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>International Organization for Standardization</name>
+    </organization>
+  </contributor>
+  <series>
+    <title>ISO</title>
+    <number>690</number>
+  </series>
+</bibitem>
+--
+====
+
+
+=== Qualifiers
+
+Organization and Place of Publication can be added to series titles for disambiguation
+(<<iso690,clause 6.3.1>>).
+Organization in this instance is only modelled as a strings, rather than as a detailed 
+object (cf. <<organisation>>). The formattedTitle element is used to enforce the formatting
+of the series title and its qualifiers.
+
+====
+_Life_. MDPI. + 
+_Life_ (Basel). (https://en.wikipedia.org/wiki/Life_(journal))
+
+[source,xml]
+--
+<series>
+  <title>Life</title>
+  <place>Basel</place>
+  <organization>MDPI</organization>
+  <formattedTitle>_Life_ (Basel)</formattedTitle>
+</series>
+--
+====
+
+====
+_Life_. (New York). (https://en.wikipedia.org/wiki/Life_(magazine))
+
+[source,xml]
+--
+<series>
+  <title>Life</title>
+  <place>New York</place>
+</series>
+--
+====
+
+=== Earlier and later titles
+
+The current title of a series is given with `series@type` as "main" (which is the default); 
+alternate titles, including 
+historical titles, are given with `series@type` as "alt". Different time spans for historical
+titles are given with `series/dateFrom` and `series/dateTo` (<<iso690,clause 6.3.3>>).
+
+====
+_New Scientist_. 1956-1971. +
+_New Scientist and Science Journal. Jan 21, 1971-Sept 30, 1971. +
+_New Scientist_. 1971-.
+
+[source,xml]
+--
+<series type="alt">
+  <title>New Scientist</title>
+  <dateFrom>1956</dateFrom>
+  <dateTo>1956</dateTo>
+</series>
+<series type="alt">
+  <title>New Scientist and Science Journal</title>
+  <dateFrom>1971-01-21</dateFrom>
+  <dateTo>1971-09-30</dateTo>
+</series>
+<series type="main">
+  <title>New Scientist</title>
+  <dateFrom>1971-09-30</dateFrom>
+</series>
+--
+====
+
+== Identifiers
+
+* Source: <<iso690,clause 12>>
+* Serialisation: `bibitem/docidentifier`
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/docidentifier`|
+|`bibitem/series@type`|
+|===
+
+<<iso690,clause 12>> argues that unique international standard identifiers
+must be included in the bibliography. In practice, identifiers are included 
+at the discretion of the bibliographer: they are routinely included in
+bibliographic databases, but seldom in references within documents. 
+
+Standards body identifiers for standards (<<iso690,clause 15.10>>) are modelled as series numbers rather than as identifiers (<<series>>).
+
+====
+_International Journal of Islamic Thought_. e-ISSN 2289-6023.
+ISSN 2232-1314.
+
+[source,xml]
+--
+<bibitem type="journal">
+<title>International Journal of Islamic Thought</title>
+<docidentifier type="e-ISSSN">2289-6023</docidentifier>
+<docidentifier type="ISSSN">2232-1314</docidentifier>
+</bibitem>
+--
+====
+
+
+== Location
+
+* Source: <<iso690,clause 13>>, <<iso690,clause 15.2.6>>, <<iso690,clause 15.7.2>>
+* Serialisation: `bibitem/accessLocation`
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/accessLocation`|
+|===
+
+Unpublished items with a limited number of copies that are held at a repository
+should be referenced through `bibitem/accessLocation`, 
+which gives the repository that the cited copy is held in, and the
+locator used by the repository (<<iso690,clause 13>>, <<iso690,clause 15.7.2>>).
+The repository and locator are not differentiated, and are treated as a single
+string. The `bibitem/accessLocation` element is also used for online locations
+of digital resources, where a single URL (`bibitem/link`) is not sufficient
+(<<iso690,clause 15.2.6>>).
+
+====
+p.vind.tand.25a = HGV P.Vindob. Tandem 25 a = Trismegistos 26540. At: P.Vindob.Gr. Inv. Nr. 12424 + 24718 + 28384.
+
+(Highly abbreviated format, using conventions familiar to papyrologists)
+
+[source,xml]
+--
+<bibitem type="booklet">
+  <title>[Untitled]</title>
+  <link>http://papyri.info/hgv/26540/</link>
+  <link>http://aquila.zaw.uni-heidelberg.de/hgv/26540</link>
+  <link>https://www.trismegistos.org/text/26540</link>
+  <docidentifier type="HGV">P.Vindob. Tandem 25 a</docidentifier>
+  <docidentifier type="Trismegistos">26540</docidentifier>
+  <accessLocation>P.Vindob.Gr. Inv. Nr. 12424 + 24718 + 28384.</accessLocation>
+</bibitem>
+--
+
+(More elaborated form)
+[source,xml]
+--
+<bibitem type="booklet">
+  <title>[Untitled]</title>
+  <link>http://papyri.info/hgv/26540/</link>
+  <link>http://aquila.zaw.uni-heidelberg.de/hgv/26540</link>
+  <link>https://www.trismegistos.org/text/26540</link>
+  <docidentifier type="HGV">P.Vindob. Tandem 25 a</docidentifier>
+  <docidentifier type="Trismegistos">26540</docidentifier>
+  <relation type="includedIn">
+    <bibItem>
+        <title>Fünfunddreißig Wiener Papyri (P. Vindob. Tandem)</title>
+        <date type="published">1976</date>
+        <contributor>
+          <role type="editor"/>
+          <person><name><completeName>Pieter Johannes Sijpesteijn</completeName></name></person>
+        </contributor>
+        <contributor>
+          <role type="editor"/>
+          <person><name><completeName>Klaas Anthony Worp</completeName></name></person>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization><name>Terra</name></organization>
+        </contributor>
+        <series>
+          <title>Studia Amstelodamensia ad epigraphicam, ius antiquum et papyrologicam pertinentia</title>
+          <number>6</number>
+        </series>
+    </bibItem>
+    <bibLocality type="part">
+      <referenceFrom>25a</referenceFrom>
+    </bibLocality>
+  </relation>
+  <accessLocation>National Library of Vienna. P.Vindob.Gr. Inv. Nr. 12424 + 24718 + 28384.</accessLocation>
+</bibitem>
+--
+====
+
+TODO: The document relation is actually "publishedIn", but I think that's overkill.
+
+
+====
+Australian Government Bureau of Meteorology. _Latest Weather Observations for Dumont D'urville_. http://www.bom.gov.au. Path: Antarctica: Antarctic Observations: Latest observations: Dumont D'urville: JavaScript Object Notation format (JSON) in row-major order. Viewed 2018-03-10.
+
+[source,xml]
+--
+<bibitem type="electronic resource">
+  <title>Latest Weather Observations for Dumont D'urville</title>
+  <link>http://www.bom.gov.au/fwo/IDT60803/IDT60803.89642.json</link>
+  <date type="accessed"><on>2018-03-10</on></date>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Australian Government</name>
+      <subdivision>Bureau of Meteorology</subdivision>
+    </organization>
+  </contributor>
+  <accessLocation>http://www.bom.gov.au. Path: Antarctica: Antarctic Observations: Latest observations: Dumont D'urville: JavaScript Object Notation format (JSON) in row-major order</accessLocation>
+</bibitem>
+--
+====
+
+== Additional general information
+
+=== Classification
+
+* Source: <<iso690,clause 14.2>>
+* Serialisation: `bibitem/classification`
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/classification`|
+|===
+
+====
+Giesler, Patricia. _Canada Remembers the Korean War_. Dewey 971.06 GIE 2003.
+ISBN 0662674979. Charlottetown, P.E.I. : Veterans Affairs Canada. 2003.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title>Canada Remembers the Korean War</title>
+  <docidentifier type="ISBN">0662674979</docidentifier>
+  <date type="published"><on>2003</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <surname>Giesler</surname>
+      <forename>Patricia</forename>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Veterans Affairs Canada</name>
+    </organization>
+  </contributor>
+  <place>Charlottetown, P.E.I.</place>
+  <classification type="Dewey">971.06 GIE 2003</classification>
+</bibitem>
+--
+
+====
+
+=== Price and availability
+
+* Source: <<iso690,clause 14.4>>
+* Serialisation: `bibitem/note`
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/note`|
+|===
+
+Price and availability information for a bibliographic item are treated
+as a note.
+
+TODO: I could be talked out of that
+
+====
+_Pluralism in the Soviet Union: Essays in Honour of H. Gordon Skilling_. Edited by Susan Gross Solomon. New York: St. Martin's Press, 1983. xiii, 179 pp. $27.50.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title>Pluralism in the Soviet Union: Essays in Honour of H. Gordon Skilling</title>
+  <date type="published"><on>1983</on></date>
+  <contributor>
+    <role type="editor"/>
+    <person>
+      <name>
+        <surname>Solonom</surname>
+        <forename>Susan</forename>
+        <forename>Gross</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>St Martin's Press</name>
+    </organization>
+  </contributor>
+  <note>$27.50</note>
+  <place>New York</place>
+  <series>
+    <title>Nevada Bureau of Mines and Geology Bulletin</title>
+    <number>88</number>
+  </series>
+  <extent type="page">
+    <referenceFrom>xiii</referenceFrom>
+  </extent>
+  <extent type="page">
+    <referenceFrom>179</referenceFrom>
+  </extent>
+</bibitem>
+--
+====
+
+== Specific categories of information resource
+
+=== Electronic information resources
+
+* Source: <<iso690,clause 15.2>>, <<iso690,clause 15.3>> 
+* Serialisation: `bibitem/note`
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/note`|
+|===
+
+System requirements are modelled as a note, prefixed with "System requirements:" 
+(<<iso690,clause 15.2.3>>). URLs should not be broken at the end of a line: that 
+is a rendering requirement, not an information modelling requirement  
+(<<iso690,clause 15.2.6>>).
+
+====
+Ubisoft. _Far Cry 5_ [computer game]. 2018. Viewed: 2018-05-10. 
+System requirements: CPU: Intel Core i5-2400 | AMD FX-6300 @ 3.5 GHz or better
+(minimum); Intel Core i7-4770 @ 3.4 GHz | AMD Ryzen 5 1600 @ 3.2 GHz or equivalent (recommended).
+RAM: 8 GB. OS: Windows 7 SP1, Windows 8.1, Windows 10 (64-bit versions only).
+VIDEO CARD: NVIDIA GeForce GTX 670 | AMD R9 270 (2GB VRAM with Shader Model 5.0 or better) (minimum); NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better) (recommended).
+
+[source,xml]
+--
+<bibitem type="electronic resource">
+  <title>Far Cry 5</title>
+  <date type="published"><on>2018</on></date>
+  <date type="accessed"><on>2018-05-10</on></date>
+  <contributor>
+    <role type="author"/>
+    <organization>
+      <name>Ubisoft</name>
+    </person>
+  </organization>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Ubisoft</name>
+    </organization>
+  </contributor>
+  <medium>
+    <form>computer game</form>
+  </medium>
+  <note>System requirements: CPU: Intel Core i5-2400 | AMD FX-6300 @ 3.5 GHz or better
+(minimum); Intel Core i7-4770 @ 3.4 GHz | AMD Ryzen 5 1600 @ 3.2 GHz or equivalent (recommended).
+RAM: 8 GB. OS: Windows 7 SP1, Windows 8.1, Windows 10 (64-bit versions only).
+VIDEO CARD: NVIDIA GeForce GTX 670 | AMD R9 270 (2GB VRAM with Shader Model 5.0 or better) (minimum); NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better) (recommended).</note>
+</bibitem>
+--
+====
+
+=== Cartographic material
+
+* Source: <<iso690,clause 15.5>> 
+* Serialisation: `bibitem/note`, `bibitem/contributor/role`
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/note`|
+|`bibitem/contributor/role`|
+|===
+
+
+The projection, prime meridian, orientation, and reference systems (such as 
+grids and navigational lattices) are given as notes (<<iso690,clause 15.5.1>>). 
+The spectral characteristics of the sensor, details of the satellite systems,
+and the amount of cloud cover are
+also given as notes (<<iso690,clause 15.5.7>>).
+Details of the creator's role are given in `bibitem/contributor/role` 
+(<<iso690,clause 15.5.2>>).
+
+
+====
+Berner, L.T., P.S.A. Beck, M.M. Loranty, H.D. Alexander, M.C. Mack, and S.J. Goetz.  _Siberian Boreal Forest Aboveground Biomass and Fire Scar Maps, Russia, 1969-2007_. ORNL DAAC, Oak Ridge, Tennessee, USA. 2016. http://dx.doi.org/10.3334/ORNLDAAC/1321
+
+[source,xml]
+--
+<bibitem type="map">
+  <title>Siberian Boreal Forest Aboveground Biomass and Fire Scar Maps, Russia, 1969-2007</title>
+  <date type="published"><on>2016</on></date>
+  <docidentifier type="DOI">10.3334/ORNLDAAC/1321</docidentifier>
+  <link>https://daac.ornl.gov/VEGETATION/guides/Siberian_Biomass_Wildfire.html</link>
+  <contributor>
+    <role type="author">
+    <person><name><completeName>Berner, L.T.</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="author">
+    <person><name><completeName>Beck, P.S.A.</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="author">
+    <person><name><completeName>Loranty, H.D.</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="author">
+    <person><name><completeName>Mack, M.C.</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="author">
+    <person><name><completeName>Goetz, S.J.</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Oak Ridge National Laboratory</name>
+      <subdivision>Distributed Active Archive Center</subdivision>
+      <abbrev>ORNL DAAC</abbrev>
+    </organization>
+  </contributor>
+  <medium>
+    <form>map</form>
+    <size>col. 68 x 69 cm. fold. in envelope 30 x 24 cm.</size>
+    <scale>1:62500</scale>
+  </medium>
+  <note>Type: Projected
+Projection: Albers_Conic_Equal_Area
+Geographic Coordinate Reference:  WGS 1984
+Prime Meridian: Greenwich
+Extent: North: 69.8980555555556 South: 64.4575 West: 155.931944444444 East: 166.474444444444</note>
+<note>Satellites:
+Biomass Mapping: WorldView-1 (WV-1), Landsat 5 TM
+Fire Scar Mapping: Landsat 7 ETM+, Landsat 5 TM, Landsat 1–3 MSS</note>
+  <place>Oak Ridge, Tennessee, USA</place>
+</bibitem>
+--
+====
+
+
+=== Films, videos and broadcasts
+
+* Source: <<iso690,clause 15.6>> 
+* Serialisation: `bibitem/note`, `bibitem/contributor/role`, `bibitem/series`,
+`bibitem/title`, `bibitem/extent`
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/note`|
+|`bibitem/contributor/role`|
+|`bibitem/series`|
+|`bibitem/title`|
+|`bibitem/extent`|
+|===
+
+If a single contributor is to be singled out as the creator of a resource, they 
+are assigned the `bibitem/contributor/role@type` of "author" 
+(<<iso690,clause 15.6.2>>). Otherwise, if the
+resource is treated as a collaborative effort, the various contributors should
+be listed with `bibitem/contributor/role@type` of "performer", with their 
+contributions differentiated in the `bibitem/contributor/role` 
+(<<iso690,clause 15.6.1>>).
+
+Programmes within a series have the series modelled as a `bibitem/series`.
+The title of the series is modelled as `bibitem/series/title`, and the title
+of the episode as `bibitem/title`. The transmitting organisation and channel
+are modelled as a contributor of type distributor (<<iso690,clause 15.6.4>>).
+
+If an audiovisual resource is a contained item, the `bibitem/extent` gives
+its location within the host item; this is typically a timestamp for visual
+material, and a timestamp or a track for audio material 
+(<<iso690,clause 15.6.5>>).
+
+====
+_The Death of Stalin_. Directed by Armando Iannucci. 2017.
+
+[source,xml]
+--
+<bibitem type="film">
+  <title>The Death of Stalin</title>
+  <date type="published"><on>2017</on></date>
+  <contributor>
+    <role type="performer">Directed by</role>
+    <person>
+      <name>
+        <surname>Iannucci</surname>
+        <forename>Armando</forename>
+      </name>
+    </person>
+  </contributor>
+</bibitem>
+--
+====
+
+====
+Armando Iannucci. _The Death of Stalin_. 2017.
+
+[source,xml]
+--
+<bibitem type="film">
+  <title>The Death of Stalin</title>
+  <date type="published"><on>2017</on></date>
+  <contributor>
+    <role type="author">Directed by</role>
+    <person>
+      <name>
+        <surname>Iannucci</surname>
+        <forename>Armando</forename>
+      </name>
+    </person>
+  </contributor>
+</bibitem>
+--
+====
+
+====
+_Columbo_, Season 7, Episode 5. The Conspirators. Teleplay by Howard Berk.
+NBC. 1978-05-13.
+
+[source,xml]
+--
+<bibitem type="audiovisual">
+  <title>The Conspirators</title>
+  <date type="transmitted"><on>1978-05-13</on></date>
+  <contributor>
+    <role type="performer">Teleplay by</role>
+    <person>
+      <name>
+        <surname>Berk</surname>
+        <forename>Howard</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="distributor"/>
+    <organization>
+      <name>NBC</name>
+    </organization>
+  </contributor>
+  <series>
+    <title>Columbo</title>
+    <number>Season 7</number>
+    <partnumber>Episode 5</partnumber>
+  </series>
+</bibitem>
+--
+====
+
+====
+Sigur Rós.
+Untitled [Vaka]. In: _( )_ [compact disc]. Track 1.
+Mosfellsbær: Sundlaugin, 2002.
+
+[source,xml]
+--
+<bibitem type="audiovisual">
+  <title>Untitled</title>
+  <date type="published"><on>2002</on></date>
+  <contributor>
+    <role type="author">composer</role>
+    <organization><name>Sigur Rós</name></organization>
+  </contributor>
+  <medium>
+    <form>compact disc</form>
+  </medium>
+  <relation type="includedIn">
+    <bibitem>
+      <title>( )</title>
+      <contributor>
+        <role type="author">composer</role>
+        <organization><name>Sigur Rós</name></organization>
+      </contributor>
+      <contributor>
+        <role type="publisher"/>
+        <organization><name>Sundlaugin</name></organization>
+      </contributor>
+      <place>Mosfellsbær, Iceland</place>
+    </bibitem>
+    <locality type="track">
+      <referenceFrom>1</referenceFrom>
+    </locality>
+  </relation>
+</bibitem>
+--
+====
+
+=== Graphic Works
+
+* Source: <<iso690,clause 15.7>> 
+* Serialisation: `bibitem/contributor/role`
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/contributor/role`|
+|===
+
+The fuller description of a contributors role under `bibitem/contributor/role` 
+allows for Latin role descriptions such as _pinxit_ and _sculpsit_ 
+(<<iso690,clause 15.7.1>>)
+
+====
+_[Tent of Darius]_ C. Le Brun pinxit. S. Gribelin sculpsit. 
+[painting]. 1702. At: Musée du Louvre, Inv. 2896.
+
+[source,xml]
+--
+<bibitem type="graphical work">
+  <title>[Tent of Darius]</title>
+  <date type="created"><on>1702</on></date>
+  <contributor>
+    <role type="author">pinxit</role>
+    <person><name><completeName>C. Le Brun</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="author">sculpsit</role>
+    <person><name><completeName>S. Gribelin</completeName></name></person>
+  </contributor>
+  <medium>
+    <form>painting</form>
+  </medium>
+  <accessLocation>Musée du Louvre, Inv. 2896.</accessLocation>
+</bibitem>
+--
+====
+
+=== Music
+
+* Source: <<iso690,clause 15.8>> 
+* Serialisation: `bibitem/contributor/role`
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/contributor/role`|
+|===
+
+Librettists and composers are both contributors of role type "author"; the role
+of composer and librettist needs to be differentiated in the contributor
+role for proper rendering.
+
+====
+ADAMS, John Coolidge. _Nixon in China_. Libretto by Alice GOODMAN. 1987.
+
+
+[source,xml]
+--
+<bibitem type="music">
+  <title>Untitled</title>
+  <date type="published"><on>1987</on></date>
+  <contributor>
+    <role type="author">composer</role>
+    <person><name><completeName>John Coolidge ADAMS</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="author">libretto by</role>
+    <person><name><completeName>Alice GOODMAN</completeName></name></person>
+  </contributor>
+</bibitem>
+--
+====
+
+
+
+=== Patents
+
+* Source: <<iso690,clause 15.9>> 
+* Serialisation: `bibitem/contributor/role`
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/contributor/role`|
+|===
+
+Patents are encoded similarly to contributions within a serial 
+(<<iso690,clause 15.9>>), with the series designation for the
+patent preceded by the country name or code. The date of application
+is encoded as a date of type "issued".
+
+TODO: issued?
+
+
+====
+Green, Martin Andrew. _Artificial amorphous semiconductors and applications to solar cells_. Australia, [Patent] application number 2005238988. Appl: 2005-04-29. 
+
+[source,xml]
+--
+<bibitem type="patent">
+  <title>Artificial amorphous semiconductors and applications to solar cells</title>
+  <date type="issued"><on>2005-04-29</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <surname>Green</surname>
+      <forename>Martin</forename>
+      <forename>Andrew</forename>
+    </person>
+  </contributor>
+  <series>
+    <title>Australia, [Patent] application number</title>
+    <number>2005238988</number>
+  </series>
+</bibitem>
+--
+====
+
+
+
+
+
+[[citationmodel]]
+[appendix]
+== Citation Model
+
+[[citation_uml]]
+.Reference Model, ISO 690 Citations
+image::iso690xml/images/Citation.png[]
+
+[appendix]
+== Mapping to BibTex
+
+
+
+[bibliography]
+== Bibliography 
+
+* [[[bibtex,1]]], BibTeX. http://www.bibtex.org
+
+* [[[relaxngcompact,2]]], OASIS. RELAX NG Compact Syntax. Edited by James Clark. 2002-11-21. http://relaxng.org/compact.html
+
+* [[[relaxngcompact_tutorial,3]]], OASIS. RELAX NG Compact Syntax Tutorial. 
+Edited by James Clark, John Cowan, MURATA Makoto. 2003-03-26. 
+http://www.relaxng.org/compact-tutorial-20030326.html
+
+* [[[xmlschema, 4]]], W3C. XML Schema Part 2: Datatypes Second Edition. W3C Recommendation. 2004-10-28. https://www.w3.org/TR/xmlschema-2/
