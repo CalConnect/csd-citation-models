@@ -1,0 +1,110 @@
+
+[[series]]
+== Series title and number
+
+=== General
+
+* Source: <<iso690,clause 6.3>>, <<iso690,clause 11>>
+* Serialisation: `bibitem/series`
+
+
+=== Journals
+
+Articles have their journal title modelled as the series title of the article
+item.
+However, the journal volume and issue should be modelled as part of the article
+item extent <<numeration>>, rather than as part of the series.
+
+// TODO: It can be in fact modelled as either, and I've changed my mind about this
+
+=== Standards
+
+Standards body identifiers for standards (<<iso690,clause 15.10>>) are modelled as series numbers.
+
+====
+ISO 690, _Information and documentation -- Guidelines for bibliographic references and citations to information resources_.
+
+[source,xml]
+--
+<bibitem type="standard">
+  <title>Information and documentation -- Guidelines for bibliographic references and citations to information resources</title>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>International Organization for Standardization</name>
+    </organization>
+  </contributor>
+  <series>
+    <title>ISO</title>
+    <number>690</number>
+  </series>
+</bibitem>
+--
+====
+
+
+=== Qualifiers
+
+Organization and Place of Publication can be added to series titles for disambiguation
+(<<iso690,clause 6.3.1>>).
+Organization in this instance is only modelled as a strings, rather than as a detailed
+object (cf. <<organisation>>). The formattedTitle element is used to enforce the formatting
+of the series title and its qualifiers.
+
+====
+_Life_. MDPI. +
+_Life_ (Basel). (https://en.wikipedia.org/wiki/Life_(journal))
+
+[source,xml]
+--
+<series>
+  <title>Life</title>
+  <place>Basel</place>
+  <organization>MDPI</organization>
+  <formattedTitle>_Life_ (Basel)</formattedTitle>
+</series>
+--
+====
+
+====
+_Life_. (New York). (https://en.wikipedia.org/wiki/Life_(magazine))
+
+[source,xml]
+--
+<series>
+  <title>Life</title>
+  <place>New York</place>
+</series>
+--
+====
+
+=== Earlier and later titles
+
+The current title of a series is given with `series@type` as "main" (which is the default);
+alternate titles, including
+historical titles, are given with `series@type` as "alt". Different time spans for historical
+titles are given with `series/dateFrom` and `series/dateTo` (<<iso690,clause 6.3.3>>).
+
+====
+_New Scientist_. 1956-1971. +
+_New Scientist and Science Journal. Jan 21, 1971-Sept 30, 1971. +
+_New Scientist_. 1971-.
+
+[source,xml]
+--
+<series type="alt">
+  <title>New Scientist</title>
+  <dateFrom>1956</dateFrom>
+  <dateTo>1956</dateTo>
+</series>
+<series type="alt">
+  <title>New Scientist and Science Journal</title>
+  <dateFrom>1971-01-21</dateFrom>
+  <dateTo>1971-09-30</dateTo>
+</series>
+<series type="main">
+  <title>New Scientist</title>
+  <dateFrom>1971-09-30</dateFrom>
+</series>
+--
+====

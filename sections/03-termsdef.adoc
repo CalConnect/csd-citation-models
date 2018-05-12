@@ -1,0 +1,10 @@
+
+[[terms]]
+[source="iso690"]
+== Terms and Definitions
+
+[[term-bibliographer]]
+=== bibliographer
+
+entity responsible for creating a reference
+

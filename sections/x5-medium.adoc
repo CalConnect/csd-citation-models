@@ -1,0 +1,88 @@
+
+[[medium]]
+== Medium
+
+* Source: <<iso690,clause 7>>, <<iso690,clause 14.3>>, <<iso690,clause 15.2.2>>, <<iso690,clause 15.5.5>>, <<iso690,clause 15.5.6>>
+* Serialisation: `bibitem/medium`
+
+<<iso690>> differentiates between the medium of the item (<<iso690,clause 7>>,
+<<iso690,clause 15.2.2>>),
+the size of the item (<<iso690,clause 14.3>>, <<iso690,clause 15.5.6>>), and
+for maps, the scale of the item (<<iso690,clause 15.5.5>>). These are all
+modelled as elements of the item medium; the medium itself is modelled as
+`medium/form`.
+
+There is no fixed vocabulary modelled for `medium/form`. The size and scale
+of the item usually contains numerical information, but is modelled as a string,
+given the complications of how size and scale can be described, particularly for
+cartographic material.
+
+====
+Sigur Rós.
+Untitled [Vaka]. In: _( )_ [compact disc]. Track 1.
+Mosfellsbær: Sundlaugin, 2002.
+
+[source,xml]
+--
+<bibitem type="audiovisual">
+  <title>Untitled</title>
+  <title type="unofficial">Vaka</title>
+  <date type="published"><on>2002</on></date>
+  <contributor>
+    <role type="author">composer</role>
+    <organization><name>Sigur Rós</name></organization>
+  </contributor>
+  <medium>
+    <form>compact disc</form>
+  </medium>
+  <relation type="includedIn">
+    <bibitem>
+      <title>( )</title>
+      <contributor>
+        <role type="author">composer</role>
+        <organization><name>Sigur Rós</name></organization>
+      </contributor>
+      <contributor>
+        <role type="publisher"/>
+        <organization><name>Sundlaugin</name></organization>
+      </contributor>
+      <place>Mosfellsbær, Iceland</place>
+    </bibitem>
+    <locality type="track">
+      <referenceFrom>1</referenceFrom>
+    </locality>
+  </relation>
+</bibitem>
+--
+====
+
+====
+Easterbrook, Don J. _Geologic Map of Western Whatcom County, Washington_. Map. 1:62,500. col. 68 x 69 cm. fold. in envelope 30 x 24 cm. Miscellaneous Investigations Series, map 1-854-B. Reston, VA: U.S. Geological Survey, 1976.
+
+[source,xml]
+--
+<bibitem type="map">
+  <title>Geologic Map of Western Whatcom County, Washington</title>
+  <date type="published"><on>1976</on></date>
+  <contributor>
+    <role type="author">
+    <person><name><completeName>Easterbrook, Don J.</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization><name>U.S. Geological Survey</name></organization>
+  </contributor>
+  <medium>
+    <form>map</form>
+    <size>col. 68 x 69 cm. fold. in envelope 30 x 24 cm.</size>
+    <scale>1:62500</scale>
+  </medium>
+  <series>
+    <title>Miscellaneous Investigations Series</title>
+    <number>map 1-854-B</number>
+  </series>
+  <place>Reston, VA</place>
+</bibitem>
+--
+
+====

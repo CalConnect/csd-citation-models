@@ -1,0 +1,369 @@
+
+[[specific-categories]]
+== Specific categories of information resource
+
+=== Electronic information resources
+
+* Source: <<iso690,clause 15.2>>, <<iso690,clause 15.3>>
+* Serialisation: `bibitem/note`
+
+
+System requirements are modelled as a note, prefixed with "System requirements:"
+(<<iso690,clause 15.2.3>>). URLs should not be broken at the end of a line: that
+is a rendering requirement, not an information modelling requirement
+(<<iso690,clause 15.2.6>>).
+
+====
+Ubisoft. _Far Cry 5_ [computer game]. 2018. Viewed: 2018-05-10.
+System requirements: CPU: Intel Core i5-2400 | AMD FX-6300 @ 3.5 GHz or better
+(minimum); Intel Core i7-4770 @ 3.4 GHz | AMD Ryzen 5 1600 @ 3.2 GHz or equivalent (recommended).
+RAM: 8 GB. OS: Windows 7 SP1, Windows 8.1, Windows 10 (64-bit versions only).
+VIDEO CARD: NVIDIA GeForce GTX 670 | AMD R9 270 (2GB VRAM with Shader Model 5.0 or better) (minimum); NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better) (recommended).
+
+[source,xml]
+--
+<bibitem type="electronic resource">
+  <title>Far Cry 5</title>
+  <date type="published"><on>2018</on></date>
+  <date type="accessed"><on>2018-05-10</on></date>
+  <contributor>
+    <role type="author"/>
+    <organization>
+      <name>Ubisoft</name>
+    </person>
+  </organization>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Ubisoft</name>
+    </organization>
+  </contributor>
+  <medium>
+    <form>computer game</form>
+  </medium>
+  <note>System requirements: CPU: Intel Core i5-2400 | AMD FX-6300 @ 3.5 GHz or better
+(minimum); Intel Core i7-4770 @ 3.4 GHz | AMD Ryzen 5 1600 @ 3.2 GHz or equivalent (recommended).
+RAM: 8 GB. OS: Windows 7 SP1, Windows 8.1, Windows 10 (64-bit versions only).
+VIDEO CARD: NVIDIA GeForce GTX 670 | AMD R9 270 (2GB VRAM with Shader Model 5.0 or better) (minimum); NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better) (recommended).</note>
+</bibitem>
+--
+====
+
+=== Cartographic material
+
+* Source: <<iso690,clause 15.5>>
+* Serialisation: `bibitem/note`, `bibitem/contributor/role`
+
+
+The projection, prime meridian, orientation, and reference systems (such as
+grids and navigational lattices) are given as notes (<<iso690,clause 15.5.1>>).
+The spectral characteristics of the sensor, details of the satellite systems,
+and the amount of cloud cover are
+also given as notes (<<iso690,clause 15.5.7>>).
+Details of the creator's role are given in `bibitem/contributor/role`
+(<<iso690,clause 15.5.2>>).
+
+
+====
+Berner, L.T., P.S.A. Beck, M.M. Loranty, H.D. Alexander, M.C. Mack, and S.J. Goetz.  _Siberian Boreal Forest Aboveground Biomass and Fire Scar Maps, Russia, 1969-2007_. ORNL DAAC, Oak Ridge, Tennessee, USA. 2016. http://dx.doi.org/10.3334/ORNLDAAC/1321
+
+[source,xml]
+--
+<bibitem type="map">
+  <title>Siberian Boreal Forest Aboveground Biomass and Fire Scar Maps, Russia, 1969-2007</title>
+  <date type="published"><on>2016</on></date>
+  <docidentifier type="DOI">10.3334/ORNLDAAC/1321</docidentifier>
+  <link>https://daac.ornl.gov/VEGETATION/guides/Siberian_Biomass_Wildfire.html</link>
+  <contributor>
+    <role type="author">
+    <person><name><completeName>Berner, L.T.</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="author">
+    <person><name><completeName>Beck, P.S.A.</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="author">
+    <person><name><completeName>Loranty, H.D.</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="author">
+    <person><name><completeName>Mack, M.C.</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="author">
+    <person><name><completeName>Goetz, S.J.</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Oak Ridge National Laboratory</name>
+      <subdivision>Distributed Active Archive Center</subdivision>
+      <abbrev>ORNL DAAC</abbrev>
+    </organization>
+  </contributor>
+  <medium>
+    <form>map</form>
+    <size>col. 68 x 69 cm. fold. in envelope 30 x 24 cm.</size>
+    <scale>1:62500</scale>
+  </medium>
+  <note>Type: Projected
+Projection: Albers_Conic_Equal_Area
+Geographic Coordinate Reference:  WGS 1984
+Prime Meridian: Greenwich
+Extent: North: 69.8980555555556 South: 64.4575 West: 155.931944444444 East: 166.474444444444</note>
+<note>Satellites:
+Biomass Mapping: WorldView-1 (WV-1), Landsat 5 TM
+Fire Scar Mapping: Landsat 7 ETM+, Landsat 5 TM, Landsat 1–3 MSS</note>
+  <place>Oak Ridge, Tennessee, USA</place>
+</bibitem>
+--
+====
+
+
+=== Films, videos and broadcasts
+
+* Source: <<iso690,clause 15.6>>
+* Serialisation: `bibitem/note`, `bibitem/contributor/role`, `bibitem/series`,
+`bibitem/title`, `bibitem/extent`
+
+
+If a single contributor is to be singled out as the creator of a resource, they
+are assigned the `bibitem/contributor/role@type` of "author"
+(<<iso690,clause 15.6.2>>). Otherwise, if the
+resource is treated as a collaborative effort, the various contributors should
+be listed with `bibitem/contributor/role@type` of "performer", with their
+contributions differentiated in the `bibitem/contributor/role`
+(<<iso690,clause 15.6.1>>).
+
+Programmes within a series have the series modelled as a `bibitem/series`.
+The title of the series is modelled as `bibitem/series/title`, and the title
+of the episode as `bibitem/title`. The transmitting organisation and channel
+are modelled as a contributor of type distributor (<<iso690,clause 15.6.4>>).
+
+If an audiovisual resource is a contained item, the `bibitem/extent` gives
+its location within the host item; this is typically a timestamp for visual
+material, and a timestamp or a track for audio material
+(<<iso690,clause 15.6.5>>).
+
+====
+_The Death of Stalin_. Directed by Armando Iannucci. 2017.
+
+[source,xml]
+--
+<bibitem type="film">
+  <title>The Death of Stalin</title>
+  <date type="published"><on>2017</on></date>
+  <contributor>
+    <role type="performer">Directed by</role>
+    <person>
+      <name>
+        <surname>Iannucci</surname>
+        <forename>Armando</forename>
+      </name>
+    </person>
+  </contributor>
+</bibitem>
+--
+====
+
+====
+Armando Iannucci. _The Death of Stalin_. 2017.
+
+[source,xml]
+--
+<bibitem type="film">
+  <title>The Death of Stalin</title>
+  <date type="published"><on>2017</on></date>
+  <contributor>
+    <role type="author">Directed by</role>
+    <person>
+      <name>
+        <surname>Iannucci</surname>
+        <forename>Armando</forename>
+      </name>
+    </person>
+  </contributor>
+</bibitem>
+--
+====
+
+====
+_Columbo_, Season 7, Episode 5. The Conspirators. Teleplay by Howard Berk.
+NBC. 1978-05-13.
+
+[source,xml]
+--
+<bibitem type="audiovisual">
+  <title>The Conspirators</title>
+  <date type="transmitted"><on>1978-05-13</on></date>
+  <contributor>
+    <role type="performer">Teleplay by</role>
+    <person>
+      <name>
+        <surname>Berk</surname>
+        <forename>Howard</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="distributor"/>
+    <organization>
+      <name>NBC</name>
+    </organization>
+  </contributor>
+  <series>
+    <title>Columbo</title>
+    <number>Season 7</number>
+    <partnumber>Episode 5</partnumber>
+  </series>
+</bibitem>
+--
+====
+
+====
+Sigur Rós.
+Untitled [Vaka]. In: _( )_ [compact disc]. Track 1.
+Mosfellsbær: Sundlaugin, 2002.
+
+[source,xml]
+--
+<bibitem type="audiovisual">
+  <title>Untitled</title>
+  <date type="published"><on>2002</on></date>
+  <contributor>
+    <role type="author">composer</role>
+    <organization><name>Sigur Rós</name></organization>
+  </contributor>
+  <medium>
+    <form>compact disc</form>
+  </medium>
+  <relation type="includedIn">
+    <bibitem>
+      <title>( )</title>
+      <contributor>
+        <role type="author">composer</role>
+        <organization><name>Sigur Rós</name></organization>
+      </contributor>
+      <contributor>
+        <role type="publisher"/>
+        <organization><name>Sundlaugin</name></organization>
+      </contributor>
+      <place>Mosfellsbær, Iceland</place>
+    </bibitem>
+    <locality type="track">
+      <referenceFrom>1</referenceFrom>
+    </locality>
+  </relation>
+</bibitem>
+--
+====
+
+=== Graphic Works
+
+* Source: <<iso690,clause 15.7>>
+* Serialisation: `bibitem/contributor/role`
+
+
+The fuller description of a contributors role under `bibitem/contributor/role`
+allows for Latin role descriptions such as _pinxit_ and _sculpsit_
+(<<iso690,clause 15.7.1>>)
+
+====
+_[Tent of Darius]_ C. Le Brun pinxit. S. Gribelin sculpsit.
+[painting]. 1702. At: Musée du Louvre, Inv. 2896.
+
+[source,xml]
+--
+<bibitem type="graphical work">
+  <title>[Tent of Darius]</title>
+  <date type="created"><on>1702</on></date>
+  <contributor>
+    <role type="author">pinxit</role>
+    <person><name><completeName>C. Le Brun</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="author">sculpsit</role>
+    <person><name><completeName>S. Gribelin</completeName></name></person>
+  </contributor>
+  <medium>
+    <form>painting</form>
+  </medium>
+  <accessLocation>Musée du Louvre, Inv. 2896.</accessLocation>
+</bibitem>
+--
+====
+
+=== Music
+
+* Source: <<iso690,clause 15.8>>
+* Serialisation: `bibitem/contributor/role`
+
+Librettists and composers are both contributors of role type "author"; the role
+of composer and librettist needs to be differentiated in the contributor
+role for proper rendering.
+
+====
+ADAMS, John Coolidge. _Nixon in China_. Libretto by Alice GOODMAN. 1987.
+
+
+[source,xml]
+--
+<bibitem type="music">
+  <title>Untitled</title>
+  <date type="published"><on>1987</on></date>
+  <contributor>
+    <role type="author">composer</role>
+    <person><name><completeName>John Coolidge ADAMS</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="author">libretto by</role>
+    <person><name><completeName>Alice GOODMAN</completeName></name></person>
+  </contributor>
+</bibitem>
+--
+====
+
+
+
+=== Patents
+
+* Source: <<iso690,clause 15.9>>
+* Serialisation: `bibitem/contributor/role`
+
+
+Patents are encoded similarly to contributions within a serial
+(<<iso690,clause 15.9>>), with the series designation for the
+patent preceded by the country name or code. The date of application
+is encoded as a date of type "issued".
+
+// TODO: issued?
+
+
+====
+Green, Martin Andrew. _Artificial amorphous semiconductors and applications to solar cells_. Australia, [Patent] application number 2005238988. Appl: 2005-04-29.
+
+[source,xml]
+--
+<bibitem type="patent">
+  <title>Artificial amorphous semiconductors and applications to solar cells</title>
+  <date type="issued"><on>2005-04-29</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <surname>Green</surname>
+      <forename>Martin</forename>
+      <forename>Andrew</forename>
+    </person>
+  </contributor>
+  <series>
+    <title>Australia, [Patent] application number</title>
+    <number>2005238988</number>
+  </series>
+</bibitem>
+--
+====
+
+
+
+

@@ -1,0 +1,87 @@
+
+[[provenance]]
+== Provenance
+
+Information in a reference typically comes from the publisher of a resource, and
+is included in the resource itself, as described in <<iso690,clause 4.1.2>>.
+<<iso690,clause 4.1.2>> permits information to be supplied by other parties, and
+differentiated by including it in brackets. This can include both missing
+information (e.g. "[Untitled]"), and corrections (e.g. "1959 [i.e. 1995]").
+
+The party supplying emendations to reference information is identified in
+<<iso690,clause 4.1.2>>
+as the citer of the reference. However, the citer should be differentiated from
+the bibliographer,  in the case of bibliographies as consumable resources (e.g.
+as bibliographic databases):
+
+* The publisher provides the primary source information about the resource,
+typically in the resource itself, but also as a feed of information to a
+bibliographer.
+* The bibliographer compiles a bibliography as a list of references, and uses
+their judgement to supply information and to impose uniform representation and
+rendering of the list.
+* The citer uses a bibliography within a resource, to identify cited resources,
+and may further adjust the bibliography they provide within the resource (e.g.
+for disambiguation, or to disaggregate references included in other references.
+
+The bibliographer and the publisher in the contemporary bibliography universe
+are more active parties than in the traditional model, which relies exclusively
+on citer discretion. Bibliographers
+and publishers are invested in asserting that they are sources of truth about
+bibliographic
+resources; and the bibliographies covered by any model of electronic exchange
+include references
+provided by bibliographers and publishers, in bibliographic databases—as well as
+the references consumed and adjusted by citers from bibliographic databases.
+
+So the original reference as obtained from a bibliographic database may need to
+be differentiated
+from any adjustments made to the reference by a citer; and the citer adjustments
+in some contexts may need to be overridden.
+
+This means indicating the provenance of bibliographic information, and allowing
+multiple versions
+of the same information, with differing provenance. At the simplest level there
+will simply be
+two or more different versions of the reference serialisation, some representing
+the publisher or
+bibliographer's source of truth, and some representing the citer's adjustments
+(in brackets).
+Adjustments made by the bibliographer would also be represented in brackets;
+this is long-standing routine practice in library catalogues.
+
+A more granular approach would be to permit multiple instances of any element in
+the reference
+model, differentiated by provenance: this could be done with a child element
+(e.g. an XML attribute),
+or with a nested container. If no provenance is indicated, the information is
+assumed to be
+unchanged from the source of truth. A renderer can then choose which alternative
+to render depending on local requirements:
+
+.Differential Provenance
+====
+[source,xml]
+--
+<bibitem>
+  <date><on>1959</on></date>
+</bibitem>
+
+<bibitem source="citer">
+  <date><on>1959 [i.e. 1995]</on></date>
+</bibitem>
+
+<bibitem>
+  <date><on>1959</on></date>
+  <date source="citer"><on>1959 [i.e. 1995]</on></date>
+</bibitem>
+--
+====
+
+NOTE: Breaking out completions and emendations into separate elements in the model
+(e.g. `<date><on><orig>1959</orig><corr>1995</corr></on></date>`)
+is not desirable,
+given how open-ended emendations can be (e.g. appearing anywhere in a string):
+they would complicate
+any serialisation of the model, to little real benefit.
+

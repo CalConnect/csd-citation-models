@@ -1,0 +1,32 @@
+
+[[bibitem]]
+== Bibliographic Item Model
+
+The following is a UML model intended to capture the structures represented in
+<<iso690>>, and is intended as a reference model for <<iso690>>. The various
+elements of the model are discussed below, with illustrations using the sample
+serialisation (<<serialisation>>).
+
+The reference model for citations is provided in <<citationmodel>>.
+
+
+.BibliographicItem model
+====
+image::iso690xml/images/png/Bibliography__BibliographicItem_0.png[]
+====
+
+.BibliographicSeries model
+====
+image::iso690xml/images/png/Bibliography__Series_8.png[]
+====
+
+.BibliographicDate model
+====
+image::iso690xml/images/png/Bibliography__BibDates_5.png[]
+====
+
+.BibliographicItemTypes
+====
+image::iso690xml/images/png/Bibliography__ItemTypes_6.png[]
+====
+

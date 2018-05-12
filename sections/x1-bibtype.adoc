@@ -1,0 +1,26 @@
+
+[[bibtype]]
+== Categories of information resource
+
+* Source: <<iso690,clause 15>>
+* Serialisation: `bibitem@type`, `BibItemType`
+
+While <<iso690>> does not prescribe a list of possible bibliographic types,
+there are categories specific to particular information resource categories
+(<<iso690,clause 15>>),
+as well as rendering rules specific to information resource categories (e.g.
+<<iso690,clause 15.6.4>>: series title appears before item title for
+broadcasts). For that reason, bibliographic items should indicate what
+bibliographic type they belong to.
+
+NOTE: The list of bibliographic types is a union of the types listed in ISO 690
+and BibTeX. Master's Thesis and PhD Thesis from BibTeX are subsumed under "thesis".
+
+The list maintains distinction between:
+
+"inbook":: A typically untitled part of a book. May be a chapter (or section, etc.) and/or a range of pages.
+"incollection":: A part of a book having its own title.
+"inproceedings":: An article in a conference proceedings.
+"article":: An article from a journal or magazine.
+
+NOTE: The above distinction aligns with BibTeX usage.

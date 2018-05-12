@@ -1,0 +1,15 @@
+[[refmodel]]
+== Reference model
+
+This document provides a number of data models that collectively
+provide the necessary data elements for the ISO 690 citation style.
+
+In this document, the model is discussed with reference to <<iso690>>, with the
+rendered
+bibliographic references of each clause in <<iso690>> serialised according to
+<<serialisation>>.
+
+Each aspect of the model is given with a cross-reference to <<iso690>>; a
+listing of the
+relevant model components; and a listing of the corresponding components of
+<<bibtex>>.

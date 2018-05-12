@@ -1,0 +1,288 @@
+
+[[AnnexB]]
+[appendix,subtype=informative]
+== Mapping to BibTex
+
+
+== Categories of information resource
+
+From <<bibtype>>.
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem@type`|
+|===
+
+
+== Creator
+
+From <<creator>>.
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/contributor`|
+|`bibitem/contributor@role`|
+|`bibitem/contributor/description`|
+|`bibitem/contributor/person`|
+|`bibitem/contributor/person/name`|
+|`bibitem/contributor/person/name/completeName`|
+|`bibitem/contributor/person/name/forename`|
+|`bibitem/contributor/person/name/initials`|
+|`bibitem/contributor/person/name/surname`|
+|`bibitem/contributor/person/name/addition`|
+|`bibitem/contributor/person/name/prefix`|
+|`bibitem/contributor/person/name/note`|
+|`bibitem/contributor/person/uri`|
+|`bibitem/contributor/person/affiliation`|
+|`bibitem/contributor/person/affiliation/name`|
+|`bibitem/contributor/person/affiliation/description`|
+|`bibitem/contributor/person/affiliation/organization`|
+|`bibitem/contributor/person/identifier`|
+|`bibitem/contributor/person/identifier@type`|
+|`bibitem/contributor/person/contact`|
+|`bibitem/contributor/organization`|
+|`bibitem/contributor/organization/name`|
+|`bibitem/contributor/organization/subdivision`|
+|`bibitem/contributor/organization/uri`|
+|`bibitem/contributor/organization/identifier`|
+|`bibitem/contributor/organization/identifier@type`|
+|`bibitem/contributor/organization/contact`|
+|`bibitem/contributor/organization/abbreviation`|
+|===
+
+
+== Title
+
+From <<title>>.
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/title`|
+|`bibitem/title@type`|
+|`bibitem/title@format`|
+|`bibitem/title@language`|
+|`bibitem/title@script`|
+|===
+
+
+== Document relations
+
+From <<docrelations>>.
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/relation`|
+|`bibitem/relation@type`|
+|`bibitem/relation/bibitem`|
+|`bibitem/relation/bibLocality`|
+|`bibitem/extent`|
+|===
+
+
+== Medium
+
+From <<medium>>.
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/medium/form`|
+|`bibitem/medium/size`|
+|`bibitem/medium/scale`|
+|===
+
+
+== Edition
+
+From <<edition>>.
+
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/edition`|
+|`bibitem/date`|
+|`bibitem/date@type`|
+|===
+
+
+== Production
+
+From <<production>>.
+
+=== General
+
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/place`|
+|`bibitem/contributor[role@type = "publisher"]`|
+|`bibitem/date`|
+|`bibitem/date`|
+|`bibitem/date/from`|
+|`bibitem/date/from@text`|
+|`bibitem/date/to`|
+|`bibitem/date/to@text`|
+|`bibitem/date/on`|
+|`bibitem/date/on@text`|
+|`bibitem/copyright/date`|
+|===
+
+
+== Numeration and pagination
+
+From <<numeration>>.
+
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/extent`|
+|`bibitem/extent@type`|
+|`bibitem/extent/referenceFrom`|
+|`bibitem/extent/referenceTo`|
+|===
+
+
+
+== Series title and number
+
+From <<series>>.
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/series`|
+|`bibitem/series@type`|
+|`bibitem/series/title`|
+|`bibitem/series/place`|
+|`bibitem/series/organization`|
+|`bibitem/series/formattedTitle`|
+|`bibitem/series/abbrev`|
+|`bibitem/series/dateFrom`|
+|`bibitem/series/dateTo`|
+|`bibitem/series/number`|
+|`bibitem/series/partnumber`|
+|===
+
+
+
+== Identifiers
+
+From <<identifiers>>.
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/docidentifier`|
+|`bibitem/series@type`|
+|===
+
+
+== Location
+
+From <<location>>.
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/accessLocation`|
+|===
+
+
+
+== Additional general information
+
+From <<additional-info>>.
+
+=== Classification
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/classification`|
+|===
+
+
+=== Price and availability
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/note`|
+|===
+
+
+
+
+== Specific categories of information resource
+
+From <<specific-categories>>.
+
+=== Electronic information resources
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/note`|
+|===
+
+
+=== Cartographic material
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/note`|
+|`bibitem/contributor/role`|
+|===
+
+
+
+=== Films, videos and broadcasts
+
+`bibitem/title`, `bibitem/extent`
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/note`|
+|`bibitem/contributor/role`|
+|`bibitem/series`|
+|`bibitem/title`|
+|`bibitem/extent`|
+|===
+
+
+=== Graphic Works
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/contributor/role`|
+|===
+
+
+=== Music
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/contributor/role`|
+|===
+
+
+=== Patents
+
+
+|===
+|ISO 690 |BibTeX
+
+|`bibitem/contributor/role`|
+|===
+

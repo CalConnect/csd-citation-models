@@ -1,0 +1,14 @@
+
+[[contributor-models]]
+== Contribution and contributor models
+
+.Contribution model
+====
+image::iso690xml/images/png/Bibliography__Contribution_7.png[]
+====
+
+.Contributor model
+====
+image::iso690xml/images/png/Bibliography__Contributor_3.png[]
+====
+

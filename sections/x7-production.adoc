@@ -1,0 +1,228 @@
+
+[[production]]
+== Production
+
+=== General
+
+* Source: <<iso690,clause 9>>
+* Serialisation: `bibitem/place, bibitem/contributor[role@type = "publisher"], bibitem/date`
+
+
+=== Place
+
+Strictly speaking the place of production (<<iso690,clause 9.1>>)
+is an attribute of the publisher. It is
+modelled as a top-level attribute of the bibliographic item in case only one of the
+places of the publisher is associated with the production of the item, and to allow
+the place to be extracted by consumers of the serialisation more readily.
+
+////
+TODO: But I could be talked out of this. I don't want the place to be fished out of
+contact addresses of the publisher, but we can still just associate a place with a
+contributor.
+////
+
+====
+SANGSTER, R. B. _Roman Jakobson and beyond_. Berlin, New York & The Hague: Mouton, 1984.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title>Roman Jakobson and beyond</title>
+  <date type="published"><on>1984</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Sangster</surname>
+        <initial>R. B.</initial>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Mouton</name>
+    </organization>
+  </contributor>
+  <place>Berlin</place>
+  <place>New York</place>
+  <place>The Hague</place>
+</bibitem>
+--
+====
+
+=== Publisher
+
+The publisher is a subclass of creator (<<creator>>). <<iso690,5.1>>
+differentiates  between
+"publisher, online information provider, production company" and
+"distributor, online host" (<<iso690,clause 5.1.e>>, <<iso690,clause 5.1.f>>).
+Of the classes of creator that can be used as the publisher
+(<<iso690,clause 9.2.1>>), "publisher or production company"
+and "printer or manufacturer" have
+`bibitem/contributor/role@type = "publisher"`;
+"distributor or issuing body" and "sponsoring body" have
+`bibitem/contributor/role@type = "distributor"`
+(and <<iso690,clause 9.2.3>> allows that those creators can be named in addition
+to publishers.)
+
+[[date]]
+=== Date
+
+Dates are associated with specific phases of the production of a bibliographic
+item, and those phases  are named through `date@type` (<<iso690,clause 9.3.1>>).
+The default type used in bibliography
+is the date of publication (`date[@type = "published"]`), but the date of
+creation and
+updating are often given where they differ from the date of publication.
+The date of transmission is used instead for a broadcast. Dates of copying of
+a resource may be given separately to the date of creation. The date of
+reprinting is treated as the latest date of publication.
+
+For a point date, only `date/on` is populated. For a date range, `date/from`
+and `date/to` are populated (<<iso690,clause 9.3.6>>). If the range is ongoing,
+the `date/to` element is left out.
+
+The date for `date/on`, `date/from` and `date/to` is by default given as a
+Gregorian date/time, following the conventions
+of <<iso8601>>; in an XML serialisation, they would be expected to follow
+the XML Schema xs:datetime representation (<<xmlschema>>). However bibliographic
+dates often contain information that cannot be restricted to an ISO 8601 date
+(<<iso690,clause 9.3.2>>: dates in other calendars, date corrections;
+<<iso690,clause 9.3.3>>: other subdivisions of the year;
+<<iso690,clause 9.3.4>>: approximate date or no date.) For that reason, the
+model allows dates to be expressed in text instead of as an ISO 8601 date
+(`date/on@text`, `date/from@text`, `date/to@text`), or as well as an ISO 8601
+date if a  Gregorian date is still
+applicable. Date corrections may also involve indications of provenance
+(<<provenance>>). If the textual value of a date is a date range, and ISO 8601
+dates are still to be provided for the start and end of the date range, then
+the textual value is repeated for `date/from@text` and `date/to@text`.
+
+The date of copyright is associated expressly with the copyright holder, in
+`bibitem/copyright/date/from`. Unlike other bibliographic dates, the copyright
+date cannot be textual.
+
+// TODO: I can be talked out of this
+
+====
+ROGET, Peter Mark. _Roget's Thesaurus_. Revised by
+Susan M. LLOYD. Burnt Mill, Harlow, Essex: Longman Group Limited, 1982 [1852].
+
+[source,xml]
+--
+<bibitem type="book">
+  <title>Roget's Thesaurus</title>
+  <date type="created"><on>1852</on></date>
+  <date type="updated"><on>1982</on></date>
+  <date type="published"><on>1982</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Roget</surname>
+        <forename>Peter</forename>
+        <forename>Mark</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="editor">revised</role>
+    <person>
+      <name>
+        <surname>Lloyd</surname>
+        <forename>Susan</forename>
+        <forename>M.</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Longman Group Limited</name>
+    </organization>
+  </contributor>
+  <place>Burnt Mill, Harlow, Essex</place>
+</bibitem>
+--
+====
+
+====
+2018-05-09, 21:33:28
+
+<date type="created">
+  <on>2018-05-09T21:33:28</on>
+</date>
+====
+
+====
+Islamic calendar 1439 [2017–2018]
+
+<date type="created">
+  <from text="Islamic calendar 1439">2017</from>
+  <to text="Islamic calendar 1439">2018</to>
+</date>
+====
+
+====
+1959 [i.e. 1995]
+
+<date type="created">
+  <on>1959</on>
+</date>
+<date type="created" source="supplied">
+  <on text="1959 [i.e. 1995]">1995</on>
+</date>
+====
+
+====
+Michaelmas term (Oxford), 2002
+
+<date type="created">
+  <from text="Michaelmas term (Oxford), 2002">2002-10-91</from>
+  <to text="Michaelmas term (Oxford), 2002">2002-12-17</to>
+</date>
+====
+
+====
+1650?
+
+<date type="created" text="1650?">
+  <on>1650</on>
+</date>
+====
+
+====
+[no date]
+
+<date type="created" text="[no date]"/>
+====
+
+====
+1951 copied 1957
+
+<date type="created">
+  <on>1951</on>
+</date>
+<date type="copied">
+  <on>1957</on>
+</date>
+====
+
+====
+1951-
+
+<date type="published">
+  <from>1951</from>
+</date>
+====
+
+====
+© ISO, 2018
+
+<copyright>
+  <from>1951</from>
+  <owner><organization><name>ISO</name></organization></owner>
+</date>
+====

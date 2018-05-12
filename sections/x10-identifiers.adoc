@@ -1,0 +1,29 @@
+
+[[identifiers]]
+== Identifiers
+
+* Source: <<iso690,clause 12>>
+* Serialisation: `bibitem/docidentifier`
+
+
+<<iso690,clause 12>> argues that unique international standard identifiers
+must be included in the bibliography. In practice, identifiers are included
+at the discretion of the bibliographer: they are routinely included in
+bibliographic databases, but seldom in references within documents.
+
+Standards body identifiers for standards (<<iso690,clause 15.10>>) are modelled as series numbers rather than as identifiers (<<series>>).
+
+====
+_International Journal of Islamic Thought_. e-ISSN 2289-6023.
+ISSN 2232-1314.
+
+[source,xml]
+--
+<bibitem type="journal">
+<title>International Journal of Islamic Thought</title>
+<docidentifier type="e-ISSSN">2289-6023</docidentifier>
+<docidentifier type="ISSSN">2232-1314</docidentifier>
+</bibitem>
+--
+====
+

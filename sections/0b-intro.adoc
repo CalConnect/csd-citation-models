@@ -1,0 +1,47 @@
+[[introduction]]
+
+:sectnums!:
+== Introduction
+
+// https://github.com/riboseinc/bib-models/issues/1
+
+<<iso690>> has been in place for over 30 years as of this writing, as the ISO
+model of bibliographical referencing and citation (being one of several such
+standards). During the same time, a multitude of electronic
+referencing tools and conventions has evolved, and any of them can be used
+to encode at least a subset of the bibliographic information captured in
+<<iso690>>. However, there is no authoritative reference model
+on how to represent the guidelines of <<iso690>> electronically. As a result,
+existing electronic referencing tools cannot be surveyed rigorously, to
+determine the extent to which they comply with the requirements of <<iso690>>,
+either with regard to content coverage or with the base rendering requirements
+of the specification. Nor is there a fallback model of <<iso690>> in
+place, to draw on where existing electronic referencing tools do not fully
+cover the requirements of the specification.
+
+In addition, a rigorous logical model of <<iso690>> would help identify
+any gaps, inconsistencies, or areas open for interpretation in the conceptual
+model proposed in the specification, and in the rendering model described there.
+(The latter is more liable to need ambiguities fixed than the former, since
+these will become apparent in any attempts to render references in a way
+compliant with <<iso690>>.)
+
+This document proposes a reference model and serialisation for <<iso690>>. The
+serialisation can be used to represent references compliant to <<iso690>>; but
+being formalised and complete,
+it can also be used to evaluate existing bibliographic tools for coverage of the
+standard, and to identify any issues they may have.
+
+The BibTeX tool <<bibtex>> has been
+used as a representative bibliographic tool, because of its popularity and
+relative completeness.
+
+A separate document proposes an example rendering stylesheet for the
+serialisation of this model,
+which aligns with the examples used in <<iso690>>. <<iso690>> prescribes some
+aspects of rendering
+(e.g. sequence, use of "in:" and "at:"), and leaves others to implementation
+(e.g. use of italics, use of punctuation). The stylesheet allows the container
+model and the rendering
+model of <<iso690>> to be differentiated, and the rendering items prescribed by
+<<iso690>> to be identified clearly.

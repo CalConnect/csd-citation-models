@@ -1,0 +1,9 @@
+
+[[doc-relations]]
+== Bibliographic Document Relations
+
+.DocumentRelation and related models
+====
+image::iso690xml/images/png/Bibliography__Relations_4.png[]
+====
+

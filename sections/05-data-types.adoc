@@ -1,0 +1,28 @@
+
+[[data-types]]
+== Data types
+
+Common data types used within this document are provided below.
+
+image::iso690xml/images/png/Bibliography__DataTypes_1.png[]
+
+
+////
+
+TODO: insert
+
+The time interval where this interchange address profile
+is determined valid, and the revision number (represented as a date).
+
+Each of such is represented as a `CI_Date` object defined in <<ISO19115-1>>.
+
+validityBegins:: the date and time when this object becomes valid.
+The type of `CI_Date` should be `validityBegins`.
+
+validityEnds:: the date and time when this object becomes invalid.
+The type of `CI_Date` should be `validityEnds`.
+
+revision:: issuance date/time of this object.
+The type of `CI_Date` should be `revision`.
+
+////

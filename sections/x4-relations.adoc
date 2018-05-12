@@ -1,0 +1,329 @@
+
+[[docrelations]]
+== Document relations
+
+=== General
+
+* Source: <<iso690,clause 6.2>>, <<iso690,clause 6.4>>
+* Serialisation: `bibitem/relation`
+
+The model allows for various relations between bibliographic items, with one
+related item embedded within the other.
+
+[[host-item]]
+=== Host Item
+
+Of the bibliographic types identified in <<bibtype>>, incollection,
+inproceedings, and inbook are all inherently related to a host item. Other types
+also potentially involve
+relations with host items; for example, the relation between a record track and
+a record, or a broadcast segment and a broadcast show. The relation between host
+item and contained item is modelled through "includedIn".
+
+The relation between any two items includes a locality element, which indicates
+which part of the first item is related to the second. (For example, which part
+of the first item is superseded by the second.) The locality in the
+relation element can be used with "includedIn" relations, to indicate the extent
+of the
+contained item within the host item; but for consistency, it is preferable to
+use the extent element in the contained item, which has the same meaning.
+
+The expected relations between host and contained items are as follows:
+
+|===
+|Host |Contained
+
+|book, booklet, manual, techreport|incollection (if has its own title—autonomous item), inbook (if it does not have its
+own title—e.g. numbered chapter, page span)
+|journal |article
+|proceedings, conference |inproceedings
+|thesis, standard, patent |inbook
+|map |map
+|electronic resource |electronic resource
+|broadcast |broadcast
+|music |music
+|graphic work|graphic work
+|film |film
+|video |video
+|===
+
+In general: text-based resources have components that can be considered a different kind of
+resource; components of non-textual resources are considered to be of the same
+type as their host.
+
+====
+Ramsey, J. K., & McGrew, W. C. (2005). Object play in great apes: Studies in nature and captivity.
+In A. D. Pellegrini & P. K. Smith (Eds.), _The nature of play: Great apes and humans_
+(pp. 89-112). New York, NY: Guilford Press.
+
+Dispreferred extent encoding:
+[source,xml]
+--
+<bibitem type="incollection">
+  <title>Object play in great apes: Studies in nature and captivity</title>
+  <date type="published"><on>2005</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Ramsey</surname>
+        <initials>J. K.</initials>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>McGrew</surname>
+        <initials>W. C.</initials>
+      </name>
+    </person>
+  </contributor>
+  <relation type="includedIn">
+    <bibitem>
+      <title>The nature of play: Great apes and humans</title>
+      <contributor>
+        <role type="editor"/>
+        <person>
+          <name>
+            <surname>Pellegrini</surname>
+            <initials>A. D.</initials>
+          </name>
+        </person>
+      </contributor>
+      <contributor>
+        <role type="editor"/>
+        <person>
+          <name>
+            <surname>Smith</surname>
+            <initials>P. K.</initials>
+          </name>
+        </person>
+      </contributor>
+      <contributor>
+        <role type="publisher"/>
+        <organization>
+          <name>Guilford Press</name>
+        </organization>
+      </contributor>
+      <place>New York, NY</place>
+    </bibitem>
+    <locality type="page">
+      <referenceFrom>89</referenceFrom>
+      <referenceTo>112</referenceTo>
+    </locality>
+  </relation>
+</bibitem>
+--
+
+Preferred extent encoding:
+[source,xml]
+--
+<bibitem type="incollection">
+  <title>Object play in great apes: Studies in nature and captivity</title>
+  <date type="published"><on>2005</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Ramsey</surname>
+        <initials>J. K.</initials>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>McGrew</surname>
+        <initials>W. C.</initials>
+      </name>
+    </person>
+  </contributor>
+  <relation type="includedIn">
+    <bibitem>
+      <title>The nature of play: Great apes and humans</title>
+      <contributor>
+        <role type="editor"/>
+        <person>
+          <name>
+            <surname>Pellegrini</surname>
+            <initials>A. D.</initials>
+          </name>
+        </person>
+      </contributor>
+      <contributor>
+        <role type="editor"/>
+        <person>
+          <name>
+            <surname>Smith</surname>
+            <initials>P. K.</initials>
+          </name>
+        </person>
+      </contributor>
+      <contributor>
+        <role type="publisher"/>
+        <organization>
+          <name>Guilford Press</name>
+        </organization>
+      </contributor>
+      <place>New York, NY</place>
+    </bibitem>
+  </relation>
+  <extent type="page">
+    <referenceFrom>89</referenceFrom>
+    <referenceTo>112</referenceTo>
+  </extent>
+</bibitem>
+--
+====
+
+====
+Sigur Rós.
+Untitled [Vaka]. In: _( )_ [compact disc]. Track 1.
+Mosfellsbær: Sundlaugin, 2002.
+
+[source,xml]
+--
+<bibitem type="audiovisual">
+  <title>Untitled</title>
+  <title type="unofficial">Vaka</title>
+  <date type="published"><on>2002</on></date>
+  <contributor>
+    <role type="author">composer</role>
+    <organization><name>Sigur Rós</name></organization>
+  </contributor>
+  <medium>
+    <form>compact disc</form>
+  </medium>
+  <relation type="includedIn">
+    <bibitem>
+      <title>( )</title>
+      <contributor>
+        <role type="author">composer</role>
+        <organization><name>Sigur Rós</name></organization>
+      </contributor>
+      <contributor>
+        <role type="publisher"/>
+        <organization><name>Sundlaugin</name></organization>
+      </contributor>
+      <place>Mosfellsbær, Iceland</place>
+    </bibitem>
+    <locality type="track">
+      <referenceFrom>1</referenceFrom>
+    </locality>
+  </relation>
+</bibitem>
+--
+====
+
+=== Translation
+
+Translations are items derived from an item in a different language. Typically
+in bibliographies, the details of the source item are not provided for a
+translation, outside of the original author, and possibly the date of
+publication and the source language title of the original title. If the
+information about the source item is limited to these, no relation need be
+invoked in the title: the source title can be modelled as an original title
+variant (<<alt-title>>); the author differentiated from the translator as
+creators (<<creator-selection>>); and the date of authorshop differentiated
+from the date of translation (<<date>>: `date[@type = "created"]` vs
+`date[@type = "published"]`).
+
+TODO: use updated date for translation? Or distinct adapted or translated verb?
+
+However, if any further details of the source item need to be provided (e.g.
+source language: <<iso690,clause 14.5>>), they should be modelled through an
+overt relationship between the source item and the translation.
+
+====
+PRUS, Bolesław. 1912 [1895–1896]. _La Faraono_ [Faraon]. Translated
+by Kabe (pseud. of Kazimierz BEIN). 2nd revised edition.
+Paris: Hachette.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title lang="eo">La Faraono</title>
+  <title type="original" lang="pl">Faraon</title>
+  <date type="created"><from>1895</from><to>1896</to></date>
+  <date type="published"><on>1912</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Prus</surname>
+        <forename>Bolesław</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="translator"/>
+    <person>
+      <name>
+        <completeName>Kabe</completeName>
+        <note>pseud. of Kazimierz Bein</note>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Hachette</name>
+    </organization>
+  </contributor>
+  <edition>2nd revised edition</edition>
+  <language>eo</language>
+  </relation>
+  <place>Paris</place>
+</bibitem>
+--
+====
+
+====
+Demosthenes. _Speeches 50-59_. Translated from the Greek by
+Victor BERS. Austin: University of Texas Press, 2003.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title>Speeches 50-59</title>
+  <date type="published"><on>2003</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <completeName>Demosthenes</completeName>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="translator"/>
+    <person>
+      <name>
+        <surname>Bers</surname>
+        <initials>Victor</initials>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>University of Texas Press</name>
+    </organization>
+  </contributor>
+  <language>en</language>
+  <relation type="translatedFrom">
+    <bibitem>
+      <title>Speeches 50-59</title>
+      <language>grc</language>
+    </bibitem>
+  </relation>
+  <place>Austin</place>
+</bibitem>
+--
+====
+
+TODO: other categories
+

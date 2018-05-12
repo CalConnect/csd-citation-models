@@ -1,0 +1,89 @@
+
+[[additional-info]]
+== Additional general information
+
+=== Classification
+
+* Source: <<iso690,clause 14.2>>
+* Serialisation: `bibitem/classification`
+
+====
+Giesler, Patricia. _Canada Remembers the Korean War_. Dewey 971.06 GIE 2003.
+ISBN 0662674979. Charlottetown, P.E.I. : Veterans Affairs Canada. 2003.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title>Canada Remembers the Korean War</title>
+  <docidentifier type="ISBN">0662674979</docidentifier>
+  <date type="published"><on>2003</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <surname>Giesler</surname>
+      <forename>Patricia</forename>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Veterans Affairs Canada</name>
+    </organization>
+  </contributor>
+  <place>Charlottetown, P.E.I.</place>
+  <classification type="Dewey">971.06 GIE 2003</classification>
+</bibitem>
+--
+
+====
+
+=== Price and availability
+
+* Source: <<iso690,clause 14.4>>
+* Serialisation: `bibitem/note`
+
+
+Price and availability information for a bibliographic item are treated
+as a note.
+
+// TODO: I could be talked out of that
+
+====
+_Pluralism in the Soviet Union: Essays in Honour of H. Gordon Skilling_. Edited by Susan Gross Solomon. New York: St. Martin's Press, 1983. xiii, 179 pp. $27.50.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title>Pluralism in the Soviet Union: Essays in Honour of H. Gordon Skilling</title>
+  <date type="published"><on>1983</on></date>
+  <contributor>
+    <role type="editor"/>
+    <person>
+      <name>
+        <surname>Solonom</surname>
+        <forename>Susan</forename>
+        <forename>Gross</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>St Martin's Press</name>
+    </organization>
+  </contributor>
+  <note>$27.50</note>
+  <place>New York</place>
+  <series>
+    <title>Nevada Bureau of Mines and Geology Bulletin</title>
+    <number>88</number>
+  </series>
+  <extent type="page">
+    <referenceFrom>xiii</referenceFrom>
+  </extent>
+  <extent type="page">
+    <referenceFrom>179</referenceFrom>
+  </extent>
+</bibitem>
+--
+====

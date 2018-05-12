@@ -1,0 +1,97 @@
+
+[[location]]
+== Location
+
+* Source: <<iso690,clause 13>>, <<iso690,clause 15.2.6>>, <<iso690,clause 15.7.2>>
+* Serialisation: `bibitem/accessLocation`
+
+Unpublished items with a limited number of copies that are held at a repository
+should be referenced through `bibitem/accessLocation`,
+which gives the repository that the cited copy is held in, and the
+locator used by the repository (<<iso690,clause 13>>, <<iso690,clause 15.7.2>>).
+The repository and locator are not differentiated, and are treated as a single
+string. The `bibitem/accessLocation` element is also used for online locations
+of digital resources, where a single URL (`bibitem/link`) is not sufficient
+(<<iso690,clause 15.2.6>>).
+
+====
+p.vind.tand.25a = HGV P.Vindob. Tandem 25 a = Trismegistos 26540. At: P.Vindob.Gr. Inv. Nr. 12424 + 24718 + 28384.
+
+(Highly abbreviated format, using conventions familiar to papyrologists)
+
+[source,xml]
+--
+<bibitem type="booklet">
+  <title>[Untitled]</title>
+  <link>http://papyri.info/hgv/26540/</link>
+  <link>http://aquila.zaw.uni-heidelberg.de/hgv/26540</link>
+  <link>https://www.trismegistos.org/text/26540</link>
+  <docidentifier type="HGV">P.Vindob. Tandem 25 a</docidentifier>
+  <docidentifier type="Trismegistos">26540</docidentifier>
+  <accessLocation>P.Vindob.Gr. Inv. Nr. 12424 + 24718 + 28384.</accessLocation>
+</bibitem>
+--
+
+(More elaborated form)
+[source,xml]
+--
+<bibitem type="booklet">
+  <title>[Untitled]</title>
+  <link>http://papyri.info/hgv/26540/</link>
+  <link>http://aquila.zaw.uni-heidelberg.de/hgv/26540</link>
+  <link>https://www.trismegistos.org/text/26540</link>
+  <docidentifier type="HGV">P.Vindob. Tandem 25 a</docidentifier>
+  <docidentifier type="Trismegistos">26540</docidentifier>
+  <relation type="includedIn">
+    <bibItem>
+        <title>Fünfunddreißig Wiener Papyri (P. Vindob. Tandem)</title>
+        <date type="published">1976</date>
+        <contributor>
+          <role type="editor"/>
+          <person><name><completeName>Pieter Johannes Sijpesteijn</completeName></name></person>
+        </contributor>
+        <contributor>
+          <role type="editor"/>
+          <person><name><completeName>Klaas Anthony Worp</completeName></name></person>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization><name>Terra</name></organization>
+        </contributor>
+        <series>
+          <title>Studia Amstelodamensia ad epigraphicam, ius antiquum et papyrologicam pertinentia</title>
+          <number>6</number>
+        </series>
+    </bibItem>
+    <bibLocality type="part">
+      <referenceFrom>25a</referenceFrom>
+    </bibLocality>
+  </relation>
+  <accessLocation>National Library of Vienna. P.Vindob.Gr. Inv. Nr. 12424 + 24718 + 28384.</accessLocation>
+</bibitem>
+--
+====
+
+// TODO: The document relation is actually "publishedIn", but I think that's overkill.
+
+
+====
+Australian Government Bureau of Meteorology. _Latest Weather Observations for Dumont D'urville_. http://www.bom.gov.au. Path: Antarctica: Antarctic Observations: Latest observations: Dumont D'urville: JavaScript Object Notation format (JSON) in row-major order. Viewed 2018-03-10.
+
+[source,xml]
+--
+<bibitem type="electronic resource">
+  <title>Latest Weather Observations for Dumont D'urville</title>
+  <link>http://www.bom.gov.au/fwo/IDT60803/IDT60803.89642.json</link>
+  <date type="accessed"><on>2018-03-10</on></date>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Australian Government</name>
+      <subdivision>Bureau of Meteorology</subdivision>
+    </organization>
+  </contributor>
+  <accessLocation>http://www.bom.gov.au. Path: Antarctica: Antarctic Observations: Latest observations: Dumont D'urville: JavaScript Object Notation format (JSON) in row-major order</accessLocation>
+</bibitem>
+--
+====
