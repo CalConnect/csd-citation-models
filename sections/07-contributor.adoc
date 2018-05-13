@@ -7,8 +7,64 @@
 image::iso690xml/images/png/Bibliography__Contribution_7.png[]
 ====
 
+ContributionInfo/role:: A description of the role of the contributor in the production of the bibliographic item.
+
+ContributionInfo/role/type:: The broad class of role of the contributor.
+
+ContributionInfo/role/description:: The specific description of the role of the contributor.
+
+ContributionInfo/entity:: The contributor involved in the production of the bibliographic item; may be either a person or an organization..
+
 .Contributor model
 ====
 image::iso690xml/images/png/Bibliography__Contributor_3.png[]
 ====
+
+
+Person/name:: The name of a person.
+
+Person/name/forename:: A forename of the person.
+
+Person/name/initials:: The initials of the person (initials of forenames and middle names).
+
+Person/name/surname:: A surname of the person.
+
+Person/name/addition:: A suffixed addition to the name of the person.
+
+Person/name/prefix:: A prefixed addition to the name of the person.
+
+Person/name/completeName:: The preformatted version of the name of the person, not broken down into its component parts.
+
+Person/name/note:: An additional note about the name of the person
+
+Person/name/uri:: A URI with information about the person.
+
+Person/name/affiliation:: The affiliation of the person within an organization.
+
+Person/name/affiliation/name:: The name of the affiliation of the person.
+
+Person/name/affiliation/description:: A more detailed description of the affiliation of the person.
+
+Person/name/affiliation/organization:: The organization with which the person is affiliated.
+
+Person/name/identifier/value:: An identifier of the person according to an international identifier scheme.
+
+Person/name/identifier/type:: The international identifier scheme for the identifier of the person.
+
+Person/name/contact:: Contact information for the person, including address, phone number, and email.
+
+Organization/name:: The name of the organization.
+
+Organization/subdivision:: The subdivision of the organization directly involved with the production of the bibliographic item.
+
+Organization/uri:: A URI with information about the organization.
+
+Organization/name/identifier/value:: An identifier of the organization according to an international identifier scheme.
+
+Organization/name/identifier/type:: The international identifier scheme for the identifier of the organization.
+
+Organization/name/contact:: Contact information for the organization, including address, phone number, and email.
+
+Organization/abbreviation:: Abbreviation under which the organization is known.
+
 

@@ -7,3 +7,9 @@
 image::iso690xml/images/png/Bibliography__Relations_4.png[]
 ====
 
+DocumentRelation/type:: The type of document relation described
+
+DocumentRelation/bibItem:: The bibliographic item to which this bibliographic item is described as related to.
+
+DocumentRelation/bibLocality:: The extent of the this bibliographic item which is related to the other bibliographic,
+if it is not the entire bibliographic item that is so related.
