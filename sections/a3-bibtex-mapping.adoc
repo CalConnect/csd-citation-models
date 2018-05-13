@@ -3,8 +3,7 @@
 [appendix,subtype=informative]
 == Mapping to BibTex
 
-
-== Categories of information resource
+=== Categories of information resource
 
 From <<bibtype>>.
 
@@ -15,7 +14,7 @@ From <<bibtype>>.
 |===
 
 
-== Creator
+=== Creator
 
 From <<creator>>.
 
@@ -53,7 +52,7 @@ From <<creator>>.
 |===
 
 
-== Title
+=== Title
 
 From <<title>>.
 
@@ -68,7 +67,7 @@ From <<title>>.
 |===
 
 
-== Document relations
+=== Document relations
 
 From <<docrelations>>.
 
@@ -83,7 +82,7 @@ From <<docrelations>>.
 |===
 
 
-== Medium
+=== Medium
 
 From <<medium>>.
 
@@ -96,7 +95,7 @@ From <<medium>>.
 |===
 
 
-== Edition
+=== Edition
 
 From <<edition>>.
 
@@ -110,11 +109,11 @@ From <<edition>>.
 |===
 
 
-== Production
+=== Production
 
 From <<production>>.
 
-=== General
+==== General
 
 
 |===
@@ -134,7 +133,7 @@ From <<production>>.
 |===
 
 
-== Numeration and pagination
+=== Numeration and pagination
 
 From <<numeration>>.
 
@@ -150,7 +149,7 @@ From <<numeration>>.
 
 
 
-== Series title and number
+=== Series title and number
 
 From <<series>>.
 
@@ -172,7 +171,7 @@ From <<series>>.
 
 
 
-== Identifiers
+=== Identifiers
 
 From <<identifiers>>.
 
@@ -184,7 +183,7 @@ From <<identifiers>>.
 |===
 
 
-== Location
+=== Location
 
 From <<location>>.
 
@@ -196,11 +195,11 @@ From <<location>>.
 
 
 
-== Additional general information
+=== Additional general information
 
 From <<additional-info>>.
 
-=== Classification
+==== Classification
 
 |===
 |ISO 690 |BibTeX
@@ -209,7 +208,7 @@ From <<additional-info>>.
 |===
 
 
-=== Price and availability
+==== Price and availability
 
 |===
 |ISO 690 |BibTeX
@@ -220,11 +219,11 @@ From <<additional-info>>.
 
 
 
-== Specific categories of information resource
+=== Specific categories of information resource
 
 From <<specific-categories>>.
 
-=== Electronic information resources
+==== Electronic information resources
 
 |===
 |ISO 690 |BibTeX
@@ -233,7 +232,7 @@ From <<specific-categories>>.
 |===
 
 
-=== Cartographic material
+==== Cartographic material
 
 |===
 |ISO 690 |BibTeX
@@ -244,7 +243,7 @@ From <<specific-categories>>.
 
 
 
-=== Films, videos and broadcasts
+==== Films, videos and broadcasts
 
 `bibitem/title`, `bibitem/extent`
 
@@ -259,7 +258,7 @@ From <<specific-categories>>.
 |===
 
 
-=== Graphic Works
+==== Graphic Works
 
 |===
 |ISO 690 |BibTeX
@@ -268,7 +267,7 @@ From <<specific-categories>>.
 |===
 
 
-=== Music
+==== Music
 
 |===
 |ISO 690 |BibTeX
@@ -277,7 +276,7 @@ From <<specific-categories>>.
 |===
 
 
-=== Patents
+==== Patents
 
 
 |===
