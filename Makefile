@@ -17,6 +17,7 @@ Gemfile Gemfile.lock:
 	cp ../common-iso/$@ .
 
 %.xml %.html %.doc:	%.adoc | bundle
+	sh make.sh
 	bundle exec asciidoctor -b iso -r 'asciidoctor-iso' $^ --trace
 
 open:

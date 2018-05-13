@@ -15,18 +15,123 @@ The reference model for citations is provided in <<citationmodel>>.
 image::iso690xml/images/png/Bibliography__BibliographicItem_0.png[]
 ====
 
+BibliographicItem/title:: The title of the bibliographic item.
+
+BibliographicItem/title/type:: The type for the given title of the bibliographic item.
+
+BibliographicItem/link:: A URI associated with the bibliographic item.
+
+BibliographicItem/type:: The type of the bibliographic item.
+
+BibliographicItem/docIdentifier:: An identifier of the bibliographic item in an international standard scheme.
+
+BibliographicItem/docIdentifier/type:: The scheme of the identifer
+
+BibliographicItem/docIdentifier/id:: The identifier itself within the international standard scheme.
+
+BibliographicItem/date:: A date-time associated with the production of or access to the bibliographic item.
+
+BibliographicItem/contributor:: A contributor the production of the bibliographic item.
+
+BibliographicItem/edition:: The edition or version of the bibliographic item.
+
+BibliographicItem/note:: A note associated with the bibliographic item.
+
+BibliographicItem/language:: The language(s) in which the bibliographic item is expressed.
+
+BibliographicItem/script:: The script(s) in which the bibliographic item is written.
+
+BibliographicItem/formattedRef:: A pre-formatted version of the bibliographic item reference,
+used to sidestep the rendering of the reference out of its component parts.
+
+BibliographicItem/abstract:: The abstract of the bibliographic item.
+
+TODO: include?
+
+BibliographicItem/status/status:: The publication or preparation status of the bibliographic item.
+
+TODO: include? Much more relevant for standards, forms part of the customisation of this model for standards.
+
+BibliographicItem/copyright:: The copyright status of the bibliographic item.
+
+BibliographicItem/copyright/from:: The copyright date of the bibliographic item.
+
+BibliographicItem/copyright/to:: The date when the copyright of the bibliographic item expires.
+
+BibliographicItem/copyright/owner:: The copyright owner for the bibliographic item.
+
+BibliographicItem/relation:: The relation of the bibliographic item to another bibliographic item.
+
+BibliographicItem/series:: The series of the bibliographic item.
+
+BibliographicItem/medium:: Information about the physical medium of the bibliographic item.
+
+BibliographicItem/medium/form:: The form of the physical medium of the bibliographic item.
+
+BibliographicItem/medium/size:: The size of the physical medium of the bibliographic item.
+
+BibliographicItem/medium/scale:: The scale of the cartographic material in the bibliographic item.
+
+BibliographicItem/place:: The geographic location associated with the production of the bibliographic item.
+
+BibliographicItem/extent:: The extent of the bibliographic item.
+
+BibliographicItem/accessLocation:: The location where the bibliographic item may be accessed.
+
+BibliographicItem/classification:: The classification of the bibliographic item according to a standard classification scheme.
+
+BibliographicItem/validity:: Information about how long the current description of the bibliographic item is valid for.
+
 .BibliographicSeries model
 ====
 image::iso690xml/images/png/Bibliography__Series_8.png[]
 ====
+
+SeriesType/type:: The type of series description expressed in this container.
+The main type (which is the default) is the current, authoritative series
+description; "alt" includes alternative (historical) series descriptions.
+
+SeriesType/title:: The title of the series.
+
+SeriesType/place:: The place where the series is issued; used for disambiguation.
+
+SeriesType/organization:: The organization issuing the series; used for disambiguation.
+
+Series/formattedTitle:: A pre-formatted version of the series description, incorporating
+all needed disambiguating information in proper format.
+
+Series/abbrev:: The abbreviation under which the series is known.
+
+Series/dateFrom:: The start of the date range when the series has been known under the given title.
+
+Series/dateTo:: The end of the date range when the series has been known under the given title.
+
+Series/number:: The number of the bibliographic item within the series.
+
+Series/partnumber:: The part-number of the bibliographic item within the series.
 
 .BibliographicDate model
 ====
 image::iso690xml/images/png/Bibliography__BibDates_5.png[]
 ====
 
+BibliographicDate:: Date associated with the production of or access to a bibliographic item.
+
+BibliographicDate/type:: The phase of the production of or access to a bibliographic item.
+
+BibliographicDate/from:: The start of the date range described.
+
+BibliographicDate/to:: The end of the date range described.
+
+BibliographicDate/on:: The point date described (mutually exclusive with date range).
+
+CI_Date:: Citation date for a digital resource; taken from <<iso19115-1>>.
+
+
 .BibliographicItemTypes
 ====
 image::iso690xml/images/png/Bibliography__ItemTypes_6.png[]
 ====
 
+BibItemType:: The range of possible bibliographic items covered by this model. Note that
+legal documents are expressly outside the scope of <<iso690>>.
