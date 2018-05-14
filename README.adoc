@@ -1,0 +1,22 @@
+= Bibliographic reference model for ISO 690
+
+== Install Dependencies
+
+[source,shell]
+----
+bundle
+----
+
+== Quickstart
+
+[source,shell]
+----
+make clean all open
+----
+
+== Update the ISO690XML submodule
+
+[source,shell]
+----
+make update
+----
