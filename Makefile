@@ -14,11 +14,13 @@ bundle:	Gemfile Gemfile.lock
 	bundle
 
 Gemfile Gemfile.lock:
-	cp ../common-iso/$@ .
+	ln -s ../common-iso/$@ .
 
 %.xml %.html %.doc:	%.adoc | bundle
-	sh make.sh
-	bundle exec asciidoctor -b iso -r 'asciidoctor-iso' $^ --trace
+	bundle exec metanorma -t iso $^
+
+update:
+	git submodule update --remote
 
 open:
 	open $(HTML)
