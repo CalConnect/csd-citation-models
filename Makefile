@@ -20,6 +20,7 @@ Gemfile Gemfile.lock:
 	bundle exec metanorma -t iso $^
 
 update:
+	git submodule update --init
 	git submodule update --remote
 
 open:
