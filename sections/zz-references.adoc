@@ -10,4 +10,14 @@
 Edited by James Clark, John Cowan, MURATA Makoto. 2003-03-26.
 http://www.relaxng.org/compact-tutorial-20030326.html
 
+* [[[rfc2046,IETF RFC 2046]]], Freedm N., Borenstein, N.
+_Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types_. November 1996. https://tools.ietf.org/html/rfc2046
+
+* [[[rfc3986,IETF RFC 3986]]], Berners-Lee, T., Fielding, R., Masinter, L.
+_Uniform Resource Identifier (URI): Generic Syntax_. January 2005.  https://tools.ietf.org/html/rfc3986
+
+* [[[rfc8288,IETF RFC 8288]]], Nottingham, M.
+_Web Linking_. October 2017.  https://tools.ietf.org/html/rfc8288
+
 * [[[xmlschema, 4]]], W3C. XML Schema Part 2: Datatypes Second Edition. W3C Recommendation. 2004-10-28. https://www.w3.org/TR/xmlschema-2/
+

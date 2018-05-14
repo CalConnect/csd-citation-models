@@ -14,14 +14,3 @@ edition of the referenced document (including any amendments) applies.
 * [[[iso8601,ISO 8601]]], _Data elements and interchange formats -- Information interchange -- Representation of dates and times_
 
 * [[[iso15924,ISO 15924]]], _Information and documentation -- Codes for the representation of names of scripts_
-
-* [[[iso19115-1,ISO/FDIS 19115-1]]], _Geographic information -- Metadata -- Part 1: Fundamentals_
-
-* [[[rfc2046,IETF RFC 2046]]], Freedm N., Borenstein, N.
-_Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types_. November 1996. https://tools.ietf.org/html/rfc2046
-
-* [[[rfc3986,IETF RFC 3986]]], Berners-Lee, T., Fielding, R., Masinter, L. 
-_Uniform Resource Identifier (URI): Generic Syntax_. January 2005.  https://tools.ietf.org/html/rfc3986
-
-* [[[rfc8288,IETF RFC 8288]]], Nottingham, M.
-_Web Linking_. October 2017.  https://tools.ietf.org/html/rfc8288

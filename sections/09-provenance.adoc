@@ -85,37 +85,3 @@ given how open-ended emendations can be (e.g. appearing anywhere in a string):
 they would complicate
 any serialisation of the model, to little real benefit.
 
-
-== Validity
-
-The representation of a bibliographic item can optionally include information
-on the time interval where this interchange address profile
-is determined valid, and the revision number (represented as a date).
-Each of such is represented as a `CI_Date` object, as defined in <<ISO19115-1>>:
-
-validityBegins:: the date and time when this object becomes valid.
-The type of `CI_Date` should be `validityBegins`.
-
-validityEnds:: the date and time when this object becomes invalid.
-The type of `CI_Date` should be `validityEnds`.
-
-revision:: issuance date/time of this object.
-The type of `CI_Date` should be `revision`.
-
-TODO: I don't see why we need CI_Date at all, when the type is inferrred from
-the tag; unless we're permitted other types to be used as well. The inconsistencies
-between the CI_Date type vocabulary and that for bibliographic dates is also
-noticeable.
-
-====
-[source,xml]
---
-<bibitem>
-  <validity>
-    <validityBegins type="validityBegins">2018-01-01</validityBegins>
-    <validityEnds type="validityEnds">2118-01-01</validityEnds>
-    <revision type="revision">2017-01-01</revision>
-  </validity>
-</bibitem>
---
-====

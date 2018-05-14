@@ -9,7 +9,6 @@ serialisation (<<serialisation>>).
 
 The reference model for citations is provided in <<citationmodel>>.
 
-
 .BibliographicItem model
 ====
 image::iso690xml/images/png/Bibliography__BibliographicItem_0.png[]
@@ -25,7 +24,7 @@ BibliographicItem/type:: The type of the bibliographic item.
 
 BibliographicItem/docIdentifier:: An identifier of the bibliographic item in an international standard scheme.
 
-BibliographicItem/docIdentifier/type:: The scheme of the identifer
+BibliographicItem/docIdentifier/type:: The scheme of the identifier
 
 BibliographicItem/docIdentifier/id:: The identifier itself within the international standard scheme.
 
@@ -82,6 +81,43 @@ BibliographicItem/classification:: The classification of the bibliographic item 
 
 BibliographicItem/validity:: Information about how long the current description of the bibliographic item is valid for.
 
+
+
+=== Validity
+
+The representation of a bibliographic item can optionally include information
+on the time interval where this bibliographic item
+is determined valid, and the revision number (represented as a date).
+Each of such is represented as a `Iso8601DateTime` object.
+
+ValidityInfo/validityBegins:: the date and time when this object becomes valid.
+The value type is `Iso8601DateTime`.
+
+ValidityInfo/validityEnds:: the date and time when this object becomes invalid.
+The value type is `Iso8601DateTime`.
+
+ValidityInfo/revision:: issuance date/time of this object.
+The value type is `Iso8601DateTime`.
+
+
+Serialization of `ValidityInfo` is demonstrated below.
+
+====
+[source,xml]
+--
+<bibitem>
+  <validity>
+    <validityBegins type="validityBegins">2018-01-01</validityBegins>
+    <validityEnds type="validityEnds">2118-01-01</validityEnds>
+    <revision type="revision">2017-01-01</revision>
+  </validity>
+</bibitem>
+--
+====
+
+
+=== Series
+
 .BibliographicSeries model
 ====
 image::iso690xml/images/png/Bibliography__Series_8.png[]
@@ -110,10 +146,16 @@ Series/number:: The number of the bibliographic item within the series.
 
 Series/partnumber:: The part-number of the bibliographic item within the series.
 
+
+
+=== Bibliographic Dates
+
 .BibliographicDate model
 ====
 image::iso690xml/images/png/Bibliography__BibDates_5.png[]
 ====
+
+TODO: add date types from ISO 19115-1 `CI_Date` `expiry, lastupdate, lastrevision, nextupdate, unavailable, inForce, adopted, deprecated, distribution`
 
 BibliographicDate:: Date associated with the production of or access to a bibliographic item.
 
@@ -125,7 +167,8 @@ BibliographicDate/to:: The end of the date range described.
 
 BibliographicDate/on:: The point date described (mutually exclusive with date range).
 
-CI_Date:: Citation date for a digital resource; taken from <<iso19115-1>>.
+
+=== Bibliographic Item Types
 
 
 .BibliographicItemTypes
@@ -135,3 +178,5 @@ image::iso690xml/images/png/Bibliography__ItemTypes_6.png[]
 
 BibItemType:: The range of possible bibliographic items covered by this model. Note that
 legal documents are expressly outside the scope of <<iso690>>.
+
+TODO: we should not exclude legal documents.
