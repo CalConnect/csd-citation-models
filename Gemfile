@@ -1,1 +1,1 @@
-../common-iso/Gemfile
+../common/Gemfile
