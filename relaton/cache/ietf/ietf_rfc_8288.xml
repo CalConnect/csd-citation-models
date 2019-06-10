@@ -1,0 +1,30 @@
+<bibitem id="RFC8288">
+  <fetched>2019-06-10</fetched>
+  <title format="plain" language="en" script="Latn">Web Linking</title>
+  <uri type="src">https://www.rfc-editor.org/info/rfc8288</uri>
+  <docidentifier type="IETF">RFC 8288</docidentifier>
+  <docidentifier type="DOI">10.17487/RFC8288</docidentifier>
+  <date type="published">
+    <on>2017-10</on>
+  </date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <completename language="en">M. Nottingham</completename>
+      </name>
+      <affiliation>
+        <organization>
+          <name>IETF</name>
+          <abbreviation>IETF</abbreviation>
+        </organization>
+      </affiliation>
+    </person>
+  </contributor>
+  <language>en</language>
+  <script>Latn</script>
+  <series type="main">
+    <title format="plain" language="en" script="Latn">RFC</title>
+    <number>8288</number>
+  </series>
+</bibitem>

@@ -5,5 +5,5 @@
 
 [[citation_uml]]
 .Reference Model, ISO 690 Citations
-image::iso690xml/images/png/Bibliography__Citation_2.png[]
+image::relaton-models/images/RelBib_Citation.png[]
 

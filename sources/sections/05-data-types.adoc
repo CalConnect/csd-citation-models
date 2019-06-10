@@ -4,7 +4,7 @@
 
 Common data types used within this document are provided below.
 
-image::iso690xml/images/png/Bibliography__DataTypes_1.png[]
+image::relaton-models/images/RelBib_DataTypes.png[]
 
 Uri:: Container for URIs, as defined by <<rfc3986>>.
 

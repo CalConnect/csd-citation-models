@@ -4,7 +4,7 @@
 
 .Contribution model
 ====
-image::iso690xml/images/png/Bibliography__Contribution_7.png[]
+image::relaton-models/images/RelBib_Contribution.png[]
 ====
 
 ContributionInfo/role:: A description of the role of the contributor in the production of the bibliographic item.
@@ -17,7 +17,7 @@ ContributionInfo/entity:: The contributor involved in the production of the bibl
 
 .Contributor model
 ====
-image::iso690xml/images/png/Bibliography__Contributor_3.png[]
+image::relaton-models/images/RelBib_Contributor.png[]
 ====
 
 
