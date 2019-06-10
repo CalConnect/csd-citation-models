@@ -14,27 +14,37 @@ The reference model for citations is provided in <<citationmodel>>.
 image::iso690xml/images/png/Bibliography__BibliographicItem_0.png[]
 ====
 
-BibliographicItem/title:: The title of the bibliographic item.
+BibliographicItem/type:: The type of the bibliographic item.
+
+BibliographicItem/fetched:: The date at which the bibliographic item was last updated.
+
+BibliographicItem/title:: The title(s) of the bibliographic item.
 
 BibliographicItem/title/type:: The type for the given title of the bibliographic item.
 
-BibliographicItem/link:: A URI associated with the bibliographic item.
+BibliographicItem/link:: The URI(s) associated with the bibliographic item.
 
-BibliographicItem/type:: The type of the bibliographic item.
-
-BibliographicItem/docIdentifier:: An identifier of the bibliographic item in an international standard scheme.
+BibliographicItem/docIdentifier:: The identifier(s) of the bibliographic item in an international standard scheme.
 
 BibliographicItem/docIdentifier/type:: The scheme of the identifier
+BibliographicItem/docIdentifier/scope:: The scope of the identifier (in case the identifier is not for the document but for a superset or subset of entities; or in case the identifier is for a particular instance of the document, e.g. for a particular format or edition of the document)
 
 BibliographicItem/docIdentifier/id:: The identifier itself within the international standard scheme.
 
-BibliographicItem/date:: A date-time associated with the production of or access to the bibliographic item.
+BibliographicItem/date:: One or more date-times associated with the production of or access to the bibliographic item.
 
 BibliographicItem/contributor:: A contributor the production of the bibliographic item.
 
-BibliographicItem/edition:: The edition or version of the bibliographic item.
+BibliographicItem/edition:: The edition of the bibliographic item.
 
-BibliographicItem/note:: A note associated with the bibliographic item.
+BibliographicItem/edition/number:: A numeric equivalent to the edition, if the edition is given as discursive text.
+
+BibliographicItem/version:: The version of the bibliographic item (within an edition).
+BibliographicItem/version/revision-date:: The date at which the current version of the bibliographic item was produced.
+BibliographicItem/version/draft:: The identifier for the current draft of the bibliographic item.
+
+BibliographicItem/note:: Note(s) associated with the bibliographic item.
+BibliographicItem/note/type:: The class of the note associated with the bibliographic item.
 
 BibliographicItem/language:: The language(s) in which the bibliographic item is expressed.
 
@@ -45,18 +55,14 @@ used to sidestep the rendering of the reference out of its component parts.
 
 BibliographicItem/abstract:: The abstract of the bibliographic item.
 
-TODO: include?
-
-BibliographicItem/status/status:: The publication or preparation status of the bibliographic item.
-
-TODO: include? Much more relevant for standards, forms part of the customisation of this model for standards.
+BibliographicItem/status:: The publication or preparation status of the bibliographic item.
+BibliographicItem/status/stage:: The stage of the document status (mandatory component).
+BibliographicItem/status/substage:: The substage of the document status (optional component).
+BibliographicItem/status/iteration:: The iteration of the given status that the document is currently in (e.g. 3 for a third draft).
 
 BibliographicItem/copyright:: The copyright status of the bibliographic item.
-
 BibliographicItem/copyright/from:: The copyright date of the bibliographic item.
-
 BibliographicItem/copyright/to:: The date when the copyright of the bibliographic item expires.
-
 BibliographicItem/copyright/owner:: The copyright owner for the bibliographic item.
 
 BibliographicItem/relation:: The relation of the bibliographic item to another bibliographic item.
@@ -64,16 +70,16 @@ BibliographicItem/relation:: The relation of the bibliographic item to another b
 BibliographicItem/series:: The series of the bibliographic item.
 
 BibliographicItem/medium:: Information about the physical medium of the bibliographic item.
-
 BibliographicItem/medium/form:: The form of the physical medium of the bibliographic item.
-
 BibliographicItem/medium/size:: The size of the physical medium of the bibliographic item.
-
 BibliographicItem/medium/scale:: The scale of the cartographic material in the bibliographic item.
 
 BibliographicItem/place:: The geographic location associated with the production of the bibliographic item.
 
-BibliographicItem/extent:: The extent of the bibliographic item.
+BibliographicItem/extent:: The extent of the bibliographic item. Repeats for different levels of granularity (e.g. volume number, page number), or for discontinuous ranges (e.g. multiple page ranges)
+BibliographicItem/extent/type:: The type of extent (e.g. section, clause, page)
+BibliographicItem/extent/referenceFrom:: The starting value of the extent
+BibliographicItem/extent/referenceTo:: The end value of the extent as a range, if applicable
 
 BibliographicItem/accessLocation:: The location where the bibliographic item may be accessed.
 

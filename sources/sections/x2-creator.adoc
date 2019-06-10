@@ -37,6 +37,9 @@ NOTE: Inventor is atypical of the "performer" roles included in
 <<iso690,clause 5.1.b>>,
 and could arguably be regarded as an author role instead, alongside patentee.
 
+NOTE: Sponsoring organisations are conventionally included as distributors,
+following practice in <<iso690>>.
+
 ====
 Ramsey, J. K., & McGrew, W. C. (2005). Object play in great apes: Studies in nature and captivity.
 In A. D. Pellegrini & P. K. Smith (Eds.), _The nature of play: Great apes and humans_

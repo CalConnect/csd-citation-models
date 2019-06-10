@@ -76,12 +76,12 @@ p.vind.tand.25a = HGV P.Vindob. Tandem 25 a = Trismegistos 26540. At: P.Vindob.G
 
 
 ====
-Australian Government Bureau of Meteorology. _Latest Weather Observations for Dumont D'urville_. http://www.bom.gov.au. Path: Antarctica: Antarctic Observations: Latest observations: Dumont D'urville: JavaScript Object Notation format (JSON) in row-major order. Viewed 2018-03-10.
+Australian Government Bureau of Meteorology. _Latest Weather Observations for Dumont D'Urville_. http://www.bom.gov.au. Path: Antarctica: Antarctic Observations: Latest observations: Dumont D'Urville: JavaScript Object Notation format (JSON) in row-major order. Viewed 2018-03-10.
 
 [source,xml]
 --
 <bibitem type="electronic resource">
-  <title>Latest Weather Observations for Dumont D'urville</title>
+  <title>Latest Weather Observations for Dumont D'Urville</title>
   <link>http://www.bom.gov.au/fwo/IDT60803/IDT60803.89642.json</link>
   <date type="accessed"><on>2018-03-10</on></date>
   <contributor>
@@ -91,7 +91,7 @@ Australian Government Bureau of Meteorology. _Latest Weather Observations for Du
       <subdivision>Bureau of Meteorology</subdivision>
     </organization>
   </contributor>
-  <accessLocation>http://www.bom.gov.au. Path: Antarctica: Antarctic Observations: Latest observations: Dumont D'urville: JavaScript Object Notation format (JSON) in row-major order</accessLocation>
+  <accessLocation>http://www.bom.gov.au. Path: Antarctica: Antarctic Observations: Latest observations: Dumont D'Urville: JavaScript Object Notation format (JSON) in row-major order</accessLocation>
 </bibitem>
 --
 ====

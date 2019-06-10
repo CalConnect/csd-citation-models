@@ -43,13 +43,15 @@ ISBN 0662674979. Charlottetown, P.E.I. : Veterans Affairs Canada. 2003.
 * Serialisation: `bibitem/note`
 
 
-Price and availability information for a bibliographic item are treated
+Price is marked up as a distinct element, which contains the currency code, represented in ISO 4217.
+
+Availability information for a bibliographic item is treated
 as a note.
 
 // TODO: I could be talked out of that
 
 ====
-_Pluralism in the Soviet Union: Essays in Honour of H. Gordon Skilling_. Edited by Susan Gross Solomon. New York: St. Martin's Press, 1983. xiii, 179 pp. $27.50.
+_Pluralism in the Soviet Union: Essays in Honour of H. Gordon Skilling_. Edited by Susan Gross Solomon. New York: St. Martin's Press, 1983. xiii, 179 pp. $27.50. Available on request to the author.
 
 [source,xml]
 --
@@ -72,8 +74,9 @@ _Pluralism in the Soviet Union: Essays in Honour of H. Gordon Skilling_. Edited 
       <name>St Martin's Press</name>
     </organization>
   </contributor>
-  <note>$27.50</note>
+  <note>Available on request to the author</note>
   <place>New York</place>
+  <price currency="USD">27.50</price>
   <series>
     <title>Nevada Bureau of Mines and Geology Bulletin</title>
     <number>88</number>

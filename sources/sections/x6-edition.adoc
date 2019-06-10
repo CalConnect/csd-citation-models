@@ -8,6 +8,7 @@
 Editions are modelled as free text, given the variety of ways they can be represented
 (<<iso690,clause 8.1>>).
 For that reason, the full word "edition" needs to appear after any ordinal.
+The optional `number` attribute can be used to provide a numeric equivalent.
 
 Dates when a resource was last accessed are modelled as `date[@type = "accessed"]`;
 dates when a resource was last updated are modelled as `date[@type = "updated"]`
@@ -31,7 +32,7 @@ London: J. Johnson, 1798.
     <role type="publisher"/>
     <person><name><completeName>J. Johnson</completeName></name></person>
   </contributor>
-  <edition>1st edition</edition>
+  <edition number="1">1st edition</edition>
   <place>London</place>
 </bibitem>
 --
