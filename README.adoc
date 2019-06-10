@@ -1,22 +1,62 @@
-= Bibliographic reference model for ISO 690
+= CalConnect Standard: Information and documentation -- Bibliographic reference model and serialization
 
-== Install Dependencies
+This work item belongs to TC VCARD.
 
-[source,shell]
+image:https://travis-ci.com/CalConnect/csd-citation-models.svg?branch=master["Build Status", link="https://travis-ci.com/calconnect/csd-citation-models"]
+
+This document is available in its rendered forms here:
+
+* https://calconnect.github.io/csd-citation-models/[CC/ISO: Information and documentation -- Bibliographic reference model and serialization (HTML)]
+
+== Fetching the document
+
+[source,sh]
 ----
-bundle
+git clone https://github.com/CalConnect/csd-citation-models/
 ----
 
-== Quickstart
+== Installing Build Tools
 
-[source,shell]
+See https://www.metanorma.com/author/topics/install/
+
+
+== Running via Docker or locally
+
+If you have installed the build tools locally, and wish to run the
+locally-installed compilation tools, there is nothing further to set.
+
+If you don't want to deal with local dependencies, use the docker
+version by:
+
+[source,sh]
 ----
-make clean all open
+export METANORMA_DOCKER=1
 ----
 
-== Update the ISO690XML submodule
+The `Makefile` will automatically choose the proper command to
+execute.
 
-[source,shell]
+
+== Building The Document
+
+[source,sh]
 ----
-make update
+make clean all
 ----
+
+The following outputs will be built:
+
+* CSD XML (https://github.com/calconnect/metanorma-model-csd) (`[filename].xml`)
+* HTML (`[filename].html`)
+* PDF (`[filename].pdf`)
+* Word DOC (`[filename].doc`)
+
+
+== Iterating the document
+
+[source,sh]
+----
+make html
+open cc-*.html
+----
+
