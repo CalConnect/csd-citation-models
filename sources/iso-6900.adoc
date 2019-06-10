@@ -1,9 +1,9 @@
-= ISO 690 XML serialisation
+= Information and documentation -- Bibliographic reference model and serialization
 :technical-committee-number: 46
-:docnumber: XXXXX
+:docnumber: 6900
 :tc-document-number: 9999
 :edition: 1
-:ref-docnumber: ISO XXXXX:2018(E)
+:ref-docnumber: ISO 6900:2018(E)
 :copyright-year: 2018
 :language: en
 :title-intro-en: Information and documentation
@@ -31,6 +31,10 @@
 :xrefstyle: short
 :local-cache-only:
 :data-uri-image:
+:docfile: iso-36001.adoc
+:mn-document-class: iso
+:mn-output-extensions: xml,html,doc,html_alt,rxl
+
 
 include::sections/0a-foreword.adoc[]
 include::sections/0b-intro.adoc[]
