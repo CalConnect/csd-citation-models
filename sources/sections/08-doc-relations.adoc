@@ -4,7 +4,7 @@
 
 .DocumentRelation and related models
 ====
-image::iso690xml/images/png/Bibliography__Relations_4.png[]
+image::relaton-models/images/RelBib_DocumentRelation.png[]
 ====
 
 DocumentRelation/type:: The type of document relation described

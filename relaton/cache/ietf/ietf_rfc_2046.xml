@@ -1,0 +1,44 @@
+<bibitem id="RFC2046">
+  <fetched>2019-06-10</fetched>
+  <title format="plain" language="en" script="Latn">Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types</title>
+  <uri type="src">https://www.rfc-editor.org/info/rfc2046</uri>
+  <docidentifier type="IETF">RFC 2046</docidentifier>
+  <docidentifier type="DOI">10.17487/RFC2046</docidentifier>
+  <date type="published">
+    <on>1996-11</on>
+  </date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <completename language="en">N. Freed</completename>
+      </name>
+      <affiliation>
+        <organization>
+          <name>IETF</name>
+          <abbreviation>IETF</abbreviation>
+        </organization>
+      </affiliation>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <completename language="en">N. Borenstein</completename>
+      </name>
+      <affiliation>
+        <organization>
+          <name>IETF</name>
+          <abbreviation>IETF</abbreviation>
+        </organization>
+      </affiliation>
+    </person>
+  </contributor>
+  <language>en</language>
+  <script>Latn</script>
+  <series type="main">
+    <title format="plain" language="en" script="Latn">RFC</title>
+    <number>2046</number>
+  </series>
+</bibitem>

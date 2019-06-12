@@ -133,7 +133,7 @@ Royal Anthropological Institute of Great Britain and Ireland), the series run is
 preferred to differentiate the two runs.
 
 ====
-J. A. Barnes. 1966. Durkheim's Division of Labour in Society. Man (n.s.) 1(2): 158-175.
+\J. A. Barnes. 1966. Durkheim's Division of Labour in Society. Man (n.s.) 1(2): 158-175.
 
 <bibitem type="article">
   <title lang="en">Durkheim's Division of Labour in Society</title>

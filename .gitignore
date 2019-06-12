@@ -2,9 +2,4 @@
 .swp
 .tmp.xml
 
-# ISO files
-iso-*.html
-iso-*.doc
-iso-*.xml
-iso-*_files
-
+\ndeploy_key\n

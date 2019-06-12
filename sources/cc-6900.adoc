@@ -1,41 +1,31 @@
 = Information and documentation -- Bibliographic reference model and serialization
-:technical-committee-number: 46
 :docnumber: 6900
-:tc-document-number: 9999
+:copyright-year: 2019
+:language: en
+:doctype: standard
 :edition: 1
-:ref-docnumber: ISO 6900:2018(E)
-:copyright-year: 2018
-:language: en
-:title-intro-en: Information and documentation
-:title-main-en: Bibliographic reference model and serialization
-:title-intro-fr: Information et documentation
-:title-main-fr: Modèle de référence bibliographique et sérialisation
-:doctype: international-standard
-:docstage: 10
-:docsubstage: 92
-:technical-committee-type: TC
-:technical-committee-number: 46
-:technical-committee: Information and documentation
-:subcommittee-type: SC
-:subcommittee-number: 9
-:subcommittee: Identification and description
-:workgroup-type: WG
-:workgroup-number: 15
-:workgroup: Bibliography
-:secretariat: ANSI
-:language: en
+:status: working-draft
+:revdate: 2019-06-05
+:published-date: 2019-06-05
 :script: Latn
+:technical-committee: VCARD
+:fullname: Ronald Tse
+:surname: Tse
+:givenname: Ronald
+:fullname_2: Nick Nicholas
+:surname_2: Nicholas
+:givenname_2: Nick
 :draft:
 :toc:
 :stem:
 :xrefstyle: short
+:docfile: cc-6900.adoc
+:mn-document-class: csd
+:mn-output-extensions: xml,html,pdf,rxl
 :local-cache-only:
 :data-uri-image:
-:docfile: iso-36001.adoc
-:mn-document-class: iso
-:mn-output-extensions: xml,html,doc,html_alt,rxl
 
-include::sections-iso/00-foreword.adoc[]
+include::sections-cc/00-foreword.adoc[]
 include::sections/0b-intro.adoc[]
 include::sections/01-scope.adoc[]
 include::sections/02-norm-refs.adoc[]

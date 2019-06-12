@@ -11,7 +11,7 @@ The reference model for citations is provided in <<citationmodel>>.
 
 .BibliographicItem model
 ====
-image::iso690xml/images/png/Bibliography__BibliographicItem_0.png[]
+image::relaton-models/images/RelBib_BibliographicItem.png[]
 ====
 
 BibliographicItem/type:: The type of the bibliographic item.
@@ -134,7 +134,7 @@ Serialization of `ValidityInfo` is demonstrated below.
 
 .BibliographicSeries model
 ====
-image::iso690xml/images/png/Bibliography__Series_8.png[]
+image::relaton-models/images/RelBib_Series.png[]
 ====
 
 SeriesType/type:: The type of series description expressed in this container.
@@ -166,7 +166,7 @@ Series/partnumber:: The part-number of the bibliographic item within the series.
 
 .BibliographicDate model
 ====
-image::iso690xml/images/png/Bibliography__BibDates_5.png[]
+image::relaton-models/images/RelBib_Date.png[]
 ====
 
 TODO: add date types from ISO 19115-1 `CI_Date` `expiry, lastupdate, lastrevision, nextupdate, unavailable, inForce, adopted, deprecated, distribution`
@@ -184,16 +184,13 @@ BibliographicDate/on:: The point date described (mutually exclusive with date ra
 
 === Bibliographic Item Types
 
-
 .BibliographicItemTypes
 ====
-image::iso690xml/images/png/Bibliography__ItemTypes_6.png[]
+image::relaton-models/images/RelBib_BibItemType.png[]
 ====
 
 BibItemType:: The range of possible bibliographic items covered by this model. Note that
 legal documents are expressly outside the scope of <<iso690>>.
-
-TODO: we should not exclude legal documents.
 
 === Keywords
 
@@ -204,3 +201,4 @@ a code for the keyword, or a URI for the keyword: the basic Relaton model does n
 differentiate between these. The controlled vocabulary item may be presented in isolation,
 or as a hierarchy of terms (taxons).
 
+TODO: we should not exclude legal documents.

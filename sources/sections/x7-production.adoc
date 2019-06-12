@@ -194,7 +194,7 @@ Michaelmas term (Oxford), 2002
 ====
 
 ====
-[no date]
+\[no date]
 
 <date type="created" text="[no date]"/>
 ====
