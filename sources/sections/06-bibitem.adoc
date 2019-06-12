@@ -82,8 +82,16 @@ BibliographicItem/extent/referenceFrom:: The starting value of the extent
 BibliographicItem/extent/referenceTo:: The end value of the extent as a range, if applicable
 
 BibliographicItem/accessLocation:: The location where the bibliographic item may be accessed.
+BibliographicItem/license:: A license under which the bibliographic item has been issued. Preferably a URI or short identifier, rather than descriptive text.
 
 BibliographicItem/classification:: The classification of the bibliographic item according to a standard classification scheme.
+
+BibliographicItem/keyword:: A keyword for the bibliographic item.
+BibliographicItem/vocabid:: An item in a controlled vocabulary corresponding to the keyword
+BibliographicItem/vocabid/type:: A label for the controlled vocabulary.
+BibliographicItem/vocabid/uri:: A URI for the controlled vocabulary item.
+BibliographicItem/vocabid/code:: The code for the controlled vocabulary item.
+BibliographicItem/vocabid/term:: The term itself for the controlled vocabulary item.
 
 BibliographicItem/validity:: Information about how long the current description of the bibliographic item is valid for.
 
@@ -186,3 +194,13 @@ BibItemType:: The range of possible bibliographic items covered by this model. N
 legal documents are expressly outside the scope of <<iso690>>.
 
 TODO: we should not exclude legal documents.
+
+=== Keywords
+
+Keywords may optionally be aligned to one or more items in controlled vocabularies. That
+alignment involves an identifier for the controlled vocabulary item,
+and a label or namespace for the controlled vocabulary. The item identifier may be a keyword, 
+a code for the keyword, or a URI for the keyword: the basic Relaton model does not
+differentiate between these. The controlled vocabulary item may be presented in isolation,
+or as a hierarchy of terms (taxons).
+

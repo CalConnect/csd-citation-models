@@ -37,6 +37,36 @@ ISBN 0662674979. Charlottetown, P.E.I. : Veterans Affairs Canada. 2003.
 
 ====
 
+=== Keywords
+
+* Source: N/A
+* Serialisation: `bibitem/keyword`
+
+====
+<keyword>Homo sapiens</keyword>
+
+<keyword>
+  <vocab>Homo sapiens</vocab>
+  <vocabid type="wikidata" uri="https://www.wikidata.org/wiki/Q15978631">
+    <code>Q15978631</code>
+    <term>Homo sapiens</term>
+  </vocabid>
+  <vocabid type="National Biodiversity Network">
+    <code>NHMSYS0000376773</code>
+  </vocabid>
+</keyword>
+
+<keyword>
+  <taxon>Hominidae</taxon>
+  <taxon>Homininae</taxon>
+  <taxon>Hominini</taxon>
+  <taxon>Hominina</taxon>
+  <taxon>Homo</taxon>
+  <taxon>Homo sapiens</taxon>
+  <vocabid type="wikispecies"><term>Homo_sapiens</term></vocabid>
+</keyword>
+====
+
 === Price and availability
 
 * Source: <<iso690,clause 14.4>>
@@ -90,3 +120,14 @@ _Pluralism in the Soviet Union: Essays in Honour of H. Gordon Skilling_. Edited 
 </bibitem>
 --
 ====
+
+=== License
+
+* Source: N/A
+* Serialisation: `bibitem/license`
+
+====
+<license>BSD-2</license>
+<license>https://creativecommons.org/licenses/by/2.0/</license>
+====
+
