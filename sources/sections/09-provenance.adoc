@@ -39,10 +39,10 @@ be differentiated
 from any adjustments made to the reference by a citer; and the citer adjustments
 in some contexts may need to be overridden.
 
-This means indicating the provenance of bibliographic information, and allowing
-multiple versions
-of the same information, with differing provenance. At the simplest level there
-will simply be
+If the serialisation of bibliographic items is to reflect such adjustments to content,
+it will need to indicate the provenance of bibliographic information, and allow
+multiple versions of the same information, with differing provenance. At the simplest level 
+there will simply be
 two or more different versions of the reference serialisation, some representing
 the publisher or
 bibliographer's source of truth, and some representing the citer's adjustments
@@ -82,6 +82,5 @@ NOTE: Breaking out completions and emendations into separate elements in the mod
 (e.g. `<date><on><orig>1959</orig><corr>1995</corr></on></date>`)
 is not desirable,
 given how open-ended emendations can be (e.g. appearing anywhere in a string):
-they would complicate
-any serialisation of the model, to little real benefit.
+they would complicate any serialisation of the model, to little real benefit.
 

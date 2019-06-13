@@ -16,7 +16,8 @@ bibliographic type they belong to.
 NOTE: The list of bibliographic types is a union of the types listed in ISO 690
 and BibTeX. Master's Thesis and PhD Thesis from BibTeX are subsumed under "thesis".
 
-The list maintains distinction between:
+The list maintains a distinction between the following resources, all of which are
+necessarily included in another resource:
 
 "inbook":: A typically untitled part of a book. May be a chapter (or section, etc.) and/or a range of pages.
 "incollection":: A part of a book having its own title.
@@ -29,3 +30,4 @@ The following types have been added:
 
 * dataset: an electronic dataset. Used to avoid the overloading of "electronic resource" as a type.
 * website: a web site or web page. Used to avoid the overloading of "electronic resource" as a type.
+

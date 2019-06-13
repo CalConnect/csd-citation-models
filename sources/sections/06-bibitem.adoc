@@ -87,14 +87,45 @@ BibliographicItem/license:: A license under which the bibliographic item has bee
 BibliographicItem/classification:: The classification of the bibliographic item according to a standard classification scheme.
 
 BibliographicItem/keyword:: A keyword for the bibliographic item.
-BibliographicItem/vocabid:: An item in a controlled vocabulary corresponding to the keyword
-BibliographicItem/vocabid/type:: A label for the controlled vocabulary.
-BibliographicItem/vocabid/uri:: A URI for the controlled vocabulary item.
-BibliographicItem/vocabid/code:: The code for the controlled vocabulary item.
-BibliographicItem/vocabid/term:: The term itself for the controlled vocabulary item.
+BibliographicItem/keyword/vocabid:: An item in a controlled vocabulary corresponding to the keyword
+BibliographicItem/keyword/vocabid/type:: A label for the controlled vocabulary.
+BibliographicItem/keyword/vocabid/uri:: A URI for the controlled vocabulary item.
+BibliographicItem/keyword/vocabid/code:: The code for the controlled vocabulary item.
+BibliographicItem/keyword/vocabid/term:: The term itself for the controlled vocabulary item.
+BibliographicItem/keyword/taxon:: A sequence of taxa presenting a keyword in a hierarchical context.
 
 BibliographicItem/validity:: Information about how long the current description of the bibliographic item is valid for.
 
+The foregoing elements map to the overall structure of <<iso690>> as follows:
+
+* `BibliographicItem/contributor`: 4.1 Creator
+* `BibliographicItem/title`: 4.2 Title
+* `BibliographicItem/extent`: 4.3 Component parts
+* `BibliographicItem/medium`: 4.4 Medium designation
+* `BibliographicItem/edition`: 4.5 Edition and version
+* `BibliographicItem/version`: 4.5 Edition and version
+* `BibliographicItem/status`: 4.5 Edition and version
+* `BibliographicItem/date`: 4.6 Production
+* `BibliographicItem/place`: 4.6 Production
+* `BibliographicItem/contributor`: 4.6 Production
+* `BibliographicItem/extent`: 4.7 Numeration and pagination
+* `BibliographicItem/series`: 4.8 Series title and identifier
+* `BibliographicItem/docIdentifier`: 4.9 Identifier
+* `BibliographicItem/accessLocation`: 4.10 Location
+* `BibliographicItem/link`: 4.10 Location
+* `BibliographicItem/note`: 4.11 Other elements
+* `BibliographicItem/language`: 4.11 Other elements
+* `BibliographicItem/script`: 4.11 Other elements
+* `BibliographicItem/abstract`: 4.11 Other elements
+* `BibliographicItem/copyright`: 4.11 Other elements
+* `BibliographicItem/license`: 4.11 Other elements
+* `BibliographicItem/classification`: 4.11 Other elements
+* `BibliographicItem/keyword`: 4.11 Other elements
+* `BibliographicItem/type`: 5. Resource Types
+* `BibliographicItem/relation`: 5. Resource types
+* `BibliographicItem/formattedRef`: (presentation)
+* `BibliographicItem/fetched`: (record metadata)
+* `BibliographicItem/validity`: (record metadata)
 
 
 === Validity
@@ -171,6 +202,8 @@ image::relaton-models/images/RelBib_Date.png[]
 
 TODO: add date types from ISO 19115-1 `CI_Date` `expiry, lastupdate, lastrevision, nextupdate, unavailable, inForce, adopted, deprecated, distribution`
 
+QUERY: I think our list is stable and fine, and that I should not add these; most and indeed likely all are covered by existing terms.
+
 BibliographicDate:: Date associated with the production of or access to a bibliographic item.
 
 BibliographicDate/type:: The phase of the production of or access to a bibliographic item.
@@ -192,6 +225,8 @@ image::relaton-models/images/RelBib_BibItemType.png[]
 BibItemType:: The range of possible bibliographic items covered by this model. Note that
 legal documents are expressly outside the scope of <<iso690>>.
 
+TODO: we should not exclude legal documents.
+
 === Keywords
 
 Keywords may optionally be aligned to one or more items in controlled vocabularies. That
@@ -201,4 +236,4 @@ a code for the keyword, or a URI for the keyword: the basic Relaton model does n
 differentiate between these. The controlled vocabulary item may be presented in isolation,
 or as a hierarchy of terms (taxons).
 
-TODO: we should not exclude legal documents.
+

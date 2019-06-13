@@ -9,11 +9,11 @@ image::relaton-models/images/RelBib_Contribution.png[]
 
 ContributionInfo/role:: A description of the role of the contributor in the production of the bibliographic item.
 
-ContributionInfo/role/type:: The broad class of role of the contributor.
+ContributionInfo/role/type:: The broad class of role of the contributor. The breakdown used in <<iso690>> is recommended as such a classification: author, performer, editor, adapter, translator, publisher, distributor.
 
-ContributionInfo/role/description:: The specific description of the role of the contributor.
+ContributionInfo/role/description:: A more detailed description of the role of the contributor.
 
-ContributionInfo/entity:: The contributor involved in the production of the bibliographic item; may be either a person or an organization..
+ContributionInfo/entity:: The contributor involved in the production of the bibliographic item; may be either a person or an organization.
 
 .Contributor model
 ====
@@ -37,21 +37,21 @@ Person/name/completeName:: The preformatted version of the name of the person, n
 
 Person/name/note:: An additional note about the name of the person
 
-Person/name/uri:: A URI with information about the person.
+Person/uri:: A URI with information about the person.
 
-Person/name/affiliation:: The affiliation of the person within an organization.
+Person/affiliation:: The affiliation of the person within an organization.
 
-Person/name/affiliation/name:: The name of the affiliation of the person.
+Person/affiliation/name:: The name of the affiliation of the person.
 
-Person/name/affiliation/description:: A more detailed description of the affiliation of the person.
+Person/affiliation/description:: A more detailed description of the affiliation of the person.
 
-Person/name/affiliation/organization:: The organization with which the person is affiliated.
+Person/affiliation/organization:: The organization with which the person is affiliated.
 
-Person/name/identifier/value:: An identifier of the person according to an international identifier scheme.
+Person/identifier/value:: An identifier of the person according to an international identifier scheme.
 
-Person/name/identifier/type:: The international identifier scheme for the identifier of the person.
+Person/identifier/type:: The international identifier scheme for the identifier of the person.
 
-Person/name/contact:: Contact information for the person, including address, phone number, and email.
+Person/contact:: Contact information for the person, including address, phone number, and email.
 
 Organization/name:: The name of the organization.
 

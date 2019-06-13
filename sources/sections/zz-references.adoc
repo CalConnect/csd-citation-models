@@ -4,9 +4,13 @@
 
 * [[[bibtex,1]]], BibTeX. http://www.bibtex.org
 
-* [[[relaxngcompact,2]]], OASIS. RELAX NG Compact Syntax. Edited by James Clark. 2002-11-21. http://relaxng.org/compact.html
+* [[[frbr,2]]], IFLA. _Functional Requirements for Bibliographic Records_. 
+IFLA Series on Bibliographic Control 19. Munich: K.G. Saur. 1998.
+https://www.ifla.org/publications/functional-requirements-for-bibliographic-records
 
-* [[[relaxngcompact_tutorial,3]]], OASIS. RELAX NG Compact Syntax Tutorial.
+* [[[relaxngcompact,3]]], OASIS. RELAX NG Compact Syntax. Edited by James Clark. 2002-11-21. http://relaxng.org/compact.html
+
+* [[[relaxngcompact_tutorial,4]]], OASIS. RELAX NG Compact Syntax Tutorial.
 Edited by James Clark, John Cowan, MURATA Makoto. 2003-03-26.
 http://www.relaxng.org/compact-tutorial-20030326.html
 

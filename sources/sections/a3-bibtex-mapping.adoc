@@ -3,6 +3,8 @@
 [appendix,subtype=informative]
 == Mapping to BibTex
 
+TODO: populate
+
 === Categories of information resource
 
 From <<bibtype>>.

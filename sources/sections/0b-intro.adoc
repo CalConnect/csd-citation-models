@@ -7,7 +7,7 @@
 
 <<iso690>> has been in place for over 30 years as of this writing, as the ISO
 model of bibliographical referencing and citation (being one of several such
-standards). During the same time, a multitude of electronic
+standards). Over that period, a multitude of electronic
 referencing tools and conventions has evolved, and any of them can be used
 to encode at least a subset of the bibliographic information captured in
 <<iso690>>. However, there is no authoritative reference model
@@ -27,16 +27,15 @@ these will become apparent in any attempts to render references in a way
 compliant with <<iso690>>.)
 
 This document proposes a reference model and serialisation for <<iso690>>. The
-serialisation can be used to represent references compliant to <<iso690>>; but
+serialisation can be used to represent references compliant to <<iso690>>; 
 being formalised and complete,
 it can also be used to evaluate existing bibliographic tools for coverage of the
 standard, and to identify any issues they may have.
+The BibTeX tool <<bibtex>> has been used as a representative bibliographic tool
+in <<AnnexB>> to illustrate comparison against a reference model, because of 
+its popularity and relative completeness.
 
-The BibTeX tool <<bibtex>> has been
-used as a representative bibliographic tool, because of its popularity and
-relative completeness.
-
-A separate document proposes an example rendering stylesheet for the
+A separate document is inteded to propose an example rendering stylesheet for the
 serialisation of this model,
 which aligns with the examples used in <<iso690>>. <<iso690>> prescribes some
 aspects of rendering
@@ -45,3 +44,4 @@ aspects of rendering
 model and the rendering
 model of <<iso690>> to be differentiated, and the rendering items prescribed by
 <<iso690>> to be identified clearly.
+

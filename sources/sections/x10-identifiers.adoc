@@ -11,7 +11,26 @@ must be included in the bibliography. In practice, identifiers are included
 at the discretion of the bibliographer: they are routinely included in
 bibliographic databases, but seldom in references within documents.
 
-Standards body identifiers for standards (<<iso690,clause 15.10>>) are modelled as series numbers rather than as identifiers (<<series>>).
+The scope of an identifier is introduced where an identifier identifies
+only a component of the item (e.g. a document included in the item),
+or a superset of the item (e.g. a series). It can also be used if the
+identifier identifies a specific instantiation of the document as an entity;
+in terms of the Functional Requirements for Bibliographic Records <<frbr>>, for example,
+an identifier may identify a work, an expression of the work (e.g. an edition),
+a manifestation of the work (e.g. a format), or an item of the manifestation
+(e.g. a single physical copy).
+
+Neither the type nor the scope of the identifier have an associated controlled
+vocabulary, and one is unlikely to be derived. Identifier type should
+follow established practice in the domain; most well-known identifiers
+have a widely used short name or abbreviation. 
+
+Standards body identifiers for standards (<<iso690,clause 15.10>>)
+may be modelled as series numbers or as identifiers (<<series>>).
+We recommend that the canonical identifier issued for a standard by a
+standards body be encoded as an identifier; other identifiers assigned
+to the same document may be better identified with a series title, as a 
+named and numbered grouping of documents.
 
 ====
 _International Journal of Islamic Thought_. e-ISSN 2289-6023.

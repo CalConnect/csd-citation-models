@@ -7,9 +7,11 @@
 image::relaton-models/images/RelBib_DocumentRelation.png[]
 ====
 
-DocumentRelation/type:: The type of document relation described
+DocumentRelation/type:: The type of document relation described. Different resource types have differnet relations between documents;
+but inclusion is applicable to most resource types (though there are constraints in which resource types can include which.)
 
 DocumentRelation/bibItem:: The bibliographic item to which this bibliographic item is described as related to.
 
-DocumentRelation/bibLocality:: The extent of the this bibliographic item which is related to the other bibliographic,
-if it is not the entire bibliographic item that is so related.
+DocumentRelation/bibLocality:: The extent of the this bibliographic item which is related to the other bibliographic item
+as expressed in this instance, provided that it is not the entire bibliographic item that is so related.
+
