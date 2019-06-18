@@ -12,10 +12,11 @@ locator used by the repository (<<iso690,clause 13>>, <<iso690,clause 15.7.2>>).
 The repository and locator are not differentiated, and are treated as a single
 string. The `bibitem/accessLocation` element is also used for online locations
 of digital resources, where a single URL (`bibitem/link`) is not sufficient
-(<<iso690,clause 15.2.6>>).
+(<<iso690,clause 15.2.6>>), and either a navigation path, or an in-document
+object identifier is used.
 
 ====
-p.vind.tand.25a = HGV P.Vindob. Tandem 25 a = Trismegistos 26540. At: P.Vindob.Gr. Inv. Nr. 12424 + 24718 + 28384.
+P.Vind.Tand.25a = HGV P.Vindob. Tandem 25 a = Trismegistos 26540. At: P.Vindob.Gr. Inv. Nr. 12424 + 24718 + 28384.
 
 (Highly abbreviated format, using conventions familiar to papyrologists)
 
@@ -95,3 +96,4 @@ Australian Government Bureau of Meteorology. _Latest Weather Observations for Du
 </bibitem>
 --
 ====
+

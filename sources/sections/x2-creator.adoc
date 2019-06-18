@@ -20,6 +20,14 @@ corresponding to <<iso690,clause 5.1.a>> through <<iso690,clause 5.1.f>>), while
 `bibitem/contributor/role/description`
 contains one or more specific descriptions of the role of the contributor.
 
+The content of the `bibitem/contributor/role` element is optional, and contains
+a more specific expression of the creator role. The description can be
+strictly a noun, e.g. "librettist", or it can be a phrase, corresponding to how
+it will be rendered in a citation ("libretto by"); the choice is at the discretion
+of the bibliographer, and is determined by how the citation is expected to be rendered
+(as rendering systems are unlikely to be sophisticated enough to convert the one
+into the other.)
+
 Whether subsidiary creators should be included in a bibliographic item, and
 which creators should be included, is at the discretion of the bibliographer;
 see <<iso690,clause 5.4.5>>; <<iso690,clause 5.4.6>>.
@@ -33,9 +41,9 @@ NOTE: Although both composer and librettist are included as authors under
 the two roles are clearly differentiated in <<iso690,clause 15.8.1>>, with the
 composer given priority over the librettist.
 
-NOTE: Inventor is atypical of the "performer" roles included in
+NOTE: Inventor and patentee are atypical of the "performer" roles included in
 <<iso690,clause 5.1.b>>,
-and could arguably be regarded as an author role instead, alongside patentee.
+and could arguably be regarded as author roles instead.
 
 NOTE: Sponsoring organisations are conventionally included as distributors,
 following practice in <<iso690>>.
@@ -238,9 +246,15 @@ WINSBACHER KNABENCHOR. All' Lust und Freud'. Frankfurt: Bellaphon, 1983.
 Names may be modelled either broken up into their constituent components
 (prefix, forename, initials, surname, addition), or as a complete name string.
 The latter is useful if
-(unlike the recommendation of <<iso690,clause 5.2.1>>)
+(contrary to the recommendation of <<iso690,clause 5.2.1>>)
 language-specific conventions for ordering of name components are to be
 observed; e.g. "James CLARK, John COWAN, MURATA Makoto".
+
+If there are multiple contributors named in a role, all contributors are
+expected to be represented in the bibliographic entry.
+This reflects practice in electronic bibliographic tools.
+The model does contain a representation of "et al.", although renderers may
+chose to do so above a certain cutoff point.
 
 The `initials` component is used if all forenames are replaced by initials.
 If only the middle name is replaced by an initial, it is still treated as a
@@ -367,7 +381,10 @@ ACADEMY OF ATHENS. Research Centre for Modern Greek Dialects.
 === Pseudonyms
 
 If both the assumed and the real name of the creator are known, the
-supplementary real name (<<iso690,clause 5.5>>) should be modelled as a note:
+supplementary real name (<<iso690,clause 5.5>>) should be modelled as a note.
+This follows practice in <<iso690>>, which treats supplementary real names
+as annotations, rather than as cross-references.
+The model does not currently cater for relations between name instances.
 
 ====
 TWAIN, Mark [pseud. of Samuel Langhorne CLEMENS]
@@ -389,7 +406,8 @@ so can't identify the surname.
 
 Descriptors of authors, such as "Anon" (<<iso690,clause 5.6>>) or
 "Various Authors", should be given as completeName
-elements. As with pseudonyms, the real name of the creator if known can be
+elements. The model does not standardise the designations of
+authors. As with pseudonyms, the real name of the creator if known can be
 modelled as a note.
 
 ====
@@ -443,3 +461,4 @@ London: J. Johnson, 1798.
 </bibitem>
 --
 ====
+

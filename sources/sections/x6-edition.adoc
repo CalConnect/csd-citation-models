@@ -10,6 +10,7 @@ Editions are modelled as free text, given the variety of ways they can be repres
 For that reason, the full word "edition" needs to appear after any ordinal.
 The optional `number` attribute can be used to provide a numeric equivalent.
 
+As described in <<datetypes>>,
 Dates when a resource was last accessed are modelled as `date[@type = "accessed"]`;
 dates when a resource was last updated are modelled as `date[@type = "updated"]`
 (<<iso690,clause 8.2>>).
@@ -69,21 +70,22 @@ New York: New York University Press, 2015.
 ====
 When did the sounds of 'w' and 'v' change in High German?
 _Stack Exchange: Linguistics Beta_.
-Updated 10 May 2017 [viewed 8 May 2018].
+Updated 8 May 2017 [viewed 10 May 2018].
 Available from: https://linguistics.stackexchange.com/questions/22872/when-did-the-sounds-of-w-and-v-change-in-high-german
 
 [source,xml]
 --
-<bibitem type="electronic resource">
+<bibitem type="website">
   <title>When did the sounds of 'w' and 'v' change in High German?</title>
   <link>https://linguistics.stackexchange.com/questions/22872/when-did-the-sounds-of-w-and-v-change-in-high-german</link>
-  <date type="updated"><on>2017-05-10</on></date>
-  <date type="accessed"><on>2018-05-08</on></date>
+  <date type="updated"><on>2017-05-08</on></date>
+  <date type="accessed"><on>2018-05-10</on></date>
   <relation type="includedIn">
-    <bibitem>
+    <bibitem type="website">
       <title>Stack Exchange: Linguistics Beta</title>
     </bibitem>
   </relation>
 </bibitem>
 --
 ====
+

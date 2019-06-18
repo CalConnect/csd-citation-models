@@ -13,9 +13,7 @@
 Articles have their journal title modelled as the series title of the article
 item.
 However, the journal volume and issue should be modelled as part of the article
-item extent <<numeration>>, rather than as part of the series.
-
-// TODO: It can be in fact modelled as either, and I've changed my mind about this
+item extent <<numeration>>, rather than as part of the series (<<iso690,clause 10.3>>).
 
 === Standards
 
@@ -128,12 +126,12 @@ as _Man_, from 1901-1965. The journal restarted numbering at 1 from 1966-1996
 without changing name, and explicitly designating itself as a "new series".
 Unlike _Vizantiiskii Vremmenik_, both series were published in London, so
 place of publication cannot differentiate between them. While the organization did
-change name (from Anthropological Institute of Great Britain and Ireland to
-Royal Anthropological Institute of Great Britain and Ireland), the series run is
+change name (from "Anthropological Institute of Great Britain and Ireland" to
+"Royal Anthropological Institute of Great Britain and Ireland"), the series run is
 preferred to differentiate the two runs.
 
 ====
-\J. A. Barnes. 1966. Durkheim's Division of Labour in Society. Man (n.s.) 1(2): 158-175.
+J. A. Barnes. 1966. Durkheim's Division of Labour in Society. _Man_ (n.s.) 1(2): 158-175.
 
 <bibitem type="article">
   <title lang="en">Durkheim's Division of Labour in Society</title>

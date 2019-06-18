@@ -43,6 +43,8 @@ ISBN 0662674979. Charlottetown, P.E.I. : Veterans Affairs Canada. 2003.
 * Serialisation: `bibitem/keyword`
 
 ====
+[source,xml]
+--
 <keyword>Homo sapiens</keyword>
 
 <keyword>
@@ -65,15 +67,17 @@ ISBN 0662674979. Charlottetown, P.E.I. : Veterans Affairs Canada. 2003.
   <taxon>Homo sapiens</taxon>
   <vocabid type="wikispecies"><term>Homo_sapiens</term></vocabid>
 </keyword>
+--
 ====
 
 === Price and availability
 
 * Source: <<iso690,clause 14.4>>
-* Serialisation: `bibitem/note`
+* Serialisation: `bibitem/price`, `bibitem/note`
 
 
 Price is marked up as a distinct element, which contains the currency code, represented in ISO 4217.
+The price should be treated as nominal, rather than capturing all possible pricings at a given time.
 
 Availability information for a bibliographic item is treated
 as a note.
@@ -107,10 +111,6 @@ _Pluralism in the Soviet Union: Essays in Honour of H. Gordon Skilling_. Edited 
   <note>Available on request to the author</note>
   <place>New York</place>
   <price currency="USD">27.50</price>
-  <series>
-    <title>Nevada Bureau of Mines and Geology Bulletin</title>
-    <number>88</number>
-  </series>
   <extent type="page">
     <referenceFrom>xiii</referenceFrom>
   </extent>
@@ -125,6 +125,10 @@ _Pluralism in the Soviet Union: Essays in Honour of H. Gordon Skilling_. Edited 
 
 * Source: N/A
 * Serialisation: `bibitem/license`
+
+Where available, URIs should be used as unambiguously identifying licenses.
+If a URI is not available, a commonly accepted abbreviation or short name of
+the license should be used.
 
 ====
 <license>BSD-2</license>

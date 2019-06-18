@@ -9,9 +9,23 @@
 
 
 System requirements are modelled as a note, prefixed with "System requirements:"
-(<<iso690,clause 15.2.3>>). URLs should not be broken at the end of a line: that
+(<<iso690,clause 15.2.3>>). (Note that detailed system requirements are
+less commonly expressed now for software than they were in the 1990s and 2000s.)
+
+URLs should not be broken at the end of a line: that
 is a rendering requirement, not an information modelling requirement
 (<<iso690,clause 15.2.6>>).
+
+Where possible, a more specific category should be used than "electronic resource",
+which is properly a description of a medium and not a resource type; monographs and
+journals are now routinely published online. 
+
+* The category "dataset" is applied to
+a collection of data that is not meant to be human-readable, and which is typically
+machine readable. 
+* The category "wesbite" is applied to a human-readable online publication, which is
+not expressly presented as one of the established print categories, such as a book, 
+a conference proceedings, a technical report, or a journal.
 
 ====
 Ubisoft. _Far Cry 5_ [computer game]. 2018. Viewed: 2018-05-10.
@@ -139,7 +153,7 @@ contributions differentiated in the `bibitem/contributor/role`
 Programmes within a series have the series modelled as a `bibitem/series`.
 The title of the series is modelled as `bibitem/series/title`, and the title
 of the episode as `bibitem/title`. The transmitting organisation and channel
-are modelled as a contributor of type distributor (<<iso690,clause 15.6.4>>).
+are modelled as a contributor of type "distributor" (<<iso690,clause 15.6.4>>).
 
 If an audiovisual resource is a contained item, the `bibitem/extent` gives
 its location within the host item; this is typically a timestamp for visual
@@ -336,8 +350,6 @@ Patents are encoded similarly to contributions within a serial
 (<<iso690,clause 15.9>>), with the series designation for the
 patent preceded by the country name or code. The date of application
 is encoded as a date of type "issued".
-
-// TODO: issued?
 
 
 ====

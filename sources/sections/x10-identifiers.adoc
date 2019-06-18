@@ -40,8 +40,24 @@ ISSN 2232-1314.
 --
 <bibitem type="journal">
 <title>International Journal of Islamic Thought</title>
-<docidentifier type="e-ISSSN">2289-6023</docidentifier>
-<docidentifier type="ISSSN">2232-1314</docidentifier>
+<docidentifier scope="digital" type="e-ISSSN">2289-6023</docidentifier>
+<docidentifier scope="print" type="ISSSN">2232-1314</docidentifier>
+</bibitem>
+--
+====
+
+====
+Ahmed al-Kindi & Anke Iman Bouzenita. 2018.
+The notion of _Sunna_: An eclectic reading in the Ibadhi legacy.
+_International Journal of Islamic Thought_ 14:1-21. 
+https://doi.org/10.24035/ijit.14.2018.001. 
+
+[source,xml]
+--
+<bibitem type="article">
+<title>International Journal of Islamic Thought</title>
+<docidentifier scope="journal" type="doi">10.24035/ijit</docidentifier>
+<docidentifier scope="article" type="doi">10.24035/ijit.14.2018.001</docidentifier>
 </bibitem>
 --
 ====

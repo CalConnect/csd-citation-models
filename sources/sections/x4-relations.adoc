@@ -57,20 +57,20 @@ revisedBy:: document A is updated by document B, and the change is a major chang
 [[host-item]]
 === Host Item
 
-Of the bibliographic types identified in <<bibtype>>, incollection,
-inproceedings, and inbook are all inherently related to a host item. Other types
+Of the bibliographic types identified in <<bibtype>>, "incollection",
+"inproceedings", and "inbook" are all inherently related to a host item. Other types
 also potentially involve
 relations with host items; for example, the relation between a record track and
 a record, or a broadcast segment and a broadcast show. The relation between host
 item and contained item is modelled through "includedIn".
 
-The relation between any two items includes a locality element, which indicates
+The relation between any two items optionally includes a locality element, which indicates
 which part of the first item is related to the second. (For example, which part
 of the first item is superseded by the second.) The locality in the
 relation element can be used with "includedIn" relations, to indicate the extent
 of the
 contained item within the host item; but for consistency, it is preferable to
-use the extent element in the contained item, which has the same meaning.
+use the `extent` element in the contained item, which has the same meaning.
 
 The expected relations between host and contained items are as follows:
 
@@ -272,11 +272,9 @@ publication and the source language title of the original title. If the
 information about the source item is limited to these, no relation need be
 invoked in the title: the source title can be modelled as an original title
 variant (<<alt-title>>); the author differentiated from the translator as
-creators (<<creator-selection>>); and the date of authorshop differentiated
+creators (<<creator-selection>>); and the date of authorship differentiated
 from the date of translation (<<date>>: `date[@type = "created"]` vs
-`date[@type = "published"]`).
-
-TODO: use updated date for translation? Or distinct adapted or translated verb?
+`date[@type = "adapted"]`).
 
 However, if any further details of the source item need to be provided (e.g.
 source language: <<iso690,clause 14.5>>), they should be modelled through an
@@ -287,12 +285,14 @@ PRUS, Bolesław. 1912 [1895–1896]. _La Faraono_ [Faraon]. Translated
 by Kabe (pseud. of Kazimierz BEIN). 2nd revised edition.
 Paris: Hachette.
 
+Single work representation:
 [source,xml]
 --
 <bibitem type="book">
   <title lang="eo">La Faraono</title>
   <title type="original" lang="pl">Faraon</title>
   <date type="created"><from>1895</from><to>1896</to></date>
+  <date type="adapted"><on>1907</on></date>
   <date type="published"><on>1912</on></date>
   <contributor>
     <role type="author"/>
@@ -320,6 +320,63 @@ Paris: Hachette.
   </contributor>
   <edition>2nd revised edition</edition>
   <language>eo</language>
+  <place>Paris</place>
+</bibitem>
+
+Related work representation:
+[source,xml]
+--
+<bibitem type="book">
+  <title lang="eo">La Faraono</title>
+  <date type="adapted"><on>1907</on></date>
+  <date type="published"><on>1912</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Prus</surname>
+        <forename>Bolesław</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="translator"/>
+    <person>
+      <name>
+        <completeName>Kabe</completeName>
+        <note>pseud. of Kazimierz Bein</note>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Hachette</name>
+    </organization>
+  </contributor>
+  <edition>2nd revised edition</edition>
+  <language>eo</language>
+  <relation type="translatedFrom">
+    <title type="original" lang="pl">Faraon</title>
+    <date type="created"><from>1894</from><to>1895</to></date>
+    <date type="published"><from>1895</from><to>1896</to></date>
+    <contributor>
+     <role type="author"/>
+     <person>
+       <name>
+         <surname>Prus</surname>
+         <forename>Bolesław</forename>
+       </name>
+     </person>
+    </contributor>
+    <contributor>
+      <role type="publisher"/>
+      <organization>
+        <name>Tygodnik Ilustrowany</name>
+      </organization>
+    </contributor>
+    <language>pl</language>
+    <place>Warsaw</place>
   </relation>
   <place>Paris</place>
 </bibitem>
