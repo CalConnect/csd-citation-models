@@ -200,10 +200,6 @@ Series/partnumber:: The part-number of the bibliographic item within the series.
 image::relaton-models/images/RelBib_Date.png[]
 ====
 
-TODO: add date types from ISO 19115-1 `CI_Date` `expiry, lastupdate, lastrevision, nextupdate, unavailable, inForce, adopted, deprecated, distribution`
-
-QUERY: I think our list is stable and fine, and that I should not add these; most and indeed likely all are covered by existing terms.
-
 BibliographicDate:: Date associated with the production of or access to a bibliographic item.
 
 BibliographicDate/type:: The phase of the production of or access to a bibliographic item.
@@ -224,8 +220,6 @@ image::relaton-models/images/RelBib_BibItemType.png[]
 
 BibItemType:: The range of possible bibliographic items covered by this model. Note that
 legal documents are expressly outside the scope of <<iso690>>.
-
-TODO: we should not exclude legal documents.
 
 === Keywords
 

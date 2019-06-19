@@ -4,13 +4,13 @@
 
 === General
 
-* Source: <<iso690,clause 9>>
+* Source: <<iso690,clause 4.6>>
 * Serialisation: `bibitem/place, bibitem/contributor[role@type = "publisher"], bibitem/date`
 
 
 === Place
 
-Strictly speaking the place of production (<<iso690,clause 9.1>>)
+Strictly speaking the place of production 
 is an attribute of the publisher, and it can in fact be modelled as
 `bibitem/contributor[role@type = "publisher"]/organization/address/city`. 
 However, it is modelled as a top-level attribute of the bibliographic item 
@@ -50,24 +50,24 @@ SANGSTER, R. B. _Roman Jakobson and beyond_. Berlin, New York & The Hague: Mouto
 
 === Publisher
 
-The publisher is a subclass of creator (<<creator>>). <<iso690,5.1>>
+The publisher is a subclass of creator (<<creator>>). <<iso690,clause 4.1>>
 differentiates between
 "publisher, online information provider, production company" and
-"distributor, online host" (<<iso690,clause 5.1.e>>, <<iso690,clause 5.1.f>>).
-Of the classes of creator that can be used as the publisher
-(<<iso690,clause 9.2.1>>), "publisher or production company"
+"distributor, online host".
+Of the classes of creator that can be used as the publisher,
+"publisher or production company"
 and "printer or manufacturer" have
 `bibitem/contributor/role@type = "publisher"`;
 "distributor or issuing body" and "sponsoring body" have
 `bibitem/contributor/role@type = "distributor"`.
-<<iso690,clause 9.2.3>> allows that distributors, issuers and sponsors 
+<<iso690,clause 4.6>> allows that distributors, issuers and sponsors 
 can be named in addition to publishers.
 
 [[date]]
 === Date
 
 For a point date, only `date/on` is populated. For a date range, `date/from`
-and `date/to` are populated (<<iso690,clause 9.3.6>>). If the range is ongoing,
+and `date/to` are populated. If the range is ongoing,
 the `date/to` element is left out.
 
 The date for `date/on`, `date/from` and `date/to` is by default given as a
@@ -75,9 +75,9 @@ Gregorian date/time, following the conventions
 of <<iso8601>>; in an XML serialisation, they would be expected to follow
 the XML Schema `xs:datetime` representation (<<xmlschema>>). However bibliographic
 dates often contain information that cannot be restricted to an ISO 8601 date
-(<<iso690,clause 9.3.2>>: dates in other calendars, date corrections;
-<<iso690,clause 9.3.3>>: other subdivisions of the year;
-<<iso690,clause 9.3.4>>: approximate date or no date.) For that reason, the
+(dates in other calendars, date corrections;
+other subdivisions of the year;
+approximate date or no date.) For that reason, the
 model allows dates to be expressed in text instead of as an ISO 8601 date
 (`date/on@text`, `date/from@text`, `date/to@text`), or as well as an ISO 8601
 date if a Gregorian date is still applicable. 
@@ -216,7 +216,7 @@ Michaelmas term (Oxford), 2002
 ==== Date types
 
 Dates are associated with specific phases of the production of a bibliographic
-item, and those phases  are named through `date@type` (<<iso690,clause 9.3.1>>).
+item, and those phases  are named through `date@type`.
 The default type used in bibliography
 is the date of publication (`date[@type = "published"]`), but the "created",
 "updated", "unchanged", and "copied" dates in particular

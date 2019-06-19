@@ -2,13 +2,12 @@
 [[medium]]
 == Medium
 
-* Source: <<iso690,clause 7>>, <<iso690,clause 14.3>>, <<iso690,clause 15.2.2>>, <<iso690,clause 15.5.5>>, <<iso690,clause 15.5.6>>
+* Source: <<iso690,clause 4.4>>, <<iso690,clause 5.4>>
 * Serialisation: `bibitem/medium`
 
-<<iso690>> differentiates between the medium of the item (<<iso690,clause 7>>,
-<<iso690,clause 15.2.2>>),
-the size of the item (<<iso690,clause 14.3>>, <<iso690,clause 15.5.6>>), and
-for maps, the scale of the item (<<iso690,clause 15.5.5>>). These are all
+<<iso690>> differentiates between the medium of the item,
+the size of the item, and
+for maps, the scale of the item. These are all
 modelled as elements of the item medium; the medium itself is modelled as
 `medium/form`.
 

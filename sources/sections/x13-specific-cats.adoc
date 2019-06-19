@@ -4,17 +4,16 @@
 
 === Electronic information resources
 
-* Source: <<iso690,clause 15.2>>, <<iso690,clause 15.3>>
+* Source: <<iso690,clause 5.3>>
 * Serialisation: `bibitem/note`
 
 
-System requirements are modelled as a note, prefixed with "System requirements:"
-(<<iso690,clause 15.2.3>>). (Note that detailed system requirements are
+System requirements are modelled as a note, prefixed with "System requirements:".
+(Note that detailed system requirements are
 less commonly expressed now for software than they were in the 1990s and 2000s.)
 
 URLs should not be broken at the end of a line: that
-is a rendering requirement, not an information modelling requirement
-(<<iso690,clause 15.2.6>>).
+is a rendering requirement, not an information modelling requirement.
 
 Where possible, a more specific category should be used than "electronic resource",
 which is properly a description of a medium and not a resource type; monographs and
@@ -65,17 +64,16 @@ VIDEO CARD: NVIDIA GeForce GTX 670 | AMD R9 270 (2GB VRAM with Shader Model 5.0 
 
 === Cartographic material
 
-* Source: <<iso690,clause 15.5>>
+* Source: <<iso690,clause 5.4>>
 * Serialisation: `bibitem/note`, `bibitem/contributor/role`
 
 
 The projection, prime meridian, orientation, and reference systems (such as
-grids and navigational lattices) are given as notes (<<iso690,clause 15.5.1>>).
+grids and navigational lattices) are given as notes.
 The spectral characteristics of the sensor, details of the satellite systems,
 and the amount of cloud cover are
-also given as notes (<<iso690,clause 15.5.7>>).
-Details of the creator's role are given in `bibitem/contributor/role`
-(<<iso690,clause 15.5.2>>).
+also given as notes.
+Details of the creator's role are given in `bibitem/contributor/role`.
 
 
 ====
@@ -137,28 +135,26 @@ Fire Scar Mapping: Landsat 7 ETM+, Landsat 5 TM, Landsat 1–3 MSS</note>
 
 === Films, videos and broadcasts
 
-* Source: <<iso690,clause 15.6>>
+* Source: <<iso690,clause 5.5>>
 * Serialisation: `bibitem/note`, `bibitem/contributor/role`, `bibitem/series`,
 `bibitem/title`, `bibitem/extent`
 
 
 If a single contributor is to be singled out as the creator of a resource, they
-are assigned the `bibitem/contributor/role@type` of "author"
-(<<iso690,clause 15.6.2>>). Otherwise, if the
+are assigned the `bibitem/contributor/role@type` of "author".
+Otherwise, if the
 resource is treated as a collaborative effort, the various contributors should
 be listed with `bibitem/contributor/role@type` of "performer", with their
-contributions differentiated in the `bibitem/contributor/role`
-(<<iso690,clause 15.6.1>>).
+contributions differentiated in the `bibitem/contributor/role`.
 
 Programmes within a series have the series modelled as a `bibitem/series`.
 The title of the series is modelled as `bibitem/series/title`, and the title
 of the episode as `bibitem/title`. The transmitting organisation and channel
-are modelled as a contributor of type "distributor" (<<iso690,clause 15.6.4>>).
+are modelled as a contributor of type "distributor".
 
 If an audiovisual resource is a contained item, the `bibitem/extent` gives
 its location within the host item; this is typically a timestamp for visual
-material, and a timestamp or a track for audio material
-(<<iso690,clause 15.6.5>>).
+material, and a timestamp or a track for audio material.
 
 ====
 _The Death of Stalin_. Directed by Armando Iannucci. 2017.
@@ -275,13 +271,12 @@ Mosfellsbær: Sundlaugin, 2002.
 
 === Graphic Works
 
-* Source: <<iso690,clause 15.7>>
+* Source: <<iso690,clause 5.6>>
 * Serialisation: `bibitem/contributor/role`
 
 
 The fuller description of a contributors role under `bibitem/contributor/role`
-allows for Latin role descriptions such as _pinxit_ and _sculpsit_
-(<<iso690,clause 15.7.1>>)
+allows for Latin role descriptions such as _pinxit_ and _sculpsit_.
 
 ====
 _[Tent of Darius]_ C. Le Brun pinxit. S. Gribelin sculpsit.
@@ -310,7 +305,7 @@ _[Tent of Darius]_ C. Le Brun pinxit. S. Gribelin sculpsit.
 
 === Music
 
-* Source: <<iso690,clause 15.8>>
+* Source: <<iso690,clause 5.7>>
 * Serialisation: `bibitem/contributor/role`
 
 Librettists and composers are both contributors of role type "author"; the role
@@ -342,12 +337,12 @@ ADAMS, John Coolidge. _Nixon in China_. Libretto by Alice GOODMAN. 1987.
 
 === Patents
 
-* Source: <<iso690,clause 15.9>>
+* Source: <<iso690,clause 5.8>>
 * Serialisation: `bibitem/contributor/role`
 
 
 Patents are encoded similarly to contributions within a serial
-(<<iso690,clause 15.9>>), with the series designation for the
+(<<iso690,clause 5.2>>), with the series designation for the
 patent preceded by the country name or code. The date of application
 is encoded as a date of type "issued".
 

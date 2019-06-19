@@ -2,14 +2,14 @@
 [[bibtype]]
 == Categories of information resource
 
-* Source: <<iso690,clause 15>>
+* Source: <<iso690,clause 5>>
 * Serialisation: `bibitem@type`, `BibItemType`
 
 While <<iso690>> does not prescribe a list of possible bibliographic types,
 there are categories specific to particular information resource categories
-(<<iso690,clause 15>>),
+(<<iso690,clause 5>>),
 as well as rendering rules specific to information resource categories (e.g.
-<<iso690,clause 15.6.4>>: series title appears before item title for
+<<iso690,clause 5.5>>: series title appears before item title for
 broadcasts). For that reason, bibliographic items should indicate what
 bibliographic type they belong to.
 

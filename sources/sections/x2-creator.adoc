@@ -4,20 +4,19 @@
 
 === General
 
-* Source: <<iso690,clause 5>>
+* Source: <<iso690,clause 4.1>>
 * Serialisation: `bibitem/contributor`, `Person, Organization, Affiliation`
 
 [[creator-selection]]
 === Selection
 
-<<iso690,clause 5.1>> classifies the various possible roles a creator can have
+<<iso690,clause 4.1>> classifies the various possible roles a creator can have
 with regard to a resource into six broad categories in order of priority,
 with more refined classifications typically named for the creator. These
 classifications
 are retained in the model: `bibitem/contributor/role@type` provides the broad
-category of role (author, performer, compiler, adaptor, publisher, distributor,
-corresponding to <<iso690,clause 5.1.a>> through <<iso690,clause 5.1.f>>), while
-`bibitem/contributor/role/description`
+category of role (author, performer, compiler, adaptor, publisher, distributor),
+while `bibitem/contributor/role/description`
 contains one or more specific descriptions of the role of the contributor.
 
 The content of the `bibitem/contributor/role` element is optional, and contains
@@ -29,20 +28,18 @@ of the bibliographer, and is determined by how the citation is expected to be re
 into the other.)
 
 Whether subsidiary creators should be included in a bibliographic item, and
-which creators should be included, is at the discretion of the bibliographer;
-see <<iso690,clause 5.4.5>>; <<iso690,clause 5.4.6>>.
+which creators should be included, is at the discretion of the bibliographer.
 
-Exceptionally, "translator" is differentiated from the other "adaptor" roles of
-<<iso690,clause 5.1.d>>, because it is so different to other adaptor roles such
+Exceptionally, "translator" is differentiated from the other "adaptor" roles,
+because it is so different to other adaptor roles such
 as engraver or photographer.
 
 NOTE: Although both composer and librettist are included as authors under
-<<iso690,clause 5.1.a>>, but
-the two roles are clearly differentiated in <<iso690,clause 15.8.1>>, with the
+<<iso690,clause 4.1>>, 
+the two roles are clearly differentiated in <<iso690,clause 5.7>>, with the
 composer given priority over the librettist.
 
-NOTE: Inventor and patentee are atypical of the "performer" roles included in
-<<iso690,clause 5.1.b>>,
+NOTE: Inventor and patentee are atypical of the "performer" roles,
 and could arguably be regarded as author roles instead.
 
 NOTE: Sponsoring organisations are conventionally included as distributors,
@@ -246,7 +243,7 @@ WINSBACHER KNABENCHOR. All' Lust und Freud'. Frankfurt: Bellaphon, 1983.
 Names may be modelled either broken up into their constituent components
 (prefix, forename, initials, surname, addition), or as a complete name string.
 The latter is useful if
-(contrary to the recommendation of <<iso690,clause 5.2.1>>)
+(contrary to the recommendation of <<iso690,clause 4.1>>)
 language-specific conventions for ordering of name components are to be
 observed; e.g. "James CLARK, John COWAN, MURATA Makoto".
 
@@ -337,12 +334,11 @@ STEWART, John H.
 [[organisation]]
 === Organisations
 
-The model caters for both full names and abbreviations of organisations
-(<<iso690,clause 5.3.1>>).
+The model caters for both full names and abbreviations of organisations.
 Subordinate body names are modelled separately from the parent body name; the
 choice of whether
 to model parent + subordinate or a single name depends on the degree of
-independence of the subordinate body, as outlined in <<iso690,clause 5.3.3>>.
+independence of the subordinate body, as outlined in <<iso690,clause 4.1>>.
 
 ====
 St. Thomas University [Florida].
@@ -381,7 +377,7 @@ ACADEMY OF ATHENS. Research Centre for Modern Greek Dialects.
 === Pseudonyms
 
 If both the assumed and the real name of the creator are known, the
-supplementary real name (<<iso690,clause 5.5>>) should be modelled as a note.
+supplementary real name should be modelled as a note.
 This follows practice in <<iso690>>, which treats supplementary real names
 as annotations, rather than as cross-references.
 The model does not currently cater for relations between name instances.
@@ -404,7 +400,7 @@ so can't identify the surname.
 
 === Anonymous and Varii
 
-Descriptors of authors, such as "Anon" (<<iso690,clause 5.6>>) or
+Descriptors of authors, such as "Anon" or
 "Various Authors", should be given as completeName
 elements. The model does not standardise the designations of
 authors. As with pseudonyms, the real name of the creator if known can be

@@ -4,7 +4,7 @@
 
 === Classification
 
-* Source: <<iso690,clause 14.2>>
+* Source: <<iso690,clause 4.11>>
 * Serialisation: `bibitem/classification`
 
 ====
@@ -72,7 +72,7 @@ ISBN 0662674979. Charlottetown, P.E.I. : Veterans Affairs Canada. 2003.
 
 === Price and availability
 
-* Source: <<iso690,clause 14.4>>
+* Source: <<iso690,clause 4.11>>
 * Serialisation: `bibitem/price`, `bibitem/note`
 
 

@@ -2,11 +2,11 @@
 [[identifiers]]
 == Identifiers
 
-* Source: <<iso690,clause 12>>
+* Source: <<iso690,clause 4.9>>
 * Serialisation: `bibitem/docidentifier`
 
 
-<<iso690,clause 12>> argues that unique international standard identifiers
+<<iso690,clause 4.9>> argues that unique international standard identifiers
 must be included in the bibliography. In practice, identifiers are included
 at the discretion of the bibliographer: they are routinely included in
 bibliographic databases, but seldom in references within documents.
@@ -25,7 +25,7 @@ vocabulary, and one is unlikely to be derived. Identifier type should
 follow established practice in the domain; most well-known identifiers
 have a widely used short name or abbreviation. 
 
-Standards body identifiers for standards (<<iso690,clause 15.10>>)
+Standards body identifiers for standards (<<iso690,clause 5.999999999>>)
 may be modelled as series numbers or as identifiers (<<series>>).
 We recommend that the canonical identifier issued for a standard by a
 standards body be encoded as an identifier; other identifiers assigned

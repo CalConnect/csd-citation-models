@@ -4,7 +4,7 @@
 
 === General
 
-* Source: <<iso690,clause 6.3>>, <<iso690,clause 11>>
+* Source: <<iso690,clause 4.8>>, <<iso690,clause 5.2>>
 * Serialisation: `bibitem/series`
 
 
@@ -13,11 +13,11 @@
 Articles have their journal title modelled as the series title of the article
 item.
 However, the journal volume and issue should be modelled as part of the article
-item extent <<numeration>>, rather than as part of the series (<<iso690,clause 10.3>>).
+item extent <<numeration>>, rather than as part of the series (<<iso690,clause 4.7>>).
 
 === Standards
 
-Standards body identifiers for standards (<<iso690,clause 15.10>>) are modelled as series numbers.
+Standards body identifiers for standards (<<iso690,clause 5.9>>) are modelled as series numbers.
 
 ====
 ISO 690, _Information and documentation -- Guidelines for bibliographic references and citations to information resources_.
@@ -43,8 +43,7 @@ ISO 690, _Information and documentation -- Guidelines for bibliographic referenc
 
 === Qualifiers
 
-Organization and Place of Publication can be added to series titles for disambiguation
-(<<iso690,clause 6.3.1>>).
+Organization and Place of Publication can be added to series titles for disambiguation.
 Organization in this instance is only modelled as a strings, rather than as a detailed
 object (cf. <<organisation>>). The formattedTitle element is used to enforce the formatting
 of the series title and its qualifiers.
@@ -81,7 +80,7 @@ _Life_. (New York). (https://en.wikipedia.org/wiki/Life_(magazine))
 The current title of a series is given with `series@type` as "main" (which is the default);
 alternate titles, including
 historical titles, are given with `series@type` as "alt". Different time spans for historical
-titles are given with `series/dateFrom` and `series/dateTo` (<<iso690,clause 6.3.3>>).
+titles are given with `series/dateFrom` and `series/dateTo`.
 
 ====
 _New Scientist_. 1956-1971. +

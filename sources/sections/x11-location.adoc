@@ -2,17 +2,17 @@
 [[location]]
 == Location
 
-* Source: <<iso690,clause 13>>, <<iso690,clause 15.2.6>>, <<iso690,clause 15.7.2>>
+* Source: <<iso690,clause 4.10>>, <<iso690,clause 5.10>>
 * Serialisation: `bibitem/accessLocation`
 
 Unpublished items with a limited number of copies that are held at a repository
 should be referenced through `bibitem/accessLocation`,
 which gives the repository that the cited copy is held in, and the
-locator used by the repository (<<iso690,clause 13>>, <<iso690,clause 15.7.2>>).
+locator used by the repository.
 The repository and locator are not differentiated, and are treated as a single
 string. The `bibitem/accessLocation` element is also used for online locations
-of digital resources, where a single URL (`bibitem/link`) is not sufficient
-(<<iso690,clause 15.2.6>>), and either a navigation path, or an in-document
+of digital resources, where a single URL (`bibitem/link`) is not sufficient, 
+and either a navigation path, or an in-document
 object identifier is used.
 
 ====

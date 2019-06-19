@@ -2,7 +2,7 @@
 [[numeration]]
 == Numeration and pagination
 
-* Source: <<iso690,clause 10>>
+* Source: <<iso690,clause 4.7>>
 * Serialisation: `bibitem/extent`
 
 TODO: we have them as referenceFrom and referenceTo, but from and to would be enough
@@ -36,13 +36,13 @@ normally as part of the citation, not part of the bibliographic item.
 
 A hierarchical locality is expressed by repeating the extent element
 with the different applicable locality types; these should be given in
-hierarchical order (<<iso690,clause 10.1>>). However localities in an extent
+hierarchical order. However localities in an extent
 may be complimentary instead (e.g. "xiii+179 pp" for prefatory and main
 pagination; "114pp + 3 plates" for plates outside the main page numeration).
 
 Discontinuous ranges are modelled by repeating the extent element for the same locality type.
 
-Extent includes the volume and issues of a journal (<<iso690,clause 10.3>>), if the
+Extent includes the volume and issues of a journal, if the
 item is an article in the journal.
 
 ====
