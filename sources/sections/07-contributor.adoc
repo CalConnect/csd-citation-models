@@ -37,6 +37,9 @@ Person/name/completeName:: The preformatted version of the name of the person, n
 
 Person/name/note:: An additional note about the name of the person
 
+Person/name/variantname:: A variant name
+Person/name/variantname/type:: The type of variant of the name
+
 Person/uri:: A URI with information about the person.
 
 Person/affiliation:: The affiliation of the person within an organization.

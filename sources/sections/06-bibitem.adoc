@@ -22,7 +22,7 @@ BibliographicItem/title:: The title(s) of the bibliographic item.
 
 BibliographicItem/title/type:: The type for the given title of the bibliographic item.
 
-BibliographicItem/link:: The URI(s) associated with the bibliographic item.
+BibliographicItem/uri:: The URI(s) associated with the bibliographic item.
 
 BibliographicItem/docIdentifier:: The identifier(s) of the bibliographic item in an international standard scheme.
 
@@ -69,8 +69,12 @@ BibliographicItem/relation:: The relation of the bibliographic item to another b
 
 BibliographicItem/series:: The series of the bibliographic item.
 
-BibliographicItem/medium:: Information about the physical medium of the bibliographic item.
-BibliographicItem/medium/form:: The form of the physical medium of the bibliographic item.
+BibliographicItem/medium:: Information about the medium and transmission of the bibliographic item.
+BibliographicItem/medium/content:: The content type of the bibliographic item, reflecting the form of
+communication with it is expressed and perceived.
+BibliographicItem/medium/form:: The media type of the bibliographic item, used to access the content
+of the item, including file format for electronic media.
+BibliographicItem/medium/carrier:: The storage medium of the physical medium of the bibliographic item.
 BibliographicItem/medium/size:: The size of the physical medium of the bibliographic item.
 BibliographicItem/medium/scale:: The scale of the cartographic material in the bibliographic item.
 
@@ -112,7 +116,7 @@ The foregoing elements map to the overall structure of <<iso690>> as follows:
 * `BibliographicItem/series`: 4.8 Series title and identifier
 * `BibliographicItem/docIdentifier`: 4.9 Identifier
 * `BibliographicItem/accessLocation`: 4.10 Location
-* `BibliographicItem/link`: 4.10 Location
+* `BibliographicItem/uri`: 4.10 Location
 * `BibliographicItem/note`: 4.11 Other elements
 * `BibliographicItem/language`: 4.11 Other elements
 * `BibliographicItem/script`: 4.11 Other elements

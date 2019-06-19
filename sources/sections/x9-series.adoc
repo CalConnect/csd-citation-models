@@ -40,6 +40,9 @@ ISO 690, _Information and documentation -- Guidelines for bibliographic referenc
 --
 ====
 
+=== Archival materials
+
+The collection or fonds of archival material is modelled as a series.
 
 === Qualifiers
 

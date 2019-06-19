@@ -18,6 +18,11 @@ to allow the place to be extracted by consumers of the serialisation more readil
 to allow multiple locations to be associated with the publisher, and to allow
 only one of the places of the publisher to be associated with the production of the item.
 
+A URI in a geographical registry may optionally be given as `place/@uri`.
+A region within which the place is located may be given as `place/@region`,
+for disambiguation purposes; using a ISO 3166 code for a country or subnational
+region is recommended.
+
 ====
 SANGSTER, R. B. _Roman Jakobson and beyond_. Berlin, New York & The Hague: Mouton, 1984.
 
@@ -48,6 +53,15 @@ SANGSTER, R. B. _Roman Jakobson and beyond_. Berlin, New York & The Hague: Mouto
 --
 ====
 
+====
+London (Ontario)
+
+[source,xml]
+--
+<place uri="https://en.wikipedia.org/wiki/London,_Ontario" region="CA-ON">London (Ontario)</place>
+--
+====
+
 === Publisher
 
 The publisher is a subclass of creator (<<creator>>). <<iso690,clause 4.1>>
@@ -62,6 +76,9 @@ and "printer or manufacturer" have
 `bibitem/contributor/role@type = "distributor"`.
 <<iso690,clause 4.6>> allows that distributors, issuers and sponsors 
 can be named in addition to publishers.
+
+Any restrictions on access to a resource imposed by an online host
+(e.g. geographical restrictions) should be indicated in `bibitem/note`.
 
 [[date]]
 === Date
@@ -232,7 +249,9 @@ Normal bibliographic dates:
 created:: Date a resource was created.
 published:: Date a resource was published.
 accessed:: Date a resource was last accessed by the bibliographer; routinely used
-for online publications.
+for online publications. (Unlike in <<iso690>>, no distinction is made between
+"viewed" and "accessed" based on whether the resource is human-readable or
+machine-readable.)
 updated:: Date a resource was updated and republished. Used for new editions.
 unchanged:: Date a resource was reprinted, i.e. republished without any changes.
 circulated:: Date a draft version of a resource was circulated. (Drafts by definition

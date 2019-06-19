@@ -5,13 +5,30 @@
 * Source: <<iso690,clause 4.4>>, <<iso690,clause 5.4>>
 * Serialisation: `bibitem/medium`
 
-<<iso690>> differentiates between the medium of the item,
-the size of the item, and
+<<iso690>> differentiates between the content type of the item,
+the media type (which includes file format for electronic media),
+the carrier type, the size of the item (which can include duration,
+and electronic file size, as well as physical medium size), and
 for maps, the scale of the item. These are all
-modelled as elements of the item medium; the medium itself is modelled as
-`medium/form`.
+modelled as elements of the item medium; the media type or file format
+is modelled as `medium/form`.
 
-There is no fixed vocabulary modelled for `medium/form`. The size and scale
+There is no fixed vocabulary modelled for any of the elements of `media`
+(although <<iso690>> suggests closed Resource Description and Access (RDA)
+vocabularies for `medium/content` and `medium/carrier`, and IANA Media Type
+is best practice for `medium/form` for electronic resources. As <<iso690>>
+allows, there may be instances where the medium descriptions need to be
+discursive.
+
+<<iso690>> suggests specifying detailed information about the type of electronic
+information resource (e.g. "statistical dataset"); this is modelled as a bibliographical
+note (`bibitem/note`), since the type of bibliographic item (`bibite/@type`) is a closed
+vocabulary.
+
+Information about alternate formats should be modelled as related bibliographic
+items (through the "instance" document relation), each with their own medium information.
+
+The size and scale
 of the item usually contains numerical information, but is modelled as a string,
 given the complications of how size and scale can be described, particularly for
 cartographic material.

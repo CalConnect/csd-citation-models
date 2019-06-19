@@ -34,6 +34,14 @@ Exceptionally, "translator" is differentiated from the other "adaptor" roles,
 because it is so different to other adaptor roles such
 as engraver or photographer.
 
+For derivative works, the creator and title of the original resource can be mentioned
+as a bibliographic note (`bibitem/note`); however best practice is to treat the
+original resource as a distinct related bibliographic item, related through the
+"derivedFrom" relation (<<docrelations>>). Likewise, different originators of different
+editions should be modelled by modelling the editions as distinct related items,
+each with its own distinct editor as contributor. (For example, the later edition given
+as the main item, and the earlier edition related through a "updatedBy" relation.)
+
 NOTE: Although both composer and librettist are included as authors under
 <<iso690,clause 4.1>>, 
 the two roles are clearly differentiated in <<iso690,clause 5.7>>, with the
@@ -250,7 +258,7 @@ observed; e.g. "James CLARK, John COWAN, MURATA Makoto".
 If there are multiple contributors named in a role, all contributors are
 expected to be represented in the bibliographic entry.
 This reflects practice in electronic bibliographic tools.
-The model does contain a representation of "et al.", although renderers may
+The model does not contain a representation of "et al.", although renderers may
 chose to do so above a certain cutoff point.
 
 The `initials` component is used if all forenames are replaced by initials.
@@ -374,13 +382,15 @@ ACADEMY OF ATHENS. Research Centre for Modern Greek Dialects.
 --
 ====
 
-=== Pseudonyms
+=== Pseudonyms and Variant Names
 
-If both the assumed and the real name of the creator are known, the
-supplementary real name should be modelled as a note.
-This follows practice in <<iso690>>, which treats supplementary real names
-as annotations, rather than as cross-references.
-The model does not currently cater for relations between name instances.
+Variant names, and assumed names, can both be modelled
+as notes on names. However, for greater clarity, and for modelling
+of the internal structure of the variant or assumed name,
+a variant name can be modelled, with the same level of detail
+as default names. The type of variant, or relation between the name
+and variant, needs to be made explicit in that case.
+
 
 ====
 TWAIN, Mark [pseud. of Samuel Langhorne CLEMENS]
@@ -393,10 +403,24 @@ TWAIN, Mark [pseud. of Samuel Langhorne CLEMENS]
   <note>pseud. of Samuel Langhorne CLEMENS</note>
 </person>
 --
-====
 
-TODO: Or should we model as a relation between two names? Notes don't have an internal structure,
-so can't identify the surname.
+[source,xml]
+--
+<person>
+  <surname>Twain</surname>
+  <forename>Mark</forename>
+  <variantname type="pseudonymOf">
+    <surname>Clemens</surname>
+    <forename>Samuel</forename>
+    <forename>Langhorne</forename>
+  </variantname>
+  <variantname type="transliteration">
+    <surname language="el">Τουαίην</surname>
+    <forename language="el">Μαρκ</forename>
+  </variantname>
+</person>
+--
+====
 
 === Anonymous and Varii
 
@@ -404,7 +428,7 @@ Descriptors of authors, such as "Anon" or
 "Various Authors", should be given as completeName
 elements. The model does not standardise the designations of
 authors. As with pseudonyms, the real name of the creator if known can be
-modelled as a note.
+modelled as a note, or as a name variant.
 
 ====
 Anon. _Sir Gawain and the Green Knight_. Edited by R. A. WALDRON. Evanston:
@@ -446,7 +470,9 @@ London: J. Johnson, 1798.
   <contributor>
     <role type="author"/>
     <person><name><completeName>Anon</completeName></name></person>
-    <note>Thomas Robert MALTHUS</note>
+    <variantname type="realname">
+      <completename>Thomas Robert MALTHUS</completename>
+    </variantname>
   </contributor>
   <contributor>
     <role type="publisher"/>

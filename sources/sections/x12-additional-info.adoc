@@ -80,9 +80,8 @@ Price is marked up as a distinct element, which contains the currency code, repr
 The price should be treated as nominal, rather than capturing all possible pricings at a given time.
 
 Availability information for a bibliographic item is treated
-as a note.
-
-// TODO: I could be talked out of that
+as a note. This also applies to the availability of an online resource,
+and any access limitations, but not to licensing, which is encoded separately.
 
 ====
 _Pluralism in the Soviet Union: Essays in Honour of H. Gordon Skilling_. Edited by Susan Gross Solomon. New York: St. Martin's Press, 1983. xiii, 179 pp. $27.50. Available on request to the author.
@@ -123,15 +122,28 @@ _Pluralism in the Soviet Union: Essays in Honour of H. Gordon Skilling_. Edited 
 
 === License
 
-* Source: N/A
-* Serialisation: `bibitem/license`
+* Source: <<iso690,clause 4.11>>
+* Serialisation: `bibitem/license`, `bibitem/copyright`.
 
 Where available, URIs should be used as unambiguously identifying licenses.
 If a URI is not available, a commonly accepted abbreviation or short name of
 the license should be used.
 
+Copyright is privileged with a separate element, incorporating copyright date
+and owner.
+
 ====
 <license>BSD-2</license>
 <license>https://creativecommons.org/licenses/by/2.0/</license>
 ====
+
+=== Provenance and Authenticity
+
+* Source: <<iso690,clause 4.11>>
+* Serialisation: `bibitem/note`
+
+Notes on bibliographical provenance, and checksums for digital resources,
+are both given as bibliographic notes.
+
+
 
