@@ -29,5 +29,10 @@ NOTE: The above distinction aligns with BibTeX usage.
 The following types have been added:
 
 * dataset: an electronic dataset. Used to avoid the overloading of "electronic resource" as a type.
-* website: a web site or web page. Used to avoid the overloading of "electronic resource" as a type.
+* webresource: a web resource, a single item accessible online, which is not composed of components 
+all of which can be accessed in the same
+way. Used to avoid the overloading of "electronic resource" as a type. Includes blog posts, forum posts,
+social media posts, tweets, media files, individual web pages.
+* website: a collection of web resources. Used to avoid the overloading of "electronic resource" as a type.
+* software: computer executable code, not itself human-readable text (though it may generate such text).
 

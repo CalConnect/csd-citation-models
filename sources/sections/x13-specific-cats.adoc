@@ -408,3 +408,122 @@ HICKS, H. D. _Correspondence from Henry Davies Hicks to the Annapolis County ele
 --
 ====
 
+=== Datasets
+
+* Source:  <<iso690,clause 5.11>>
+
+The organisation publishing or producing the dataset is modelled as a publisher;
+the organisation hosting the dataset in a repository is modelled as a distributor.
+Data compilers, editors, investigators, and data managers are all modelled as editors.
+Timestamps are modelled as extents; queries wherever possible should be preented as URIs.
+Where that is not possible, the description of the necessary query to access the
+required data subset should be presented as an `accessLocation`.
+
+====
+MILBERGER, S. (2002). _Evaluation of violence against women with physical disabilities in Michigan, 2000–2001_ (ICPSR version) [dataset] [data in several file formats and codebook/questionnaire in PDF]. Detroit: Wayne State University [producer]. Ann Arbor, MI: Inter-university Consortium for Political and Social Research [distributor
+
+[source,xml]
+--
+<bibitem type="dataset">
+  <title>Evaluation of violence against women with physical disabilities in Michigan, 2000–2001</title>
+  <date type="created">2002</date>
+  <contributor>
+    <role type="editor"/>
+    <person>
+      <name>
+        <surname>Milberger</surname>
+        <initials>S.</initials>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher">producer</role>
+    <organization>
+      <name>Wayne State University</name>
+      <address>
+        <city>Detroit</city>
+      </address>
+    </organization>
+  </contributor>
+  <contributor>
+    <role type="distributor">repository</role>
+    <organization>
+      <name>Inter-university Consortium for Political and Social Research</name>
+      <address>
+        <city>Ann Arbor</city>
+        <state>MI</state>
+      </address>
+    </organization>
+  </contributor>
+  <version>
+    <draft>ICPSR version</draft>
+  </version>
+  <note>data in several file formats and codebook/questionnaire in PDF</note>
+</bibitem>
+--
+====
+
+====
+LEUPRECHT [et al.]. tas_CNRM-CERFACS-CNRM-CM5_RCP4.5_r1i1p1_CLMcom-CCLM4-8-17, [dataset]. Version 2. [Subset used: January to June 2014]. Vienna, Austria. CCCA Data Centre [distributor], 2016. Available from: https://hdl.handle.net/20.500.11756/93887ecf. [accessed 2017-06-28].
+
+[source,xml]
+--
+<bibitem type="dataset">
+  <title>tas_CNRM-CERFACS-CNRM-CM5_RCP4.5_r1i1p1_CLMcom-CCLM4-8-17</title>
+  <docidentifier type="handle">https://hdl.handle.net/20.500.11756/93887ecf</docidentifier>
+  <date type="created">2016</date>
+  <date type="accessed">2017-06-28</date>
+  <contributor>
+    <role type="editor"/>
+    <person>
+      <name>
+        <surname>Leuprecht</surname>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="editor"/>
+    <person>
+      <name>
+        <completename>et al.</completename>
+      </name>
+    </person>
+  </contributor>
+    <contributor>
+    <role type="distributor"/>
+    <organization>
+      <name>CCCA Data Centre</name>
+    </organization>
+  </contributor>
+  <version><draft>Version 2</draft></version>
+  <place>Vienna, Austria</place>
+  <extent type="time">
+    <referenceFrom>January 2014</referenceFrom>
+    <referenceTo>June 2014</referenceTo>
+  </extent>
+</bibitem>
+--
+====
+
+=== Social Media
+
+* Source:  <<iso690,clause 5.12>>
+
+Social media items are typically items of `bibitem/@type` "webresource", 
+although they may not always have an associated exposed URI (particularly
+for social media accessed primarily via phone app, rather than web browser).
+As with <<iso690>>, a distinction is made between items publicly available
+(or at least, broadcast to a defined group of people), and one-on-one
+text messages; the latter are conflated with voice and face-to-face communications
+between individuals, and are cited as personal communications.
+
+A person's real name may be related to the online identity assumed by the
+author of the item, if both are known. The online identity is treated as a
+pseudonym of the real life identity, and is serialised in the same way (<<variantnames>>).
+
+The service name or type should be encoded as `medium/form`, since it relates
+to how the content is to be accessed by an intermediary app. (For example, a tweet
+is not just accessed by a web browser, as a web resouurce; it is accessed and rendered
+by a web browser in the context of Twitter.)
+
+

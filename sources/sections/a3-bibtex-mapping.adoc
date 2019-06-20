@@ -3,16 +3,17 @@
 [appendix,subtype=informative]
 == Mapping to BibTex
 
-TODO: populate
+This listing includes the BibTeX fields presented as part of LaTeX <<latex>>,
+and (asterisked) the additional BibTeX fields in citavi <<citavi>>.
 
 === Categories of information resource
 
 From <<bibtype>>.
 
 |===
-|ISO 690 |BibTeX
+|BibTeX | Relaton
 
-|`bibitem@type`|
+|entry type |`bibitem@type`
 |===
 
 
@@ -20,37 +21,27 @@ From <<bibtype>>.
 
 From <<creator>>.
 
-|===
-|ISO 690 |BibTeX
+Note that BibTeX processes names as follows:
 
-|`bibitem/contributor`|
-|`bibitem/contributor@role`|
-|`bibitem/contributor/description`|
-|`bibitem/contributor/person`|
-|`bibitem/contributor/person/name`|
-|`bibitem/contributor/person/name/completeName`|
-|`bibitem/contributor/person/name/forename`|
-|`bibitem/contributor/person/name/initials`|
-|`bibitem/contributor/person/name/surname`|
-|`bibitem/contributor/person/name/addition`|
-|`bibitem/contributor/person/name/prefix`|
-|`bibitem/contributor/person/name/note`|
-|`bibitem/contributor/person/uri`|
-|`bibitem/contributor/person/affiliation`|
-|`bibitem/contributor/person/affiliation/name`|
-|`bibitem/contributor/person/affiliation/description`|
-|`bibitem/contributor/person/affiliation/organization`|
-|`bibitem/contributor/person/identifier`|
-|`bibitem/contributor/person/identifier@type`|
-|`bibitem/contributor/person/contact`|
-|`bibitem/contributor/organization`|
-|`bibitem/contributor/organization/name`|
-|`bibitem/contributor/organization/subdivision`|
-|`bibitem/contributor/organization/uri`|
-|`bibitem/contributor/organization/identifier`|
-|`bibitem/contributor/organization/identifier@type`|
-|`bibitem/contributor/organization/contact`|
-|`bibitem/contributor/organization/abbreviation`|
+[source,bnf]
+--
+author :=  authorName ("and" authorName)*
+editor :=  editorName ("and" editorName)*
+authorName := Surname, Forename MiddleName* | Forename MiddleName* Surname
+editorName := Surname, Forename MiddleName* | Forename MiddleName* Surname
+Surname := \s+ | "{" [^}]+ "}"
+Forename := \s+ | "{" [^}]+ "}"
+MiddleName := \s+ | "{" [^}]+ "}"
+--
+
+|===
+|BibTeX | Relaton
+
+| authorName |`bibitem/contributor[role/@type = 'author']`
+| editorName |`bibitem/contributor[role/@type = 'editor']`
+|forename |`bibitem/contributor/person/name/forename`
+|surname |`bibitem/contributor/person/name/surname`
+|middlename |`bibitem/contributor/person/name/middlename`
 |===
 
 
@@ -59,13 +50,12 @@ From <<creator>>.
 From <<title>>.
 
 |===
-|ISO 690 |BibTeX
+|BibTeX | Relaton
 
-|`bibitem/title`|
-|`bibitem/title@type`|
-|`bibitem/title@format`|
-|`bibitem/title@language`|
-|`bibitem/title@script`|
+|booktitle | `bibitem/relation[@type = 'includedIn']/bibitem/title`
+|title | `bibitem/title[@type = 'main']`
+|subtitle* | `bibitem/title[@type = 'subtitle']`
+
 |===
 
 
@@ -74,13 +64,9 @@ From <<title>>.
 From <<docrelations>>.
 
 |===
-|ISO 690 |BibTeX
+|BibTeX | Relaton
 
-|`bibitem/relation`|
-|`bibitem/relation@type`|
-|`bibitem/relation/bibitem`|
-|`bibitem/relation/bibLocality`|
-|`bibitem/extent`|
+|none |
 |===
 
 
@@ -89,11 +75,9 @@ From <<docrelations>>.
 From <<medium>>.
 
 |===
-|ISO 690 |BibTeX
+|BibTeX | Relaton
 
-|`bibitem/medium/form`|
-|`bibitem/medium/size`|
-|`bibitem/medium/scale`|
+|none |
 |===
 
 
@@ -103,11 +87,9 @@ From <<edition>>.
 
 
 |===
-|ISO 690 |BibTeX
+|BibTeX | Relaton
 
-|`bibitem/edition`|
-|`bibitem/date`|
-|`bibitem/date@type`|
+|edition |`bibitem/edition`
 |===
 
 
@@ -115,23 +97,15 @@ From <<edition>>.
 
 From <<production>>.
 
-==== General
-
-
 |===
-|ISO 690 |BibTeX
+|BibTeX | Relaton | Note
 
-|`bibitem/place`|
-|`bibitem/contributor[role@type = "publisher"]`|
-|`bibitem/date`|
-|`bibitem/date`|
-|`bibitem/date/from`|
-|`bibitem/date/from@text`|
-|`bibitem/date/to`|
-|`bibitem/date/to@text`|
-|`bibitem/date/on`|
-|`bibitem/date/on@text`|
-|`bibitem/copyright/date`|
+|address |`bibitem/place`
+|howpublished |`bibitem/note`
+|institution, school, organization |`bibitem/contributor[role/@type = 'distributor' and role = 'sponsor']/organization/name` | (The three never coocur in the same entry type)
+|month, year | `bibitem/date[@type = 'published']/on`, `bibitem/date[@type = 'created']/on`
+|publisher | `bibitem/contributor[role/@type = 'publisher']/organization/name`
+|urldate* | `bibitem/date[@type = 'accessed']/on`
 |===
 
 
@@ -141,12 +115,9 @@ From <<numeration>>.
 
 
 |===
-|ISO 690 |BibTeX
+|BibTeX | Relaton
 
-|`bibitem/extent`|
-|`bibitem/extent@type`|
-|`bibitem/extent/referenceFrom`|
-|`bibitem/extent/referenceTo`|
+|chapter | `bibitem/extent[@type = 'chapter']/referenceFrom`
 |===
 
 
@@ -156,19 +127,9 @@ From <<numeration>>.
 From <<series>>.
 
 |===
-|ISO 690 |BibTeX
+|BibTeX | Relaton | Note
 
-|`bibitem/series`|
-|`bibitem/series@type`|
-|`bibitem/series/title`|
-|`bibitem/series/place`|
-|`bibitem/series/organization`|
-|`bibitem/series/formattedTitle`|
-|`bibitem/series/abbrev`|
-|`bibitem/series/dateFrom`|
-|`bibitem/series/dateTo`|
-|`bibitem/series/number`|
-|`bibitem/series/partnumber`|
+|journal, series |`bibitem/series/title` | (The two never coocur in the same entry type)
 |===
 
 
@@ -178,10 +139,12 @@ From <<series>>.
 From <<identifiers>>.
 
 |===
-|ISO 690 |BibTeX
+|BibTeX | Relaton
 
-|`bibitem/docidentifier`|
-|`bibitem/series@type`|
+|doi* | `bibitem/docidentifier[@type = 'doi']`
+|isbn* | `bibitem/docidentifier[@type = 'isbn']`
+|lccn* | `bibitem/docidentifier[@type = 'lccn']`
+|issn* | `bibitem/docidentifier[@type = 'issn']`
 |===
 
 
@@ -190,9 +153,11 @@ From <<identifiers>>.
 From <<location>>.
 
 |===
-|ISO 690 |BibTeX
+|BibTeX | Relaton | Note
 
-|`bibitem/accessLocation`|
+|number, volume | `bibitem/extent[@type = 'volume']/referenceFrom` | (The two do not coocur in any entry type)
+|pages | `bibitem/extent[@type = 'page']/referenceFrom`, `bibitem/extent[@type = 'page']/referenceTo`
+|file2, url | `bibitem/uri`
 |===
 
 
@@ -201,89 +166,31 @@ From <<location>>.
 
 From <<additional-info>>.
 
+|===
+|BibTeX | Relaton
+
+| note | `bibitem/note`
+| type | `bibitem/classification`
+| timestamp* | `bibitem/fetched`
+| comment* | `bibitem/note[@type = 'comment']`
+| id* | `bibitem/@id`
+| language* | `bibitem/language`
+|===
+
 ==== Classification
 
 |===
-|ISO 690 |BibTeX
+|BibTeX | Relaton
 
-|`bibitem/classification`|
+| keywords* | `bibitem/classification`
 |===
 
 
 ==== Price and availability
 
 |===
-|ISO 690 |BibTeX
-
-|`bibitem/note`|
-|===
-
-
-
-
-=== Specific categories of information resource
-
-From <<specific-categories>>.
-
-==== Electronic information resources
+|BibTeX | Relaton
 
 |===
-|ISO 690 |BibTeX
 
-|`bibitem/note`|
-|===
-
-
-==== Cartographic material
-
-|===
-|ISO 690 |BibTeX
-
-|`bibitem/note`|
-|`bibitem/contributor/role`|
-|===
-
-
-
-==== Films, videos and broadcasts
-
-`bibitem/title`, `bibitem/extent`
-
-|===
-|ISO 690 |BibTeX
-
-|`bibitem/note`|
-|`bibitem/contributor/role`|
-|`bibitem/series`|
-|`bibitem/title`|
-|`bibitem/extent`|
-|===
-
-
-==== Graphic Works
-
-|===
-|ISO 690 |BibTeX
-
-|`bibitem/contributor/role`|
-|===
-
-
-==== Music
-
-|===
-|ISO 690 |BibTeX
-
-|`bibitem/contributor/role`|
-|===
-
-
-==== Patents
-
-
-|===
-|ISO 690 |BibTeX
-
-|`bibitem/contributor/role`|
-|===
 

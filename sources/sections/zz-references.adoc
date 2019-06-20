@@ -4,13 +4,17 @@
 
 * [[[bibtex,1]]], BibTeX. http://www.bibtex.org
 
-* [[[frbr,2]]], IFLA. _Functional Requirements for Bibliographic Records_. 
+* [[[citavi,2]]], Citavi. https://citavi.com
+
+* [[[frbr,3]]], IFLA. _Functional Requirements for Bibliographic Records_. 
 IFLA Series on Bibliographic Control 19. Munich: K.G. Saur. 1998.
 https://www.ifla.org/publications/functional-requirements-for-bibliographic-records
 
-* [[[relaxngcompact,3]]], OASIS. RELAX NG Compact Syntax. Edited by James Clark. 2002-11-21. http://relaxng.org/compact.html
+* [[[latex,4]]], Lamport, Leslie. 1986. _LATEX. A document preparation system. User's Guide and Reference Manual_. Reading, MA: Addison-Wesley.
 
-* [[[relaxngcompact_tutorial,4]]], OASIS. RELAX NG Compact Syntax Tutorial.
+* [[[relaxngcompact,5]]], OASIS. RELAX NG Compact Syntax. Edited by James Clark. 2002-11-21. http://relaxng.org/compact.html
+
+* [[[relaxngcompact_tutorial,6]]], OASIS. RELAX NG Compact Syntax Tutorial.
 Edited by James Clark, John Cowan, MURATA Makoto. 2003-03-26.
 http://www.relaxng.org/compact-tutorial-20030326.html
 
@@ -23,5 +27,5 @@ _Uniform Resource Identifier (URI): Generic Syntax_. January 2005.  https://tool
 * [[[rfc8288,IETF RFC 8288]]], Nottingham, M.
 _Web Linking_. October 2017.  https://tools.ietf.org/html/rfc8288
 
-* [[[xmlschema, 4]]], W3C. XML Schema Part 2: Datatypes Second Edition. W3C Recommendation. 2004-10-28. https://www.w3.org/TR/xmlschema-2/
+* [[[xmlschema, 7]]], W3C. XML Schema Part 2: Datatypes Second Edition. W3C Recommendation. 2004-10-28. https://www.w3.org/TR/xmlschema-2/
 

@@ -37,8 +37,8 @@ Person/name/completeName:: The preformatted version of the name of the person, n
 
 Person/name/note:: An additional note about the name of the person
 
-Person/name/variantname:: A variant name
-Person/name/variantname/type:: The type of variant of the name
+Person/name/variant:: A variant name
+Person/name/variant/type:: The type of variant of the name
 
 Person/uri:: A URI with information about the person.
 
@@ -57,8 +57,14 @@ Person/identifier/type:: The international identifier scheme for the identifier 
 Person/contact:: Contact information for the person, including address, phone number, and email.
 
 Organization/name:: The name of the organization.
+Organization/name/primary:: The name of the organization (if it has variants).
+Organization/name/variant/type:: The type of variant name of the organization.
+Organization/name/variant/primary:: The variant name of the organization.
 
 Organization/subdivision:: The subdivision of the organization directly involved with the production of the bibliographic item.
+Organization/subdivision/primary:: The name of the subdivision (if it has variants).
+Organization/subdivision/variant/type:: The type of variant name of the subdivision.
+Organization/subdivision/variant/primary:: The variant name of the subdivision.
 
 Organization/uri:: A URI with information about the organization.
 

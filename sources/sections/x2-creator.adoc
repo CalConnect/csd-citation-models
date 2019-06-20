@@ -257,9 +257,10 @@ observed; e.g. "James CLARK, John COWAN, MURATA Makoto".
 
 If there are multiple contributors named in a role, all contributors are
 expected to be represented in the bibliographic entry.
-This reflects practice in electronic bibliographic tools.
-The model does not contain a representation of "et al.", although renderers may
-chose to do so above a certain cutoff point.
+This reflects practice in electronic bibliographic tools, and renderers
+may choose to truncate contributors with "et al." beyond a certain cuttoff point..
+If this information is not available, a dummy contributor can be
+named with "et al." as their `completename`, but this is not preferred.
 
 The `initials` component is used if all forenames are replaced by initials.
 If only the middle name is replaced by an initial, it is still treated as a
@@ -382,6 +383,7 @@ ACADEMY OF ATHENS. Research Centre for Modern Greek Dialects.
 --
 ====
 
+[[variantnames]]
 === Pseudonyms and Variant Names
 
 Variant names, and assumed names, can both be modelled
@@ -391,6 +393,8 @@ a variant name can be modelled, with the same level of detail
 as default names. The type of variant, or relation between the name
 and variant, needs to be made explicit in that case.
 
+Variant names can be applied to personal names,
+organization names, and organization subdivision names.
 
 ====
 TWAIN, Mark [pseud. of Samuel Langhorne CLEMENS]
@@ -409,15 +413,15 @@ TWAIN, Mark [pseud. of Samuel Langhorne CLEMENS]
 <person>
   <surname>Twain</surname>
   <forename>Mark</forename>
-  <variantname type="pseudonymOf">
+  <variant type="pseudonymOf">
     <surname>Clemens</surname>
     <forename>Samuel</forename>
     <forename>Langhorne</forename>
-  </variantname>
-  <variantname type="transliteration">
+  </variant>
+  <variant type="transliteration">
     <surname language="el">Τουαίην</surname>
     <forename language="el">Μαρκ</forename>
-  </variantname>
+  </variant>
 </person>
 --
 ====
