@@ -69,8 +69,7 @@ differentiates between
 "publisher, online information provider, production company" and
 "distributor, online host".
 Of the classes of creator that can be used as the publisher,
-"publisher or production company"
-and "printer or manufacturer" have
+"publisher or production company" and "printer or manufacturer" have
 `bibitem/contributor/role@type = "publisher"`;
 "distributor or issuing body" and "sponsoring body" have
 `bibitem/contributor/role@type = "distributor"`.
@@ -92,8 +91,7 @@ Gregorian date/time, following the conventions
 of <<iso8601>>; in an XML serialisation, they would be expected to follow
 the XML Schema `xs:datetime` representation (<<xmlschema>>). However bibliographic
 dates often contain information that cannot be restricted to an ISO 8601 date
-(dates in other calendars, date corrections;
-other subdivisions of the year;
+(dates in other calendars, date corrections; other subdivisions of the year;
 approximate date or no date.) For that reason, the
 model allows dates to be expressed in text instead of as an ISO 8601 date
 (`date/on@text`, `date/from@text`, `date/to@text`), or as well as an ISO 8601

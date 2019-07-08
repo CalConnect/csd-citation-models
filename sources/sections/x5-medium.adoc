@@ -13,7 +13,7 @@ for maps, the scale of the item. These are all
 modelled as elements of the item medium; the media type or file format
 is modelled as `medium/form`.
 
-There is no fixed vocabulary modelled for any of the elements of `media`
+There is no fixed vocabulary modelled for any of the elements of `medium`
 (although <<iso690>> suggests closed Resource Description and Access (RDA)
 vocabularies for `medium/content` and `medium/carrier`, and IANA Media Type
 is best practice for `medium/form` for electronic resources. As <<iso690>>
@@ -21,15 +21,17 @@ allows, there may be instances where the medium descriptions need to be
 discursive.
 
 <<iso690>> suggests specifying detailed information about the type of electronic
-information resource (e.g. "statistical dataset"); this is modelled as a bibliographical
-note (`bibitem/note`), since the type of bibliographic item (`bibite/@type`) is a closed
-vocabulary.
+information resource (e.g. "statistical dataset"), which cannot be represented
+in the type of bibliographic item (`bibitem/@type`), and is likely to be to specific
+for the RDA triple of content, carrier and form. The `medium/genre` element is intended
+to convey this kind of information, and can be used more generally as a well-recognised
+subclass of bibliographic type or content.
 
 Information about alternate formats should be modelled as related bibliographic
 items (through the "instance" document relation), each with their own medium information.
 
-The size and scale
-of the item usually contains numerical information, but is modelled as a string,
+The size and scale of the item (`medium/size`, `medium/scale`) 
+usually contains numerical information, but is modelled as a string,
 given the complications of how size and scale can be described, particularly for
 cartographic material.
 
@@ -40,7 +42,7 @@ Mosfellsbær: Sundlaugin, 2002.
 
 [source,xml]
 --
-<bibitem type="audiovisual">
+<bibitem type="music">
   <title>Untitled</title>
   <title type="unofficial">Vaka</title>
   <date type="published"><on>2002</on></date>
@@ -73,7 +75,9 @@ Mosfellsbær: Sundlaugin, 2002.
 ====
 
 ====
-Easterbrook, Don J. _Geologic Map of Western Whatcom County, Washington_. Map. 1:62,500. col. 68 x 69 cm. fold. in envelope 30 x 24 cm. Miscellaneous Investigations Series, map 1-854-B. Reston, VA: U.S. Geological Survey, 1976.
+Easterbrook, Don J. _Geologic Map of Western Whatcom County, Washington_. 
+Map. 1:62,500. col. 68 x 69 cm. fold. in envelope 30 x 24 cm. 
+Miscellaneous Investigations Series, map 1-854-B. Reston, VA: U.S. Geological Survey, 1976.
 
 [source,xml]
 --
@@ -81,8 +85,8 @@ Easterbrook, Don J. _Geologic Map of Western Whatcom County, Washington_. Map. 1
   <title>Geologic Map of Western Whatcom County, Washington</title>
   <date type="published"><on>1976</on></date>
   <contributor>
-    <role type="author">
-    <person><name><completeName>Easterbrook, Don J.</completeName></name></person>
+    <role type="author"/>
+    <person><name><completename>Easterbrook, Don J.</completename></name></person>
   </contributor>
   <contributor>
     <role type="publisher"/>
@@ -101,5 +105,43 @@ Easterbrook, Don J. _Geologic Map of Western Whatcom County, Washington_. Map. 1
 </bibitem>
 --
 
+====
+
+====
+GATES, B. [BillGates]. (2013, February 26). 
+#Polio is 99% eradicated. Join me & @FCBarcelona as we work to finish the job and #EndPolio. 
+[Tweet]. Available from: https://twitter.com/BillGates/status/306195345845665792. 
+[viewed 2016-07-06T12:30:15+02:00]. See also VIDEO: http://b-gat.es/X75Lvy. 
+
+[source,xml]
+--
+<bibitem type="electronic resource">
+  <title>#Polio is 99% eradicated. Join me & @FCBarcelona as we work to finish the job and #EndPolio</title>
+  <date type="published"><on>2013-02-26</on></date>
+  <date type="accessed"><on>2016-07-06T12:30:15+02:00</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Gates</surname>
+        <initial>B.</initial>
+      </name>
+      <variant type="username">
+        <completename>BillGates</completename>
+      </variant>
+    </person>
+  </contributor>
+  <uri>https://twitter.com/BillGates/status/306195345845665792</uri>
+  <medium>
+    <form>Twitter</form>
+    <genre>tweet</genre>
+  </medium>
+  <relation type="complements">
+    <bibitem type="video">
+       <uri>http://b-gat.es/X75Lvy</uri>
+    </bibitem>
+  </relation>
+</bibitem>
+--
 ====
 

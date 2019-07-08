@@ -13,27 +13,25 @@ less commonly expressed now for software than they were in the 1990s and 2000s.)
 URLs should not be broken at the end of a line: that
 is a rendering requirement, not an information modelling requirement.
 
-Where possible, a more specific category should be used than "electronic resource",
+As discussed in <<bibtype>>, where possible, a more specific category 
+should be used than "electronic resource",
 which is properly a description of a medium and not a resource type; monographs and
 journals are now routinely published online. 
 
-* The category "dataset" is applied to
-a collection of data that is not meant to be human-readable, and which is typically
-machine readable. 
-* The category "wesbite" is applied to a human-readable online publication, which is
-not expressly presented as one of the established print categories, such as a book, 
-a conference proceedings, a technical report, or a journal.
+The specific type of electronic resource, if not covered by `bibitem/@type` (e.g.
+"book", "dataset"), should be given as `medium/genre`.
 
 ====
 Ubisoft. _Far Cry 5_ [computer game]. 2018. Viewed: 2018-05-10.
 System requirements: CPU: Intel Core i5-2400 | AMD FX-6300 @ 3.5 GHz or better
 (minimum); Intel Core i7-4770 @ 3.4 GHz | AMD Ryzen 5 1600 @ 3.2 GHz or equivalent (recommended).
 RAM: 8 GB. OS: Windows 7 SP1, Windows 8.1, Windows 10 (64-bit versions only).
-VIDEO CARD: NVIDIA GeForce GTX 670 | AMD R9 270 (2GB VRAM with Shader Model 5.0 or better) (minimum); NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better) (recommended).
+VIDEO CARD: NVIDIA GeForce GTX 670 | AMD R9 270 (2GB VRAM with Shader Model 5.0 or better) (minimum); 
+NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better) (recommended).
 
 [source,xml]
 --
-<bibitem type="electronic resource">
+<bibitem type="software">
   <title>Far Cry 5</title>
   <date type="published"><on>2018</on></date>
   <date type="accessed"><on>2018-05-10</on></date>
@@ -50,12 +48,13 @@ VIDEO CARD: NVIDIA GeForce GTX 670 | AMD R9 270 (2GB VRAM with Shader Model 5.0 
     </organization>
   </contributor>
   <medium>
-    <form>computer game</form>
+    <genre>computer game</genre>
   </medium>
   <note>System requirements: CPU: Intel Core i5-2400 | AMD FX-6300 @ 3.5 GHz or better
 (minimum); Intel Core i7-4770 @ 3.4 GHz | AMD Ryzen 5 1600 @ 3.2 GHz or equivalent (recommended).
 RAM: 8 GB. OS: Windows 7 SP1, Windows 8.1, Windows 10 (64-bit versions only).
-VIDEO CARD: NVIDIA GeForce GTX 670 | AMD R9 270 (2GB VRAM with Shader Model 5.0 or better) (minimum); NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better) (recommended).</note>
+VIDEO CARD: NVIDIA GeForce GTX 670 | AMD R9 270 (2GB VRAM with Shader Model 5.0 or better) (minimum); 
+NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better) (recommended).</note>
 </bibitem>
 --
 ====
@@ -68,13 +67,14 @@ VIDEO CARD: NVIDIA GeForce GTX 670 | AMD R9 270 (2GB VRAM with Shader Model 5.0 
 The projection, prime meridian, orientation, and reference systems (such as
 grids and navigational lattices) are given as notes.
 The spectral characteristics of the sensor, details of the satellite systems,
-and the amount of cloud cover are
-also given as notes.
+and the amount of cloud cover are also given as notes.
 Details of the creator's role are given in `bibitem/contributor/role`.
 
 
 ====
-Berner, L.T., P.S.A. Beck, M.M. Loranty, H.D. Alexander, M.C. Mack, and S.J. Goetz.  _Siberian Boreal Forest Aboveground Biomass and Fire Scar Maps, Russia, 1969-2007_. ORNL DAAC, Oak Ridge, Tennessee, USA. 2016. http://dx.doi.org/10.3334/ORNLDAAC/1321
+Berner, L.T., P.S.A. Beck, M.M. Loranty, H.D. Alexander, M.C. Mack, and S.J. Goetz.  
+_Siberian Boreal Forest Aboveground Biomass and Fire Scar Maps, Russia, 1969-2007_. 
+ORNL DAAC, Oak Ridge, Tennessee, USA. 2016. http://dx.doi.org/10.3334/ORNLDAAC/1321
 
 [source,xml]
 --
@@ -108,7 +108,7 @@ Berner, L.T., P.S.A. Beck, M.M. Loranty, H.D. Alexander, M.C. Mack, and S.J. Goe
     <organization>
       <name>Oak Ridge National Laboratory</name>
       <subdivision>Distributed Active Archive Center</subdivision>
-      <abbrev>ORNL DAAC</abbrev>
+      <abbreviation>ORNL DAAC</abbreviation>
     </organization>
   </contributor>
   <medium>
@@ -226,44 +226,6 @@ NBC. 1978-05-13.
 --
 ====
 
-====
-Sigur Rós.
-Untitled [Vaka]. In: _( )_ [compact disc]. Track 1.
-Mosfellsbær: Sundlaugin, 2002.
-
-[source,xml]
---
-<bibitem type="audiovisual">
-  <title>Untitled</title>
-  <date type="published"><on>2002</on></date>
-  <contributor>
-    <role type="author">composer</role>
-    <organization><name>Sigur Rós</name></organization>
-  </contributor>
-  <medium>
-    <form>compact disc</form>
-  </medium>
-  <relation type="includedIn">
-    <bibitem>
-      <title>( )</title>
-      <contributor>
-        <role type="author">composer</role>
-        <organization><name>Sigur Rós</name></organization>
-      </contributor>
-      <contributor>
-        <role type="publisher"/>
-        <organization><name>Sundlaugin</name></organization>
-      </contributor>
-      <place>Mosfellsbær, Iceland</place>
-    </bibitem>
-    <locality type="track">
-      <referenceFrom>1</referenceFrom>
-    </locality>
-  </relation>
-</bibitem>
---
-====
-
 === Graphic Works
 
 * Source: <<iso690,clause 5.6>>
@@ -306,15 +268,27 @@ Librettists and composers are both contributors of role type "author"; the role
 of composer and librettist needs to be differentiated in the contributor
 role for proper rendering.
 
+The type "music" covers both music scores and music recordings, as is done
+in <<iso690>>. The two are differentiated in `medium`; following
+the practice in <<iso690>>, `medium/content` "notated music" is used
+for music scores, while `medium/carrier` is used for recordings
+(audio disc = CD, online resource). While it is possible to cite music in the
+abstract, without referencing either a score or a recording (especially if the
+score is not published), this is not
+good practice, for the same reason that particular editions are required
+for citation of textual works.
+
 ====
-ADAMS, John Coolidge. _Nixon in China_. Libretto by Alice GOODMAN. 1987.
+ADAMS, John Coolidge. _Nixon in China_. Libretto by Alice GOODMAN. 2004 [1987].
+Vocal score. New York: Boosey & Hawkes.
 
 
 [source,xml]
 --
 <bibitem type="music">
-  <title>Untitled</title>
-  <date type="published"><on>1987</on></date>
+  <title>Nixon in China</title>
+  <date type="created"><on>1987</on></date>
+  <date type="published"><on>2004</on></date>
   <contributor>
     <role type="author">composer</role>
     <person><name><completeName>John Coolidge ADAMS</completeName></name></person>
@@ -323,10 +297,61 @@ ADAMS, John Coolidge. _Nixon in China_. Libretto by Alice GOODMAN. 1987.
     <role type="author">libretto by</role>
     <person><name><completeName>Alice GOODMAN</completeName></name></person>
   </contributor>
+  <contributor>
+    <role type="publisher">
+    <organization><name>Boosey &amp; Hawkes</name></organization>
+  </contributor>
+  <medium>
+    <content>notated music</content>
+    <genre>vocal score</genre>
+  </medium>
+  <place>New York</place>
 </bibitem>
 --
 ====
 
+====
+ADAMS, John Coolidge. _Nixon in China_. Libretto by Alice GOODMAN. 2009.
+Marin Alsop (Conductor). Colorado Symphony Orchestra. [Audio CD].
+3 CDs. Naxos.
+
+[source,xml]
+--
+<bibitem type="music">
+  <title>Nixon in China</title>
+  <date type="created"><on>1987</on></date>
+  <date type="published"><on>2004</on></date>
+  <contributor>
+    <role type="author">composer</role>
+    <person><name><completeName>John Coolidge ADAMS</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="author">libretto by</role>
+    <person><name><completeName>Alice GOODMAN</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="performer">conductor</role>
+    <person><name><completeName>Marin ALSOP</completeName></name></person>
+  </contributor>
+  <contributor>
+    <role type="performer"/>
+    <organization><name>Colorado Symphony Orchestra</name></organization>
+  </contributor>
+  <contributor>
+    <role type="publisher">
+    <organization><name>Naxos</name></organization>
+  </contributor>
+  <medium>
+    <carrier>audio disc</carrier>
+  </medium>
+  <place>New York</place>
+  <extent type="locality:CD">
+    <referenceTo>3</referenceTo>
+  </extent>
+</bibitem>
+--
+
+====
 
 
 === Patents
@@ -521,9 +546,48 @@ A person's real name may be related to the online identity assumed by the
 author of the item, if both are known. The online identity is treated as a
 pseudonym of the real life identity, and is serialised in the same way (<<variantnames>>).
 
-The service name or type should be encoded as `medium/form`, since it relates
+The particular form of social media communication (e.g. blog post, forum post, tweet,
+message) should be given through `medium/genre`.
+At a lower priority, the service name or type should be encoded as `medium/form`, since it relates
 to how the content is to be accessed by an intermediary app. (For example, a tweet
 is not just accessed by a web browser, as a web resouurce; it is accessed and rendered
 by a web browser in the context of Twitter.)
+
+
+
+====
+GATES, B. [BillGates]. (2013, February 26). #Polio is 99% eradicated. Join me & @FCBarcelona as we work to finish the job and #EndPolio. [Tweet]. Available from: https://twitter.com/BillGates/status/306195345845665792. [viewed 2016-07-06T12:30:15+02:00]. See also VIDEO: http://b-gat.es/X75Lvy.
+
+[source,xml]
+--
+<bibitem type="social_media">
+  <title>#Polio is 99% eradicated. Join me & @FCBarcelona as we work to finish the job and #EndPolio</title>
+  <date type="published"><on>2013-02-26</on></date>
+  <date type="accessed"><on>2016-07-06T12:30:15+02:00</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Gates</surname>
+        <initial>B.</initial>
+      </name>
+      <variant type="username">
+        <completename>BillGates</completename>
+      </variant>
+    </person>
+  </contributor>
+  <uri>https://twitter.com/BillGates/status/306195345845665792</uri>
+  <medium>
+    <form>Twitter</form>
+    <genre>tweet</genre>
+  </medium>
+  <relation type="complements">
+    <bibitem type="video">
+       <uri>http://b-gat.es/X75Lvy</uri>
+    </bibitem>
+  </relation>
+</bibitem>
+--
+====
 
 

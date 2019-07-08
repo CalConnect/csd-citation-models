@@ -37,8 +37,8 @@ MiddleName := \s+ | "{" [^}]+ "}"
 |===
 |BibTeX | Relaton
 
-| authorName |`bibitem/contributor[role/@type = 'author']`
-| editorName |`bibitem/contributor[role/@type = 'editor']`
+|authorName |`bibitem/contributor[role/@type = 'author']`
+|editorName |`bibitem/contributor[role/@type = 'editor']`
 |forename |`bibitem/contributor/person/name/forename`
 |surname |`bibitem/contributor/person/name/surname`
 |middlename |`bibitem/contributor/person/name/middlename`

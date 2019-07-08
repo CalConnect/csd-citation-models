@@ -3,8 +3,6 @@
 :sectnums!:
 == Introduction
 
-// https://github.com/riboseinc/bib-models/issues/1
-
 <<iso690>> has been in place for over 30 years as of this writing, as the ISO
 model of bibliographical referencing and citation (being one of several such
 standards). Over that period, a multitude of electronic

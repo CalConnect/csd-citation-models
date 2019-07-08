@@ -31,7 +31,7 @@ Whether subsidiary creators should be included in a bibliographic item, and
 which creators should be included, is at the discretion of the bibliographer.
 
 Exceptionally, "translator" is differentiated from the other "adaptor" roles,
-because it is so different to other adaptor roles such
+because it is so different from other adaptor roles such
 as engraver or photographer.
 
 For derivative works, the creator and title of the original resource can be mentioned
@@ -132,7 +132,7 @@ Victor BERS. Austin: University of Texas Press, 2003.
     <role type="author"/>
     <person>
       <name>
-        <completeName>Demosthenes</completeName>
+        <completename>Demosthenes</completename>
       </name>
     </person>
   </contributor>
@@ -210,7 +210,7 @@ WINSBACHER KNABENCHOR. All' Lust und Freud'. Frankfurt: Bellaphon, 1983.
 
 [source,xml]
 --
-<bibitem type="audiovisual">
+<bibitem type="music">
   <title>All' Lust und Freud'</title>
   <date type="published"><on>1983</on></date>
   <contributor>
@@ -221,19 +221,19 @@ WINSBACHER KNABENCHOR. All' Lust und Freud'. Frankfurt: Bellaphon, 1983.
   </contributor>
   <contributor>
     <role type="author">composer</role>
-    <person><name><completeName>Gastoldi, Giovanni Giacomo</completeName></name></person>
+    <person><name><completename>Gastoldi, Giovanni Giacomo</completename></name></person>
   </contributor>
   <contributor>
     <role type="author">composer</role>
-    <person><name><completeName>Isaak, Heinrich</completeName></name></person>
+    <person><name><completename>Isaak, Heinrich</completename></name></person>
   </contributor>
   <contributor>
     <role type="author">composer</role>
-    <person><name><completeName>Othmayr, Caspar</completeName></name></person>
+    <person><name><completename>Othmayr, Caspar</completename></name></person>
   </contributor>
   <contributor>
     <role type="author">composer</role>
-    <person><name><completeName>Demantius, Christoph</completeName></name></person>
+    <person><name><completename>Demantius, Christoph</completename></name></person>
   </contributor>
   <contributor>
     <role type="publisher"/>
@@ -241,6 +241,9 @@ WINSBACHER KNABENCHOR. All' Lust und Freud'. Frankfurt: Bellaphon, 1983.
       <name>Bellaphon</name>
     </person>
   </organization>
+  <medium>
+    <carrier>audio disc</carrier>
+  </medium>
   <place>Frankfurt</place>
 </bibitem>
 --
@@ -319,7 +322,7 @@ KING, Martin Luther, Jr.
 --
 <person>
   <name>
-    <completeName>KING, Martin Luther, Jr.</completeName>
+    <completename>KING, Martin Luther, Jr.</completename>
   </name>
 </person>
 --
@@ -392,6 +395,8 @@ of the internal structure of the variant or assumed name,
 a variant name can be modelled, with the same level of detail
 as default names. The type of variant, or relation between the name
 and variant, needs to be made explicit in that case.
+For example `pseudonym`/`pseudonymOf` for literary pseudonyms,
+or `username`/`usernameOf` for social media usernames.
 
 Variant names can be applied to personal names,
 organization names, and organization subdivision names.
@@ -429,7 +434,7 @@ TWAIN, Mark [pseud. of Samuel Langhorne CLEMENS]
 === Anonymous and Varii
 
 Descriptors of authors, such as "Anon" or
-"Various Authors", should be given as completeName
+"Various Authors", should be given as `completename`
 elements. The model does not standardise the designations of
 authors. As with pseudonyms, the real name of the creator if known can be
 modelled as a note, or as a name variant.
@@ -445,11 +450,11 @@ Northwestern University Press, 1970.
   <date type="published"><on>1970</on></date>
   <contributor>
     <role type="author"/>
-    <person><name><completeName>Anon</completeName></name></person>
+    <person><name><completename>Anon</completename></name></person>
   </contributor>
   <contributor>
     <role type="editor"/>
-    <person><name><completeName>R. A. WALDRON</completeName></name></person>
+    <person><name><completename>R. A. WALDRON</completename></name></person>
   </contributor>
   <contributor>
     <role type="publisher"/>
@@ -473,14 +478,14 @@ London: J. Johnson, 1798.
   <date type="published"><on>1798</on></date>
   <contributor>
     <role type="author"/>
-    <person><name><completeName>Anon</completeName></name></person>
+    <person><name><completename>Anon</completename></name></person>
     <variantname type="realname">
       <completename>Thomas Robert MALTHUS</completename>
     </variantname>
   </contributor>
   <contributor>
     <role type="publisher"/>
-    <person><name><completeName>J. Johnson</completeName></name></person>
+    <person><name><completename>J. Johnson</completename></name></person>
   </contributor>
   <edition>1st edition</edition>
   <place>London</place>

@@ -230,7 +230,7 @@ Mosfellsbær: Sundlaugin, 2002.
 
 [source,xml]
 --
-<bibitem type="audiovisual">
+<bibitem type="music">
   <title>Untitled</title>
   <title type="unofficial">Vaka</title>
   <date type="published"><on>2002</on></date>
@@ -307,7 +307,7 @@ Single work representation:
     <role type="translator"/>
     <person>
       <name>
-        <completeName>Kabe</completeName>
+        <completename>Kabe</completename>
         <note>pseud. of Kazimierz Bein</note>
       </name>
     </person>
@@ -343,7 +343,7 @@ Related work representation:
     <role type="translator"/>
     <person>
       <name>
-        <completeName>Kabe</completeName>
+        <completename>Kabe</completename>
         <note>pseud. of Kazimierz Bein</note>
       </name>
     </person>
@@ -396,7 +396,7 @@ Victor BERS. Austin: University of Texas Press, 2003.
     <role type="author"/>
     <person>
       <name>
-        <completeName>Demosthenes</completeName>
+        <completename>Demosthenes</completename>
       </name>
     </person>
   </contributor>
@@ -426,6 +426,4 @@ Victor BERS. Austin: University of Texas Press, 2003.
 </bibitem>
 --
 ====
-
-TODO: other categories
 

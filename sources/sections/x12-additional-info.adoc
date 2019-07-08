@@ -20,8 +20,10 @@ ISBN 0662674979. Charlottetown, P.E.I. : Veterans Affairs Canada. 2003.
   <contributor>
     <role type="author"/>
     <person>
-      <surname>Giesler</surname>
-      <forename>Patricia</forename>
+      <name>
+        <surname>Giesler</surname>
+        <forename>Patricia</forename>
+      </name>
     </person>
   </contributor>
   <contributor>
@@ -84,7 +86,9 @@ as a note. This also applies to the availability of an online resource,
 and any access limitations, but not to licensing, which is encoded separately.
 
 ====
-_Pluralism in the Soviet Union: Essays in Honour of H. Gordon Skilling_. Edited by Susan Gross Solomon. New York: St. Martin's Press, 1983. xiii, 179 pp. $27.50. Available on request to the author.
+_Pluralism in the Soviet Union: Essays in Honour of H. Gordon Skilling_. 
+Edited by Susan Gross Solomon. New York: St. Martin's Press, 1983. xiii, 179 pp. 
+$27.50. Available on request to the author.
 
 [source,xml]
 --
@@ -125,7 +129,7 @@ _Pluralism in the Soviet Union: Essays in Honour of H. Gordon Skilling_. Edited 
 * Source: <<iso690,clause 4.11>>
 * Serialisation: `bibitem/license`, `bibitem/copyright`.
 
-Where available, URIs should be used as unambiguously identifying licenses.
+Where available, URIs should be used to identify licenses unambiguously.
 If a URI is not available, a commonly accepted abbreviation or short name of
 the license should be used.
 

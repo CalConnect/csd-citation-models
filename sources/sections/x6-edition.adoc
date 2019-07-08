@@ -28,12 +28,12 @@ London: J. Johnson, 1798.
   <date type="published"><on>1798</on></date>
   <contributor>
     <role type="author"/>
-    <person><name><completeName>Anon</completeName></name></person>
+    <person><name><completename>Anon</completename></name></person>
     <note>Thomas Robert MALTHUS</note>
   </contributor>
   <contributor>
     <role type="publisher"/>
-    <person><name><completeName>J. Johnson</completeName></name></person>
+    <person><name><completename>J. Johnson</completename></name></person>
   </contributor>
   <edition number="1">1st edition</edition>
   <place>London</place>
@@ -77,7 +77,7 @@ Available from: https://linguistics.stackexchange.com/questions/22872/when-did-t
 
 [source,xml]
 --
-<bibitem type="website">
+<bibitem type="webresource">
   <title>When did the sounds of 'w' and 'v' change in High German?</title>
   <uri>https://linguistics.stackexchange.com/questions/22872/when-did-the-sounds-of-w-and-v-change-in-high-german</uri>
   <date type="updated"><on>2017-05-08</on></date>
@@ -96,7 +96,7 @@ MOZILLA FOUNDATION. Mozilla Firefox version 60.4.0 ESR [computer program]. Avail
 
 [source,xml]
 --
-<bibitem type="electronic resource">
+<bibitem type="software">
   <title>Mozilla Firefox</title>
   <uri>https://www.mozilla.org/</uri>
   <date type="accessed">2019-01-11</date>

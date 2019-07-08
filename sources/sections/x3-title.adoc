@@ -10,8 +10,7 @@
 [[alt-title]]
 === Alternative titles
 
-A resource can have multiple titles, including
-alternative titles
+A resource can have multiple titles, including alternative titles
 and subtitles. Titles are
 classified through `title@type`; the model allows for "alternative", "subtitle",
 "unofficial" (i.e.
@@ -36,12 +35,12 @@ _Travels into Several Remote Nations of the World. In Four Parts_
   <date type="published"><from>1726</from><to>1727</to></date>
   <contributor>
     <role type="author"/>
-    <person><name><completeName>Lemuel Gulliver</completeName></name></person>
+    <person><name><completename>Lemuel Gulliver</completename></name></person>
     <note>pseud. of Jonathan Swift</note>
   </contributor>
   <contributor>
     <role type="publisher"/>
-    <person><name><completeName>Benj. Motte</completeName></name></person>
+    <person><name><completename>Benj. Motte</completename></name></person>
   </contributor>
   <place>London</place>
 </bibitem>
@@ -61,11 +60,11 @@ Oxford: Oxford University Press, 1963.
   <date type="published"><on>1963</on></date>
   <contributor>
     <role type="author"/>
-    <person><name><completeName>Sun Tzu</completeName></name></person>
+    <person><name><completename>Sun Tzu</completename></name></person>
   </contributor>
   <contributor>
     <role type="translator"/>
-    <person><name><completeName>Samuel B. Griffith</completeName></name></person>
+    <person><name><completename>Samuel B. Griffith</completename></name></person>
   </contributor>
   <contributor>
     <role type="publisher"/>
@@ -83,7 +82,7 @@ Mosfellsbær: Sundlaugin, 2002.
 
 [source,xml]
 --
-<bibitem type="audiovisual">
+<bibitem type="music">
   <title>Untitled</title>
   <title type="unofficial">Vaka</title>
   <date type="published"><on>2002</on></date>

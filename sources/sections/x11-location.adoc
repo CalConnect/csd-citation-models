@@ -12,8 +12,7 @@ locator used by the repository.
 The repository and locator are not differentiated, and are treated as a single
 string. The `bibitem/accessLocation` element is also used for online locations
 of digital resources, where a single URL (`bibitem/uri`) is not sufficient, 
-and either a navigation path, or an in-document
-object identifier is used.
+and either a navigation path, or an in-document object identifier is used.
 
 An archival URI can be differentiated from an original URI for a resource,
 through using "archival" as the `uri/@type`. Alternatively, the archival copy
@@ -37,6 +36,7 @@ P.Vind.Tand.25a = HGV P.Vindob. Tandem 25 a = Trismegistos 26540. At: P.Vindob.G
   <uri>http://papyri.info/hgv/26540/</uri>
   <uri>http://aquila.zaw.uni-heidelberg.de/hgv/26540</uri>
   <uri>https://www.trismegistos.org/text/26540</uri>
+  <docidentifier type="papyri.info">P.Vind.Tand.25a</docidentifier>
   <docidentifier type="HGV">P.Vindob. Tandem 25 a</docidentifier>
   <docidentifier type="Trismegistos">26540</docidentifier>
   <accessLocation>P.Vindob.Gr. Inv. Nr. 12424 + 24718 + 28384.</accessLocation>
@@ -51,6 +51,7 @@ P.Vind.Tand.25a = HGV P.Vindob. Tandem 25 a = Trismegistos 26540. At: P.Vindob.G
   <uri>http://papyri.info/hgv/26540/</uri>
   <uri>http://aquila.zaw.uni-heidelberg.de/hgv/26540</uri>
   <uri>https://www.trismegistos.org/text/26540</uri>
+  <docidentifier type="papyri.info">P.Vind.Tand.25a</docidentifier>
   <docidentifier type="HGV">P.Vindob. Tandem 25 a</docidentifier>
   <docidentifier type="Trismegistos">26540</docidentifier>
   <relation type="includedIn">
@@ -91,7 +92,7 @@ Australian Government Bureau of Meteorology. _Latest Weather Observations for Du
 
 [source,xml]
 --
-<bibitem type="electronic resource">
+<bibitem type="dataset">
   <title>Latest Weather Observations for Dumont D'Urville</title>
   <uri>http://www.bom.gov.au/fwo/IDT60803/IDT60803.89642.json</uri>
   <date type="accessed"><on>2018-03-10</on></date>
@@ -161,3 +162,4 @@ British Library Web site February 1997 [online]. archive.org [distributor]. Avai
 --
 
 ====
+

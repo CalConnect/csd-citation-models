@@ -11,7 +11,7 @@ must be included in the bibliography. In practice, identifiers are included
 at the discretion of the bibliographer: they are routinely included in
 bibliographic databases, but seldom in references within documents.
 
-The namespace of an identifier is idnicated through its type attribute.
+The namespace of an identifier is indicated through its type attribute.
 The scope of an identifier is introduced to disambiguate the identifier
 referent, when it is not obvious. So it is introduced where an identifier identifies
 only a component of the item (e.g. a document included in the item),
@@ -31,7 +31,7 @@ Invalid or cancelled identifiers should be so identified through the
 identifier scope: the cancellation of the identifier does not impact
 its namespace, but its connnection to a referent.
 
-Standards body identifiers for standards (<<iso690,clause 5.999999999>>)
+Standards body identifiers for standards (<<iso690,clause 5.9>>)
 may be modelled as series numbers or as identifiers (<<series>>).
 We recommend that the canonical identifier issued for a standard by a
 standards body be encoded as an identifier; other identifiers assigned
