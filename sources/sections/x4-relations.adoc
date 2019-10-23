@@ -34,6 +34,7 @@ hasDraft:: document A has as a draft document B
 draftOf:: document A is a draft of document B
 updates:: document A updates document B
 updatedBy:: document A is updated by document B
+related:: document A is related to document B in an otherwise unspecified fashion
 
 Standards Relations:
 
