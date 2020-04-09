@@ -12,6 +12,8 @@ related item embedded within the other.
 
 === Relation types
 
+`bibitem/relation/@type` gives the base class of the relation between two bibliographic items.
+
 The base class of relation types is taken from <<iso690>>, and represents
 generic bibliographical requirements, particularly inclusion in a host item (<<host-item>>:
 includedIn, includes) and translation (<<translation>>: translatedFrom, hasTranslation).
@@ -35,6 +37,8 @@ draftOf:: document A is a draft of document B
 updates:: document A updates document B
 updatedBy:: document A is updated by document B
 related:: document A is related to document B in an otherwise unspecified fashion
+describes:: document A describes document B
+describedBy:: document A is described by document B
 
 Standards Relations:
 
@@ -54,6 +58,42 @@ amends:: document A updates document B, and the change is a minor change to the 
 amendedBy:: document A is updated by document B, and the change is a minor change to the intended meaning
 revised:: document A updates document B, and the change is a major change to the intended meaning
 revisedBy:: document A is updated by document B, and the change is a major change to the intended meaning
+
+The foregoing list is a basic, parsimonious list of relations. Idiosyncratic refinements to the relation between
+two items can be expressed through `bibitem/relation/description`, with the understanding that the relation
+described in that element is a subset of the relation named in `bibitem/relation/@type`.
+
+=== Localities
+
+The relation between two bibliographic items may not apply to either the first ("source") item,
+or the second ("target") item, in their entirety. For that reason, the relation may also specify
+one more more localities in the target item (`localityStack`), and one or more localities in the
+source item (`sourceLocalityStack`), as constraining the relation. 
+
+For example, the following expresses that Chapter 3 of the first edition of _Telescopy_ has been superseded
+by Chapters 4 and 7 of the second edition.
+
+[source,xml]
+----
+<bibitem type="book">
+  <title>Telescopy</title>
+  <edition>1</edition>
+  <relation type="obsoletedBy">
+    <bibitem type="book">
+      <title>Telescopy</title>
+      <edition>2</edition>
+    </bibitem>
+    <sourceLocalityStack>
+      <sourceLocality type="chapter"><referenceFrom>3</referenceFrom></sourceLocality>
+    </sourceLocalityStack>
+    <LocalityStack>
+      <locality type="chapter"><referenceFrom>4</referenceFrom></locality>
+      <locality type="chapter"><referenceFrom>7</referenceFrom></locality>
+    </LocalityStack>
+  </relation>
+</bibitem>
+----
+
 
 [[host-item]]
 === Host Item
@@ -101,68 +141,6 @@ Ramsey, J. K., & McGrew, W. C. (2005). Object play in great apes: Studies in nat
 In A. D. Pellegrini & P. K. Smith (Eds.), _The nature of play: Great apes and humans_
 (pp. 89-112). New York, NY: Guilford Press.
 
-Dispreferred extent encoding:
-[source,xml]
---
-<bibitem type="incollection">
-  <title>Object play in great apes: Studies in nature and captivity</title>
-  <date type="published"><on>2005</on></date>
-  <contributor>
-    <role type="author"/>
-    <person>
-      <name>
-        <surname>Ramsey</surname>
-        <initials>J. K.</initials>
-      </name>
-    </person>
-  </contributor>
-  <contributor>
-    <role type="author"/>
-    <person>
-      <name>
-        <surname>McGrew</surname>
-        <initials>W. C.</initials>
-      </name>
-    </person>
-  </contributor>
-  <relation type="includedIn">
-    <bibitem>
-      <title>The nature of play: Great apes and humans</title>
-      <contributor>
-        <role type="editor"/>
-        <person>
-          <name>
-            <surname>Pellegrini</surname>
-            <initials>A. D.</initials>
-          </name>
-        </person>
-      </contributor>
-      <contributor>
-        <role type="editor"/>
-        <person>
-          <name>
-            <surname>Smith</surname>
-            <initials>P. K.</initials>
-          </name>
-        </person>
-      </contributor>
-      <contributor>
-        <role type="publisher"/>
-        <organization>
-          <name>Guilford Press</name>
-        </organization>
-      </contributor>
-      <place>New York, NY</place>
-    </bibitem>
-    <locality type="page">
-      <referenceFrom>89</referenceFrom>
-      <referenceTo>112</referenceTo>
-    </locality>
-  </relation>
-</bibitem>
---
-
-Preferred extent encoding:
 [source,xml]
 --
 <bibitem type="incollection">
@@ -255,10 +233,10 @@ Mosfellsbær: Sundlaugin, 2002.
       </contributor>
       <place>Mosfellsbær, Iceland</place>
     </bibitem>
-    <locality type="track">
-      <referenceFrom>1</referenceFrom>
-    </locality>
   </relation>
+  <extent type="track">
+    <referenceFrom>1</referenceFrom>
+  </extent>
 </bibitem>
 --
 ====
