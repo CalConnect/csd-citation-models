@@ -1,9 +1,9 @@
 
 [[AnnexB]]
 [appendix,subtype=informative]
-== Mapping to BibTex
+== Mapping to BibTeX
 
-This listing includes the BibTeX fields presented as part of LaTeX <<latex>>,
+This listing includes the BibTeX fields presented as part of the LaTeX <<latex>> package,
 and (asterisked) the additional BibTeX fields in citavi <<citavi>>.
 
 === Categories of information resource

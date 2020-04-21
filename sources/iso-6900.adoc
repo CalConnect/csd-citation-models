@@ -3,7 +3,6 @@
 :docnumber: 6900
 :tc-document-number: 9999
 :edition: 1
-:ref-docnumber: ISO 6900:2018(E)
 :copyright-year: 2018
 :language: en
 :title-intro-en: Information and documentation
@@ -11,8 +10,8 @@
 :title-intro-fr: Information et documentation
 :title-main-fr: Modèle de référence bibliographique et sérialisation
 :doctype: international-standard
-:docstage: 10
-:docsubstage: 92
+:docstage: 00
+:docsubstage: 00
 :technical-committee-type: TC
 :technical-committee-number: 46
 :technical-committee: Information and documentation
@@ -26,12 +25,9 @@
 :language: en
 :script: Latn
 :draft:
-:toc:
-:stem:
-:xrefstyle: short
 :local-cache-only:
 :data-uri-image:
-:docfile: iso-36001.adoc
+:docfile: iso-6900.adoc
 :mn-document-class: iso
 :mn-output-extensions: xml,html,doc,html_alt,rxl
 

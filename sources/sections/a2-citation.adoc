@@ -17,7 +17,7 @@ citations cannot straightforwardly extract the date from the bibliographic sourc
 * A specification of the locality or localities in the source being cited.
 
 A locality is a hierarchical specification of a location in a source. It is specified as a sequence
-of named components of the source, each hierarchically refining its precedessor, from greater to smaller:
+of named components of the source, each hierarchically refining its predecessor, from greater to smaller:
 
 * `type` is the component of the source being specified; in the Relaton grammar, there is a sequence of
 predefined types, and a user-specified type can be added with the prefix `locality:`. The predefined types are:

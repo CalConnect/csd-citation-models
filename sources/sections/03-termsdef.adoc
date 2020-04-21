@@ -1,7 +1,7 @@
 
 [[terms]]
 [source="iso690"]
-== Terms and Definitions
+== Terms and definitions
 
 [[term-bibliographer]]
 === bibliographer
