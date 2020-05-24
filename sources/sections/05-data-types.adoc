@@ -28,3 +28,6 @@ FormattedString:: String which is formatted according to conventions specified
 in a named MIME type (<<rfc2046>>).
 
 LocalizedString:: FormattedString which optionally specifies its language and/or script.
+Multiple variants of the same string can be stored, tagged with `variant` for each
+variant.
+
